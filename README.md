@@ -31,7 +31,7 @@ Influence of communication and shared developers on productivity within and outs
 3. Our study also addresses whether increased communication contributes to the overall project effectiveness?
  
 ## Methodology  
-How it measure and defines stuff to study the [research questions]   
+How it measure and defines stuff to study the [research questions](https://github.com/AlKun25/ECS_260/blob/master/README.md#research-questions) .  
 
 <!--
 ## How to run   
