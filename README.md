@@ -2,7 +2,7 @@
 
 <div align="center">    
  
-# Your Project Name     
+# Project 3     
 <!--
 [![Paper](http://img.shields.io/badge/paper-arxiv.1001.2234-B31B1B.svg)](https://www.nature.com/articles/nature14539)
 [![Conference](http://img.shields.io/badge/NeurIPS-2019-4b44ce.svg)](https://papers.nips.cc/book/advances-in-neural-information-processing-systems-31-2018)
@@ -30,9 +30,10 @@ Influence of communication and shared developers on productivity within and outs
 2. Our study investigates if an increase in the number of shared developers consistently improves project effectiveness or if an optimal cutoff point exists?
 3. Our study also addresses whether increased communication contributes to the overall project effectiveness?
  
-## Description   
-What it does   
+## Methodology  
+How it measure and defines stuff to study the [research questions]   
 
+<!--
 ## How to run   
 First, install dependencies   
 ```bash
@@ -73,8 +74,10 @@ trainer.fit(model, train, val)
 # test using the best model!
 trainer.test(test_dataloaders=test)
 ```
+-->
 
 ## Team details
+We are team 16, also known as  "<TEAM-NAME>"
 
 - Amy Vu
 - Andrew Lee
