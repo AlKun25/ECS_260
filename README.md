@@ -77,7 +77,7 @@ trainer.test(test_dataloaders=test)
 -->
 
 ## Team details
-We are team 16, also known as  "<TEAM-NAME>"
+We are team 16, also known as  "PublishOrPerish"
 
 - Amy Vu
 - Andrew Lee
