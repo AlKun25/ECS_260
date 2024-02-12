@@ -26,9 +26,7 @@ Influence of communication and shared developers on productivity within and outs
 
 ## Research questions
 
-1. Our study seeks to determine the impact of shared developers on project effectiveness.
-2. Our study investigates if an increase in the number of shared developers consistently improves project effectiveness or if an optimal cutoff point exists?
-3. Our study also addresses whether increased communication contributes to the overall project effectiveness?
+<UNDER DEBATE & SCRUTINY BY HIGHER AUTHORITIES>
  
 ## Methodology  
 How it measure and defines stuff to study the [research questions](https://github.com/AlKun25/ECS_260/blob/master/README.md#research-questions) .  
