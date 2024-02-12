@@ -1,0 +1,185 @@
+ic| idx: 0, link: 'https://github.com/apache'
+0. The Apache Software Foundation organization loaded
+ic| repos.totalCount: 2588
+2588it [01:34, 27.45it/s]
+ic| len(popularRepos): 499
+ic| idx: 1, link: 'https://github.com/eclipse'
+1. Eclipse Foundation organization loaded
+ic| repos.totalCount: 304
+304it [00:11, 27.26it/s]
+ic| len(popularRepos): 57
+ic| idx: 2, link: 'https://github.com/linuxfoundation'
+2. The Linux Foundation organization loaded
+ic| repos.totalCount: 8
+8it [00:00, 12.67it/s]
+ic| len(popularRepos): 0
+ic| idx: 3, link: 'https://github.com/cloudfoundry'
+3. Cloud Foundry organization loaded
+ic| repos.totalCount: 537
+537it [00:19, 27.54it/s]
+ic| len(popularRepos): 29
+ic| idx: 4, link: 'https://github.com/Shopify'
+4. Shopify organization loaded
+ic| repos.totalCount: 1014
+1014it [00:37, 27.21it/s]
+ic| len(popularRepos): 128
+ic| idx: 5, link: 'https://github.com/kubernetes'
+5. Kubernetes organization loaded
+ic| repos.totalCount: 77
+77it [00:03, 25.63it/s]
+ic| len(popularRepos): 54
+ic| idx: 6, link: 'https://github.com/nodejs'
+6. Node.js organization loaded
+ic| repos.totalCount: 205
+205it [00:07, 27.53it/s]
+ic| len(popularRepos): 75
+ic| idx: 7, link: 'https://github.com/vuejs'
+7. vuejs organization loaded
+ic| repos.totalCount: 122
+122it [00:05, 23.58it/s]
+ic| len(popularRepos): 84
+ic| idx: 8, link: 'https://github.com/mozilla'
+8. Mozilla organization loaded
+ic| repos.totalCount: 2403
+2403it [01:29, 26.95it/s]
+ic| len(popularRepos): 205
+ic| idx: 9, link: 'https://github.com/adobe'
+9. Adobe organization loaded
+ic| repos.totalCount: 945
+945it [00:34, 27.29it/s]
+ic| len(popularRepos): 51
+ic| idx: 10, link: 'https://github.com/RedHatOfficial'
+10. Red Hat organization loaded
+ic| repos.totalCount: 84
+84it [00:02, 28.21it/s]
+ic| len(popularRepos): 6
+ic| idx: 11, link: 'https://github.com/cfpb'
+11. Consumer Financial Protection Bureau organization loaded
+ic| repos.totalCount: 337
+337it [00:13, 25.17it/s]
+ic| len(popularRepos): 11
+ic| idx: 12, link: 'https://github.com/Netflix'
+12. Netflix organization loaded
+ic| repos.totalCount: 226
+226it [00:08, 27.04it/s]
+ic| len(popularRepos): 112
+ic| idx: 13, link: 'https://github.com/Esri'
+13. Esri organization loaded
+ic| repos.totalCount: 683
+683it [00:25, 26.88it/s]
+ic| len(popularRepos): 66
+ic| idx: 14, link: 'https://github.com/square'
+14. Square organization loaded
+ic| repos.totalCount: 286
+286it [00:10, 26.10it/s]
+ic| len(popularRepos): 113
+ic| idx: 15, link: 'https://github.com/twitter'
+15. X (fka Twitter) organization loaded
+ic| repos.totalCount: 100
+100it [00:03, 26.80it/s]
+ic| len(popularRepos): 68
+ic| idx: 16, link: 'https://github.com/guardian'
+16. The Guardian organization loaded
+ic| repos.totalCount: 1969
+1969it [01:10, 27.77it/s]
+ic| len(popularRepos): 16
+ic| idx: 17, link: 'https://github.com/Yelp'
+17. Yelp.com organization loaded
+ic| repos.totalCount: 232
+232it [00:08, 26.90it/s]
+ic| len(popularRepos): 45
+ic| idx: 18, link: 'https://github.com/IBM'
+18. International Business Machines organization loaded
+ic| repos.totalCount: 3116
+3116it [02:48, 18.53it/s]
+ic| len(popularRepos): 126
+ic| idx: 19, link: 'https://github.com/microsoft'
+19. Microsoft organization loaded
+ic| repos.totalCount: 6068
+6068it [03:40, 27.58it/s]
+ic| len(popularRepos): 1414
+ic| idx: 20, link: 'https://github.com/artsy'
+20. Artsy organization loaded
+ic| repos.totalCount: 284
+284it [00:11, 23.97it/s]
+ic| len(popularRepos): 16
+ic| idx: 21, link: 'https://github.com/OSGeo'
+21. Open Source Geospacial Foundation organization loaded
+ic| repos.totalCount: 39
+39it [00:01, 20.66it/s]
+ic| len(popularRepos): 8
+ic| idx: 22, link: 'https://github.com/godaddy'
+22. GoDaddy organization loaded
+ic| repos.totalCount: 191
+191it [00:07, 25.48it/s]
+ic| len(popularRepos): 14
+ic| idx: 23, link: 'https://github.com/cloudflare'
+23. CloudFlare organization loaded
+ic| repos.totalCount: 444
+444it [00:15, 28.46it/s]
+ic| len(popularRepos): 149
+ic| idx: 24, link: 'https://github.com/eleme'
+24. Eleme organization loaded
+ic| repos.totalCount: 37
+37it [00:01, 19.47it/s]
+ic| len(popularRepos): 14
+ic| idx: 25, link: 'https://github.com/didi'
+25. DiDi organization loaded
+ic| repos.totalCount: 80
+80it [00:03, 22.90it/s]
+ic| len(popularRepos): 49
+ic| idx: 26, link: 'https://github.com/alibaba'
+26. Alibaba organization loaded
+ic| repos.totalCount: 412
+412it [00:14, 27.87it/s]
+ic| len(popularRepos): 249
+ic| idx: 27, link: 'https://github.com/google'
+27. Google organization loaded
+ic| repos.totalCount: 2602
+2602it [01:30, 28.77it/s]
+ic| len(popularRepos): 931
+ic| idx: 28, link: 'https://github.com/proyecto26'
+28. Proyecto 26 organization loaded
+ic| repos.totalCount: 59
+59it [00:02, 27.94it/s]
+ic| len(popularRepos): 9
+ic| idx: 29, link: 'https://github.com/zalando'
+29. Zalando SE organization loaded
+ic| repos.totalCount: 49
+49it [00:02, 22.88it/s]
+ic| len(popularRepos): 38
+ic| idx: 30, link: 'https://github.com/stripe'
+30. Stripe organization loaded
+ic| repos.totalCount: 64
+64it [00:02, 22.94it/s]
+ic| len(popularRepos): 32
+ic| idx: 31, link: 'https://github.com/newrelic'
+31. New Relic organization loaded
+ic| repos.totalCount: 528
+528it [00:19, 26.90it/s]
+ic| len(popularRepos): 20
+ic| idx: 32, link: 'https://github.com/docker'
+32. Docker organization loaded
+ic| repos.totalCount: 122
+122it [00:04, 25.52it/s]
+ic| len(popularRepos): 55
+ic| idx: 33, link: 'https://github.com/ExpediaGroup'
+33. Expedia Group Open Source organization loaded
+ic| repos.totalCount: 134
+134it [00:05, 23.75it/s]
+ic| len(popularRepos): 10
+ic| idx: 34, link: 'https://github.com/fairfield-programming'
+34. Fairfield Programming Association organization loaded
+ic| repos.totalCount: 28
+28it [00:01, 18.74it/s]
+ic| len(popularRepos): 1
+ic| idx: 35, link: 'https://github.com/komodorio'
+35. Komodor organization loaded
+ic| repos.totalCount: 20
+20it [00:01, 19.63it/s]
+ic| len(popularRepos): 3
+ic| idx: 36, link: 'https://github.com/devtron-labs'
+36. Devtron Labs organization loaded
+ic| repos.totalCount: 108
+108it [00:04, 24.71it/s]
+ic| len(popularRepos): 2
