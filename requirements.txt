@@ -1,2 +1,7 @@
 pydriller
 PyGithub
+python-dotenv
+numpy
+pandas
+matplotlib
+tqdm
