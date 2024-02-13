@@ -1,0 +1,1247 @@
+,repo,org,stars,contributors,released
+0,xtext,Eclipse Foundation,739,98,False
+1,kura,Eclipse Foundation,476,57,False
+2,andmore,Eclipse Foundation,146,11,True
+3,ponte,Eclipse Foundation,363,8,False
+4,wakaama,Eclipse Foundation,481,37,True
+5,mraa,Eclipse Foundation,1349,110,False
+6,upm,Eclipse Foundation,650,57,True
+7,vorto,Eclipse Foundation,224,42,True
+8,buildship,Eclipse Foundation,516,40,False
+9,che,Eclipse Foundation,6908,137,True
+10,dirigible,Eclipse Foundation,198,48,True
+11,elk,Eclipse Foundation,219,17,True
+12,hawkbit,Eclipse Foundation,426,65,True
+13,eclipse-collections,Eclipse Foundation,2318,104,True
+14,paho.mqtt.java,Eclipse Foundation,1998,58,True
+15,paho.mqtt.embedded-c,Eclipse Foundation,1268,14,True
+16,paho.mqtt.javascript,Eclipse Foundation,1114,10,True
+17,paho.mqtt.python,Eclipse Foundation,2001,64,True
+18,paho.mqtt.c,Eclipse Foundation,1789,88,True
+19,eclipse-collections-kata,Eclipse Foundation,431,57,False
+20,paho.mqtt.cpp,Eclipse Foundation,871,19,True
+21,paho.mqtt.golang,Eclipse Foundation,2523,70,True
+22,paho.mqtt-sn.embedded-c,Eclipse Foundation,303,13,True
+23,paho.mqtt.m2mqtt,Eclipse Foundation,494,5,True
+24,paho.mqtt.testing,Eclipse Foundation,105,5,False
+25,paho.mqtt.android,Eclipse Foundation,2780,10,False
+26,omr,Eclipse Foundation,921,186,True
+27,mosquitto,Eclipse Foundation,8154,126,False
+28,milo,Eclipse Foundation,1061,20,False
+29,xtext-core,Eclipse Foundation,117,54,False
+30,xtext-xtend,Eclipse Foundation,101,32,False
+31,paho.mqtt-spy,Eclipse Foundation,616,4,True
+32,gef,Eclipse Foundation,115,23,True
+33,jnosql,Eclipse Foundation,218,25,True
+34,microprofile-samples,Eclipse Foundation,116,14,False
+35,microprofile-conference,Eclipse Foundation,118,28,False
+36,kapua,Eclipse Foundation,218,36,True
+37,microprofile-config,Eclipse Foundation,204,52,True
+38,microprofile,Eclipse Foundation,659,36,True
+39,repairnator,Eclipse Foundation,378,22,False
+40,microprofile-health,Eclipse Foundation,102,31,True
+41,microprofile-fault-tolerance,Eclipse Foundation,120,33,True
+42,microprofile-jwt-auth,Eclipse Foundation,101,24,True
+43,microprofile-rest-client,Eclipse Foundation,134,30,True
+44,microprofile-open-api,Eclipse Foundation,125,34,True
+45,xacc,Eclipse Foundation,157,21,False
+46,paho.mqtt.rust,Eclipse Foundation,474,15,True
+47,lemminx,Eclipse Foundation,239,38,True
+48,tahu,Eclipse Foundation,195,19,False
+49,steady,Eclipse Foundation,516,14,True
+50,paho.golang,Eclipse Foundation,266,16,True
+51,streamsheets,Eclipse Foundation,438,10,False
+52,jkube,Eclipse Foundation,582,179,True
+53,openvsx,Eclipse Foundation,1057,37,True
+54,capella,Eclipse Foundation,194,47,True
+55,jifa,Eclipse Foundation,415,18,True
+56,jbom,Eclipse Foundation,102,5,True
+0,java-buildpack-auto-reconfiguration,Cloud Foundry,219,16,False
+1,cf-java-client,Cloud Foundry,325,64,True
+2,uaa,Cloud Foundry,1539,155,True
+3,bosh,Cloud Foundry,2013,158,True
+4,gosigar,Cloud Foundry,469,33,True
+5,cloud_controller_ng,Cloud Foundry,182,152,False
+6,gorouter,Cloud Foundry,432,127,False
+7,nodejs-buildpack,Cloud Foundry,164,96,True
+8,java-buildpack,Cloud Foundry,428,94,True
+9,loggregator-release,Cloud Foundry,216,90,True
+10,cli,Cloud Foundry,1737,180,True
+11,garden,Cloud Foundry,226,57,False
+12,php-buildpack,Cloud Foundry,141,71,True
+13,diego-release,Cloud Foundry,198,139,True
+14,bytefmt,Cloud Foundry,214,20,False
+15,python-buildpack,Cloud Foundry,120,104,True
+16,diego-design-notes,Cloud Foundry,141,18,False
+17,staticfile-buildpack,Cloud Foundry,199,72,True
+18,java-buildpack-memory-calculator,Cloud Foundry,612,10,True
+19,cf-deployment,Cloud Foundry,284,202,True
+20,stratos,Cloud Foundry,241,47,True
+21,bosh-bootloader,Cloud Foundry,178,103,True
+22,credhub,Cloud Foundry,224,54,False
+23,bosh-cli,Cloud Foundry,178,147,True
+24,bosh-deployment,Cloud Foundry,130,104,False
+25,go-diodes,Cloud Foundry,442,14,False
+26,eirini,Cloud Foundry,115,32,False
+27,cf-for-k8s,Cloud Foundry,302,68,True
+28,korifi,Cloud Foundry,271,30,True
+0,active_shipping,Shopify,812,89,True
+1,response_bank,Shopify,130,35,True
+2,liquid,Shopify,10664,155,False
+3,active_fulfillment,Shopify,155,41,True
+4,shopify_app,Shopify,1689,214,True
+5,shopify-api-ruby,Shopify,1013,179,True
+6,money,Shopify,270,59,True
+7,shopify_theme,Shopify,640,33,False
+8,statsd-instrument,Shopify,558,78,False
+9,shopify_python_api,Shopify,1133,77,False
+10,shopify_django_app,Shopify,444,17,False
+11,wolverine,Shopify,111,10,False
+12,dashing,Shopify,11000,35,True
+13,shopify.github.com,Shopify,509,58,False
+14,superdb,Shopify,1152,7,False
+15,identity_cache,Shopify,1891,65,False
+16,browser_sniffer,Shopify,116,28,True
+17,verdict,Shopify,176,30,True
+18,go-lua,Shopify,2863,22,False
+19,lhm,Shopify,166,53,True
+20,Timber,Shopify,1028,39,True
+21,shipit-engine,Shopify,1382,148,True
+22,liquid-c,Shopify,114,20,True
+23,ejson,Shopify,1297,34,True
+24,minesweeper,Shopify,114,6,True
+25,toxiproxy,Shopify,10097,61,True
+26,turbograft,Shopify,213,32,True
+27,twine,Shopify,114,23,True
+28,semian,Shopify,1305,74,True
+29,themekit,Shopify,1130,44,True
+30,toxiproxy-ruby,Shopify,116,20,True
+31,measured,Shopify,284,23,False
+32,mobile-buy-sdk-ios,Shopify,444,34,True
+33,graphql-batch,Shopify,1395,37,True
+34,mobile-buy-sdk-android,Shopify,207,26,True
+35,ruby-style-guide,Shopify,446,79,True
+36,js-buy-sdk,Shopify,957,53,True
+37,javascript,Shopify,254,20,False
+38,sprockets-commoner,Shopify,183,4,False
+39,android-testify,Shopify,229,9,True
+40,erb-lint,Shopify,545,74,True
+41,better-html,Shopify,340,25,True
+42,buy-button-js,Shopify,236,24,False
+43,slate,Shopify,1282,49,True
+44,node-themekit,Shopify,114,15,True
+45,graphql-js-client,Shopify,191,14,True
+46,ci-queue,Shopify,162,27,True
+47,rotoscope,Shopify,186,9,False
+48,krane,Shopify,1358,93,True
+49,bootsnap,Shopify,2631,96,False
+50,storefront-api-examples,Shopify,1101,23,False
+51,polaris,Shopify,5582,353,True
+52,cli-ui,Shopify,939,37,True
+53,shopify-node-app,Shopify,329,12,False
+54,cli-kit,Shopify,138,21,True
+55,FunctionalTableData,Shopify,364,31,True
+56,web-configs,Shopify,454,81,True
+57,kubeaudit,Shopify,1791,39,True
+58,draggable,Shopify,17309,44,True
+59,shopify-express,Shopify,137,9,True
+60,theme-scripts,Shopify,502,22,True
+61,starter-theme,Shopify,475,17,True
+62,polaris-tokens,Shopify,233,16,True
+63,shopify-scripts,Shopify,143,5,False
+64,deprecation_toolkit,Shopify,433,21,True
+65,quilt,Shopify,1641,253,True
+66,ghostferry,Shopify,651,37,True
+67,livedata-ktx,Shopify,464,3,True
+68,skeleton-theme,Shopify,193,4,False
+69,autoload_reloader,Shopify,155,5,False
+70,job-iteration,Shopify,1000,46,True
+71,graphql-metrics,Shopify,164,19,True
+72,limiter,Shopify,346,7,True
+73,shopify-app-template-node,Shopify,801,24,False
+74,graphql-design-tutorial,Shopify,2391,32,False
+75,bootboot,Shopify,399,18,True
+76,shopify-cli,Shopify,998,124,True
+77,shadowenv,Shopify,371,16,True
+78,shopify-demo-app-node-react,Shopify,444,13,False
+79,git-chain,Shopify,199,6,False
+80,tapioca,Shopify,641,94,True
+81,rubocop-sorbet,Shopify,158,30,True
+82,smart_todo,Shopify,111,17,True
+83,screenshot-glb,Shopify,103,6,True
+84,seafoam,Shopify,121,14,False
+85,restyle,Shopify,2702,39,True
+86,shopify-theme-inspector,Shopify,150,10,True
+87,polaris-viz,Shopify,274,42,False
+88,syrup,Shopify,107,12,True
+89,app_profiler,Shopify,184,27,True
+90,ui-extensions,Shopify,234,114,True
+91,remote-ui,Shopify,784,30,True
+92,spoom,Shopify,193,34,False
+93,heap-profiler,Shopify,187,6,False
+94,shopify-api-js,Shopify,904,59,True
+95,maintenance_tasks,Shopify,874,49,True
+96,packwerk,Shopify,1439,63,True
+97,theme-check,Shopify,326,29,True
+98,shopify-api-php,Shopify,311,23,True
+99,yjit,Shopify,610,345,False
+100,shopify-app-template-php,Shopify,241,17,False
+101,storefront-api-learning-kit,Shopify,275,12,False
+102,dawn,Shopify,2251,80,True
+103,product-reviews-sample-app,Shopify,324,17,False
+104,function-examples,Shopify,134,49,False
+105,paquito,Shopify,110,11,False
+106,ruby_memcheck,Shopify,184,5,True
+107,hydrogen-v1,Shopify,3761,73,True
+108,react-native-skia,Shopify,5856,73,True
+109,flash-list,Shopify,4560,38,True
+110,ruby-lsp,Shopify,1200,60,True
+111,vscode-shopify-ruby,Shopify,164,15,True
+112,vscode-ruby-lsp,Shopify,404,41,True
+113,shopify-frontend-template-react,Shopify,110,22,False
+114,awesome-hydrogen,Shopify,151,9,False
+115,shopify-app-examples,Shopify,127,11,False
+116,react-native-performance,Shopify,843,13,True
+117,cli,Shopify,320,177,True
+118,shopify-app-js,Shopify,138,21,True
+119,pitchfork,Shopify,631,34,False
+120,hydrogen,Shopify,999,62,True
+121,hydrogen-react,Shopify,176,11,True
+122,ruvy,Shopify,258,6,True
+123,handy,Shopify,134,2,False
+124,tracky,Shopify,304,1,False
+125,ruby-lsp-rails,Shopify,422,12,True
+126,shopify-app-template-remix,Shopify,185,33,False
+127,autotuner,Shopify,133,1,True
+0,kubernetes,Kubernetes,105055,353,True
+1,dashboard,Kubernetes,13480,346,True
+2,website,Kubernetes,4179,372,True
+3,release,Kubernetes,467,173,True
+4,minikube,Kubernetes,27983,394,True
+5,test-infra,Kubernetes,3746,366,False
+6,enhancements,Kubernetes,3194,355,False
+7,community,Kubernetes,11515,345,False
+8,kube-state-metrics,Kubernetes,4956,332,True
+9,node-problem-detector,Kubernetes,2662,126,True
+10,kompose,Kubernetes,8973,122,True
+11,kops,Kubernetes,15422,384,True
+12,kubernetes-template-project,Kubernetes,172,21,False
+13,git-sync,Kubernetes,1965,67,True
+14,k8s.io,Kubernetes,614,363,False
+15,client-go,Kubernetes,8411,396,False
+16,gengo,Kubernetes,533,78,False
+17,perf-tests,Kubernetes,837,175,False
+18,ingress-nginx,Kubernetes,16335,412,True
+19,kubeadm,Kubernetes,3618,89,False
+20,dns,Kubernetes,861,96,True
+21,apimachinery,Kubernetes,767,349,False
+22,apiserver,Kubernetes,602,385,False
+23,sample-apiserver,Kubernetes,492,227,False
+24,kube-aggregator,Kubernetes,240,244,False
+25,metrics,Kubernetes,477,179,False
+26,kubectl,Kubernetes,2620,408,False
+27,autoscaler,Kubernetes,7462,406,True
+28,examples,Kubernetes,5958,359,False
+29,api,Kubernetes,603,362,False
+30,apiextensions-apiserver,Kubernetes,222,265,True
+31,utils,Kubernetes,301,154,False
+32,kube-openapi,Kubernetes,281,112,False
+33,sig-release,Kubernetes,512,290,False
+34,code-generator,Kubernetes,1577,171,False
+35,ingress-gce,Kubernetes,1248,228,True
+36,sample-controller,Kubernetes,2954,189,False
+37,cloud-provider-aws,Kubernetes,345,157,True
+38,cloud-provider-openstack,Kubernetes,574,322,True
+39,cloud-provider-vsphere,Kubernetes,221,106,True
+40,org,Kubernetes,232,419,False
+41,kube-scheduler,Kubernetes,150,150,False
+42,kubelet,Kubernetes,278,168,False
+43,kube-proxy,Kubernetes,163,131,False
+44,cli-runtime,Kubernetes,266,181,False
+45,sample-cli-plugin,Kubernetes,276,134,False
+46,cloud-provider-alibaba-cloud,Kubernetes,345,36,True
+47,cloud-provider,Kubernetes,216,194,False
+48,klog,Kubernetes,500,81,True
+49,committee-security-response,Kubernetes,161,26,False
+50,cri-api,Kubernetes,351,94,False
+51,sig-security,Kubernetes,143,23,False
+52,design-proposals-archive,Kubernetes,430,218,False
+53,registry.k8s.io,Kubernetes,327,17,False
+0,http-parser,Node.js,6266,80,False
+1,node-v0.x-archive,Node.js,34483,2,False
+2,node-gyp,Node.js,9536,223,True
+3,readable-stream,Node.js,1010,50,True
+4,node-addon-examples,Node.js,2395,34,False
+5,nan,Node.js,3235,94,False
+6,nodejs.org-archive,Node.js,103,29,False
+7,build,Node.js,502,73,False
+8,roadmap,Node.js,135,3,False
+9,node,Node.js,101803,443,True
+10,iojs.org,Node.js,221,82,False
+11,docker-node,Node.js,8008,102,False
+12,docker-iojs,Node.js,156,9,False
+13,diagnostics,Node.js,519,45,False
+14,nodejs-ko,Node.js,259,31,False
+15,nodejs-pt,Node.js,108,19,False
+16,nodejs-ja,Node.js,104,14,False
+17,nodejs-zh-CN,Node.js,395,26,False
+18,nodejs-zh-TW,Node.js,107,13,False
+19,changelog-maker,Node.js,226,20,True
+20,evangelism,Node.js,242,26,False
+21,NG,Node.js,103,1,False
+22,dev-policy,Node.js,108,5,False
+23,Release,Node.js,3812,60,False
+24,node-convergence-archive,Node.js,1837,412,False
+25,benchmarking,Node.js,161,25,False
+26,nodejs.org,Node.js,3220,410,False
+27,citgm,Node.js,530,64,False
+28,TSC,Node.js,538,67,False
+29,admin,Node.js,141,77,False
+30,code-and-learn,Node.js,163,39,False
+31,help,Node.js,1385,15,False
+32,full-icu-npm,Node.js,150,15,True
+33,llnode,Node.js,1126,33,True
+34,node-chakracore,Node.js,1919,421,True
+35,node-eps,Node.js,446,14,False
+36,promises,Node.js,107,3,False
+37,education,Node.js,418,11,False
+38,github-bot,Node.js,250,31,False
+39,installer,Node.js,194,13,False
+40,node-report,Node.js,329,12,True
+41,http2,Node.js,519,421,False
+42,node-inspect,Node.js,339,17,True
+43,abi-stable-node,Node.js,239,14,True
+44,abi-stable-node-addon-examples,Node.js,239,9,False
+45,security-wg,Node.js,475,64,False
+46,community-committee,Node.js,259,40,False
+47,node-addon-api,Node.js,2003,105,True
+48,node-v8,Node.js,395,2,False
+49,getting-started,Node.js,184,9,False
+50,node-core-utils,Node.js,220,60,True
+51,mentorship,Node.js,587,23,False
+52,i18n,Node.js,149,36,False
+53,modules,Node.js,413,30,False
+54,llparse,Node.js,567,6,False
+55,llhttp,Node.js,1558,50,True
+56,undici,Node.js,5541,226,True
+57,repl,Node.js,166,9,False
+58,tooling,Node.js,164,8,False
+59,package-maintenance,Node.js,400,109,False
+60,quic,Node.js,299,431,False
+61,nodejs.dev,Node.js,2297,372,False
+62,unofficial-builds,Node.js,193,17,False
+63,uvwasi,Node.js,208,26,True
+64,gyp-next,Node.js,113,29,True
+65,web-server-frameworks,Node.js,171,17,False
+66,corepack,Node.js,1960,30,True
+67,examples,Node.js,509,3,False
+68,cjs-module-lexer,Node.js,203,15,False
+69,next-10,Node.js,441,12,False
+70,snap,Node.js,161,6,False
+71,loaders,Node.js,107,10,False
+72,postject,Node.js,125,7,True
+73,single-executable,Node.js,226,5,False
+74,performance,Node.js,364,11,False
+0,vue,vuejs,206359,356,True
+1,vue-router,vuejs,19015,276,True
+2,v2.vuejs.org,vuejs,5056,439,False
+3,vue-touch,vuejs,2730,10,True
+4,Discussion,vuejs,167,2,False
+5,devtools,vuejs,24173,134,True
+6,vue-element,vuejs,208,2,False
+7,vue-loader,vuejs,4968,24,True
+8,vue-component-compiler,vuejs,343,9,True
+9,vueify,vuejs,1174,20,True
+10,vue-hackernews,vuejs,2513,9,False
+11,vue-syntax-highlight,vuejs,1483,21,True
+12,vue-class-component,vuejs,5814,39,True
+13,vuex,vuejs,28330,310,True
+14,vue-async-data,vuejs,417,5,False
+15,awesome-vue,vuejs,70496,443,False
+16,vue-hot-reload-api,vuejs,466,14,True
+17,v2.cn.vuejs.org,vuejs,1862,416,False
+18,jp.vuejs.org,vuejs,247,265,False
+19,vue-rx,vuejs,3343,29,True
+20,vue-cli,vuejs,29750,456,True
+21,vue-style-loader,vuejs,225,37,True
+22,vuefire,vuejs,3768,68,True
+23,rollup-plugin-vue,vuejs,847,10,True
+24,vue-animated-list,vuejs,462,3,False
+25,vuex-router-sync,vuejs,2524,17,True
+26,art,vuejs,121,7,False
+27,eslint-config-vue,vuejs,325,4,False
+28,babel-plugin-transform-vue-jsx,vuejs,1841,15,False
+29,vue-hackernews-2.0,vuejs,10970,30,False
+30,laravel-elixir-vue-2,vuejs,106,4,False
+31,eslint-plugin-vue,vuejs,4324,191,True
+32,vue-migration-helper,vuejs,595,8,False
+33,apollo,vuejs,5977,127,True
+34,vetur,vuejs,5716,139,True
+35,vuex-observable,vuejs,155,3,False
+36,vue-eslint-parser,vuejs,417,14,True
+37,vue-curated,vuejs,178,6,False
+38,babel-preset-vue-app,vuejs,125,4,False
+39,vue-issue-helper,vuejs,145,13,False
+40,vue2-ssr-docs,vuejs,559,66,False
+41,vue-router-demos,vuejs,106,2,False
+42,vue-test-utils,vuejs,3571,297,True
+43,eslint-plugin-vue-libs,vuejs,105,6,False
+44,vue-jest,vuejs,742,74,True
+45,roadmap,vuejs,851,12,False
+46,vue-test-utils-jest-example,vuejs,298,12,False
+47,vue-test-utils-mocha-webpack-example,vuejs,104,7,False
+48,preload-webpack-plugin,vuejs,175,20,True
+49,vue-template-explorer,vuejs,263,1,False
+50,vue-web-component-wrapper,vuejs,1037,6,True
+51,vue-docs-zh-cn,vuejs,1331,11,False
+52,ui,vuejs,1332,6,True
+53,jsx-vue2,vuejs,1445,13,True
+54,component-compiler-utils,vuejs,317,25,True
+55,vuepress,vuejs,22211,353,True
+56,core,vuejs,43214,438,True
+57,rfcs,vuejs,4806,33,False
+58,events,vuejs,251,52,False
+59,router,vuejs,3494,210,True
+60,vue-dev-server,vuejs,572,2,False
+61,composition-api-converter,vuejs,144,5,False
+62,composition-api,vuejs,4176,90,True
+63,eslint-config-typescript,vuejs,102,21,True
+64,composition-api-rfc,vuejs,106,29,False
+65,pinia,vuejs,11997,215,True
+66,docs,vuejs,2702,471,False
+67,vue-next-webpack-preview,vuejs,427,10,False
+68,vue-cli-plugin-vue-next,vuejs,338,6,False
+69,vue-codemod,vuejs,251,7,True
+70,test-utils,vuejs,928,132,True
+71,vitepress,vuejs,10168,292,True
+72,language-tools,vuejs,5091,112,True
+73,babel-plugin-jsx,vuejs,1654,28,True
+74,docs-next-zh-cn,vuejs,960,167,False
+75,blog,vuejs,285,11,False
+76,theme,vuejs,213,31,False
+77,petite-vue,vuejs,8594,12,False
+78,create-vue,vuejs,3188,35,True
+79,repl,vuejs,772,37,True
+80,tsconfig,vuejs,274,3,False
+81,v3-migration-guide,vuejs,209,15,False
+82,devtools-next,vuejs,649,20,True
+83,core-vapor,vuejs,825,440,False
+0,zamboni,Mozilla,475,182,True
+1,kitsune,Mozilla,1239,117,True
+2,mozregression,Mozilla,167,67,True
+3,bleach,Mozilla,2590,66,False
+4,popcorn-js,Mozilla,2144,43,True
+5,addon-sdk,Mozilla,641,168,False
+6,django-csp,Mozilla,504,45,True
+7,openwebapps,Mozilla,276,16,False
+8,skywriter,Mozilla,483,12,False
+9,jschannel,Mozilla,270,5,False
+10,chromeless,Mozilla,761,27,False
+11,rainbow,Mozilla,108,3,False
+12,narcissus,Mozilla,911,9,False
+13,task.js,Mozilla,1635,2,False
+14,prospector,Mozilla,139,14,False
+15,doctorjs,Mozilla,735,10,False
+16,dryice,Mozilla,163,12,False
+17,playdoh,Mozilla,712,18,False
+18,pontoon,Mozilla,1377,95,True
+19,unicode-slugify,Mozilla,319,13,False
+20,persona,Mozilla,1827,58,False
+21,bedrock,Mozilla,1136,313,False
+22,django-session-csrf,Mozilla,108,10,True
+23,pdf.js,Mozilla,45366,370,True
+24,openbadges-backpack,Mozilla,858,36,True
+25,Addon-Tests,Mozilla,120,45,False
+26,rhino,Mozilla,3900,90,True
+27,elasticutils,Mozilla,243,28,False
+28,dxr,Mozilla,807,52,False
+29,mozillians,Mozilla,286,108,True
+30,gcli,Mozilla,120,21,False
+31,lightbeam,Mozilla,587,25,True
+32,butter,Mozilla,281,22,False
+33,source-map,Mozilla,3451,78,False
+34,cubeb,Mozilla,419,80,False
+35,django-browserid,Mozilla,180,41,True
+36,django-badger,Mozilla,117,10,False
+37,Garmr,Mozilla,105,4,False
+38,browserid-crypto,Mozilla,183,17,True
+39,BrowserQuest,Mozilla,9203,4,False
+40,mozilla-central,Mozilla,312,1,False
+41,moztrap,Mozilla,129,14,False
+42,shumway,Mozilla,3691,35,False
+43,node-client-sessions,Mozilla,750,24,True
+44,moz-git-tools,Mozilla,148,26,False
+45,node-convict,Mozilla,2299,49,False
+46,connect-cachify,Mozilla,132,10,False
+47,browserid-cookbook,Mozilla,115,19,False
+48,One-Mozilla-blog,Mozilla,123,10,False
+49,i18n-abide,Mozilla,143,29,False
+50,awsbox,Mozilla,810,23,False
+51,slowparse,Mozilla,113,7,False
+52,mortar,Mozilla,363,3,False
+53,restmail.net,Mozilla,107,11,False
+54,releases-comm-central,Mozilla,151,230,False
+55,airmozilla,Mozilla,125,44,False
+56,WebGameStub,Mozilla,111,125,False
+57,agithub,Mozilla,410,15,True
+58,html5-lint,Mozilla,200,11,False
+59,mozilla-presentation-templates,Mozilla,142,8,False
+60,npm-lockdown,Mozilla,205,17,False
+61,nunjucks,Mozilla,8388,120,True
+62,node-srp,Mozilla,287,6,False
+63,r2d2b2g,Mozilla,392,17,False
+64,reflex,Mozilla,366,5,True
+65,arewefastyet,Mozilla,133,30,False
+66,hawk,Mozilla,1902,36,True
+67,high-fidelity,Mozilla,106,10,False
+68,minion,Mozilla,354,6,False
+69,fireplace,Mozilla,116,140,True
+70,treeherder,Mozilla,241,224,True
+71,thimble.mozilla.org,Mozilla,1424,209,False
+72,ichnaea,Mozilla,534,41,True
+73,mozilla.github.io,Mozilla,184,4,False
+74,popcorn.webmaker.org,Mozilla,145,38,False
+75,fxa-auth-server,Mozilla,400,50,False
+76,pointer.js,Mozilla,433,2,False
+77,scanjs,Mozilla,429,9,True
+78,MozStumbler,Mozilla,614,89,True
+79,vtt.js,Mozilla,464,17,False
+80,tincan,Mozilla,121,5,False
+81,cipherscan,Mozilla,1925,23,False
+82,fxa-content-server,Mozilla,163,74,False
+83,mig,Mozilla,1200,28,False
+84,Fira,Mozilla,4974,13,True
+85,gecko-dev,Mozilla,3046,267,False
+86,openbadges-badgekit,Mozilla,122,16,False
+87,brackets,Mozilla,164,318,False
+88,hotdish,Mozilla,109,4,False
+89,mozjpeg,Mozilla,5305,74,True
+90,addons-server,Mozilla,853,285,False
+91,MozDef,Mozilla,2172,36,True
+92,recroom,Mozilla,270,4,False
+93,crontabber,Mozilla,134,11,False
+94,makedrive,Mozilla,352,7,False
+95,valence,Mozilla,375,15,False
+96,advocacy.mozilla.org,Mozilla,183,66,False
+97,pluotsorbet,Mozilla,228,15,False
+98,node-firefox,Mozilla,301,7,False
+99,webmaker-android,Mozilla,167,41,True
+100,seasponge,Mozilla,274,8,True
+101,masche,Mozilla,387,7,False
+102,tls-observatory,Mozilla,524,30,True
+103,pdfjs-dist,Mozilla,1042,5,False
+104,geckodriver,Mozilla,6879,18,True
+105,server-side-tls,Mozilla,1115,28,True
+106,sugardough,Mozilla,164,12,False
+107,srihash.org,Mozilla,144,23,False
+108,readability,Mozilla,7115,71,False
+109,payments-ui,Mozilla,125,7,False
+110,eslint-plugin-no-unsanitized,Mozilla,208,21,True
+111,fxa,Mozilla,548,190,True
+112,fxemoji,Mozilla,294,7,False
+113,testpilot,Mozilla,250,4,True
+114,addons,Mozilla,117,18,False
+115,oghliner,Mozilla,115,5,False
+116,addons-linter,Mozilla,298,168,True
+117,platform-status,Mozilla,157,44,False
+118,mp4parse-rust,Mozilla,392,29,True
+119,PyPOM,Mozilla,141,11,False
+120,OpenDesign,Mozilla,367,23,False
+121,lean-data-practices,Mozilla,141,3,False
+122,jupyter-spark,Mozilla,193,11,False
+123,ssh_scan,Mozilla,794,25,True
+124,activity-stream,Mozilla,182,63,False
+125,web-ext,Mozilla,2507,80,True
+126,http-observatory,Mozilla,1806,24,False
+127,addons-frontend,Mozilla,530,335,True
+128,fathom,Mozilla,1969,18,False
+129,tofino,Mozilla,650,19,True
+130,spidernode,Mozilla,560,413,False
+131,positron,Mozilla,556,201,False
+132,http-observatory-website,Mozilla,304,16,False
+133,sccache,Mozilla,5166,192,True
+134,neo,Mozilla,501,6,False
+135,telemetry-airflow,Mozilla,163,67,True
+136,twemoji-colr,Mozilla,275,8,True
+137,DeepSpeech,Mozilla,23841,132,True
+138,nixpkgs-mozilla,Mozilla,480,60,False
+139,page-metadata-parser,Mozilla,271,9,True
+140,mentat,Mozilla,1652,13,True
+141,observatory-cli,Mozilla,178,6,False
+142,webextension-polyfill,Mozilla,2478,28,True
+143,mozilla-django-oidc,Mozilla,408,46,True
+144,experimenter,Mozilla,112,84,True
+145,moz-sql-parser,Mozilla,574,16,False
+146,multi-account-containers,Mozilla,2550,63,True
+147,inclusion,Mozilla,691,27,False
+148,webrtc-sdp,Mozilla,149,13,False
+149,sphinx-js,Mozilla,271,22,False
+150,qbrt,Mozilla,387,7,False
+151,grcov,Mozilla,1085,79,True
+152,global-sprint,Mozilla,156,16,False
+153,authenticator-rs,Mozilla,264,27,False
+154,cbindgen,Mozilla,2134,107,True
+155,lightbeam-we,Mozilla,177,11,True
+156,zilla-slab,Mozilla,391,6,True
+157,video-bg-play,Mozilla,120,6,True
+158,notes,Mozilla,494,122,True
+159,send,Mozilla,13223,234,False
+160,webxr-api,Mozilla,195,7,False
+161,aom,Mozilla,143,107,False
+162,firefox-browser-architecture,Mozilla,130,12,False
+163,standards-positions,Mozilla,584,52,False
+164,webxr-polyfill,Mozilla,257,11,False
+165,hubs,Mozilla,2076,77,True
+166,hubs-ops,Mozilla,109,14,False
+167,reticulum,Mozilla,431,19,False
+168,janus-plugin-sfu,Mozilla,136,6,False
+169,frost,Mozilla,102,11,True
+170,three.xr.js,Mozilla,115,5,False
+171,aframe-xr,Mozilla,183,5,False
+172,blurts-server,Mozilla,667,213,True
+173,FirefoxColor,Mozilla,427,35,False
+174,geckoview,Mozilla,368,11,False
+175,TTS,Mozilla,8547,42,True
+176,rkv,Mozilla,292,18,False
+177,side-view,Mozilla,173,8,False
+178,protocol,Mozilla,250,30,True
+179,policy-templates,Mozilla,1101,67,True
+180,bugbug,Mozilla,480,107,True
+181,contain-facebook,Mozilla,943,179,True
+182,application-services,Mozilla,597,109,True
+183,libdweb,Mozilla,443,10,False
+184,Spoke,Mozilla,624,30,False
+185,docker-sbt,Mozilla,125,9,False
+186,androidspeech,Mozilla,200,6,False
+187,rust-android-gradle,Mozilla,967,14,True
+188,glean,Mozilla,349,51,True
+189,bigquery-etl,Mozilla,219,81,True
+190,neqo,Mozilla,1726,39,True
+191,ssl-config-generator,Mozilla,347,24,False
+192,fx-private-relay,Mozilla,1382,33,True
+193,DSAlign,Mozilla,225,3,False
+194,rust-code-analysis,Mozilla,240,18,True
+195,dump_syms,Mozilla,109,19,True
+196,hubs-cloud,Mozilla,113,15,False
+197,GSOC2020,Mozilla,137,26,False
+198,DeepSpeech-examples,Mozilla,786,18,False
+199,uniffi-rs,Mozilla,2134,80,False
+200,firefox-translations-training,Mozilla,128,10,True
+201,firefox-translations-models,Mozilla,130,8,True
+202,firefox-translations,Mozilla,571,22,True
+203,cargo-vet,Mozilla,547,21,True
+204,platform-tilt,Mozilla,177,1,False
+0,brackets-app,"Adobe, Inc.",490,14,False
+1,brackets,"Adobe, Inc.",33328,316,True
+2,adobe.github.com,"Adobe, Inc.",1346,29,False
+3,glsl2agal,"Adobe, Inc.",163,187,False
+4,webkit,"Adobe, Inc.",215,1,False
+5,chromium,"Adobe, Inc.",209,0,False
+6,brackets-shell,"Adobe, Inc.",1176,70,True
+7,GLS3D,"Adobe, Inc.",106,3,False
+8,Spry,"Adobe, Inc.",143,3,False
+9,cssfilterlab,"Adobe, Inc.",348,14,False
+10,brackets-phonegap,"Adobe, Inc.",112,10,False
+11,balance-text,"Adobe, Inc.",1384,17,True
+12,brackets.io,"Adobe, Inc.",111,41,False
+13,aem-htl-repl,"Adobe, Inc.",151,5,True
+14,aem-project-archetype,"Adobe, Inc.",515,113,True
+15,htl-spec,"Adobe, Inc.",275,7,True
+16,aem-core-wcm-components,"Adobe, Inc.",698,114,True
+17,avmplus,"Adobe, Inc.",196,0,False
+18,node-smb-server,"Adobe, Inc.",276,7,True
+19,cryptr,"Adobe, Inc.",483,5,True
+20,S3Mock,"Adobe, Inc.",726,52,True
+21,jsonschema2md,"Adobe, Inc.",560,46,True
+22,xdm,"Adobe, Inc.",229,174,True
+23,NLP-Cube,"Adobe, Inc.",546,15,True
+24,hyde,"Adobe, Inc.",314,10,True
+25,spectrum-css,"Adobe, Inc.",1137,78,True
+26,spectrum-web-components,"Adobe, Inc.",1116,82,False
+27,react-webcomponent,"Adobe, Inc.",102,6,True
+28,ops-cli,"Adobe, Inc.",188,27,True
+29,imgui,"Adobe, Inc.",151,348,False
+30,svg-native-viewer,"Adobe, Inc.",139,10,False
+31,aem-core-cif-components,"Adobe, Inc.",101,30,True
+32,coral-spectrum,"Adobe, Inc.",104,83,True
+33,aem-guides-wknd,"Adobe, Inc.",262,36,True
+34,antialiased-cnns,"Adobe, Inc.",1634,3,True
+35,ferrum,"Adobe, Inc.",506,16,True
+36,aem-component-generator,"Adobe, Inc.",109,11,False
+37,pdf-embed-api-samples,"Adobe, Inc.",189,4,False
+38,lit-mobx,"Adobe, Inc.",257,7,False
+39,himl,"Adobe, Inc.",101,14,True
+40,react-spectrum,"Adobe, Inc.",11010,256,True
+41,adobe-client-data-layer,"Adobe, Inc.",105,8,True
+42,leonardo,"Adobe, Inc.",1795,11,True
+43,Deep-Audio-Prior,"Adobe, Inc.",154,4,False
+44,XMP-Toolkit-SDK,"Adobe, Inc.",177,8,True
+45,rules_gitops,"Adobe, Inc.",151,17,True
+46,stringlifier,"Adobe, Inc.",155,5,True
+47,lagrange,"Adobe, Inc.",242,3,True
+48,OSAS,"Adobe, Inc.",152,5,False
+49,tf-manage,"Adobe, Inc.",109,0,False
+50,elixir-styler,"Adobe, Inc.",542,11,True
+0,Overpass,Red Hat,1973,14,True
+1,RedHatOfficial.github.io,Red Hat,668,125,False
+2,ansible-role-rhel7-stig,Red Hat,117,2,True
+3,RedHatFont,Red Hat,451,11,True
+4,GoCourse,Red Hat,408,12,False
+5,ocp4-vsphere-upi-automation,Red Hat,120,13,True
+0,qu,Consumer Financial Protection Bureau,368,16,True
+1,idea-box,Consumer Financial Protection Bureau,153,8,False
+2,cfpb.github.io,Consumer Financial Protection Bureau,341,25,False
+3,DOCter,Consumer Financial Protection Bureau,106,7,False
+4,consumerfinance.gov,Consumer Financial Protection Bureau,241,73,True
+5,open-source-project-template,Consumer Financial Protection Bureau,197,8,False
+6,jenkins-automation,Consumer Financial Protection Bureau,122,21,True
+7,hmda-platform,Consumer Financial Protection Bureau,102,37,True
+8,open-source-checklist,Consumer Financial Protection Bureau,472,3,False
+9,salesforce-docs,Consumer Financial Protection Bureau,123,5,False
+10,django-flags,Consumer Financial Protection Bureau,219,22,True
+0,astyanax,"Netflix, Inc.",1033,50,True
+1,curator,"Netflix, Inc.",2145,18,False
+2,Priam,"Netflix, Inc.",1026,46,True
+3,CassJMeter,"Netflix, Inc.",163,6,False
+4,servo,"Netflix, Inc.",1403,30,True
+5,aws-autoscaling,"Netflix, Inc.",429,1,False
+6,netflix.github.com,"Netflix, Inc.",1467,43,False
+7,gradle-template,"Netflix, Inc.",246,4,False
+8,archaius,"Netflix, Inc.",2431,28,True
+9,asgard,"Netflix, Inc.",2236,16,True
+10,SimianArmy,"Netflix, Inc.",7952,46,True
+11,governator,"Netflix, Inc.",821,29,True
+12,netflix-commons,"Netflix, Inc.",161,12,False
+13,eureka,"Netflix, Inc.",12129,103,True
+14,edda,"Netflix, Inc.",561,24,True
+15,blitz4j,"Netflix, Inc.",558,14,True
+16,Hystrix,"Netflix, Inc.",23772,105,True
+17,Turbine,"Netflix, Inc.",831,13,True
+18,ribbon,"Netflix, Inc.",4499,40,True
+19,denominator,"Netflix, Inc.",577,12,False
+20,karyon,"Netflix, Inc.",495,23,True
+21,EVCache,"Netflix, Inc.",1947,35,True
+22,aminator,"Netflix, Inc.",944,15,False
+23,recipes-rss,"Netflix, Inc.",340,8,False
+24,Cloud-Prize,"Netflix, Inc.",164,7,False
+25,netflix-graph,"Netflix, Inc.",553,4,True
+26,zuul,"Netflix, Inc.",13088,56,True
+27,suro,"Netflix, Inc.",788,10,False
+28,brutal,"Netflix, Inc.",200,2,False
+29,pytheas,"Netflix, Inc.",186,12,True
+30,Lipstick,"Netflix, Inc.",464,11,True
+31,NfWebCrypto,"Netflix, Inc.",206,1,False
+32,genie,"Netflix, Inc.",1660,29,True
+33,Nicobar,"Netflix, Inc.",173,12,False
+34,dynomite,"Netflix, Inc.",4146,55,True
+35,aegisthus,"Netflix, Inc.",323,9,True
+36,zeno,"Netflix, Inc.",202,8,False
+37,staash,"Netflix, Inc.",206,4,False
+38,s3mper,"Netflix, Inc.",221,3,False
+39,PigPen,"Netflix, Inc.",552,16,False
+40,Fido,"Netflix, Inc.",818,3,False
+41,dyno,"Netflix, Inc.",184,30,True
+42,ReactiveLab,"Netflix, Inc.",208,7,True
+43,msl,"Netflix, Inc.",698,16,True
+44,security_monkey,"Netflix, Inc.",4349,96,True
+45,spectator,"Netflix, Inc.",715,45,True
+46,inviso,"Netflix, Inc.",204,5,False
+47,atlas,"Netflix, Inc.",3373,23,True
+48,Workflowable,"Netflix, Inc.",371,3,False
+49,Raigad,"Netflix, Inc.",345,10,False
+50,Prana,"Netflix, Inc.",494,9,False
+51,Surus,"Netflix, Inc.",457,3,False
+52,falcor,"Netflix, Inc.",10379,50,False
+53,falcor-router,"Netflix, Inc.",103,14,False
+54,vector,"Netflix, Inc.",3584,17,True
+55,Fenzo,"Netflix, Inc.",700,15,True
+56,security-bulletins,"Netflix, Inc.",734,14,False
+57,ember-nf-graph,"Netflix, Inc.",241,15,True
+58,lemur,"Netflix, Inc.",1680,117,True
+59,falcor-router-demo,"Netflix, Inc.",237,8,False
+60,falcor-express-demo,"Netflix, Inc.",251,5,False
+61,rend,"Netflix, Inc.",1172,7,False
+62,lemur-docker,"Netflix, Inc.",170,19,False
+63,dial-reference,"Netflix, Inc.",225,11,True
+64,photon,"Netflix, Inc.",230,23,True
+65,vmaf,"Netflix, Inc.",4055,86,True
+66,osstracker,"Netflix, Inc.",364,4,True
+67,hal-9001,"Netflix, Inc.",177,2,False
+68,metacat,"Netflix, Inc.",1525,22,True
+69,unleash,"Netflix, Inc.",589,3,False
+70,bless,"Netflix, Inc.",2718,22,True
+71,vizceral,"Netflix, Inc.",4041,18,True
+72,vizceral-react,"Netflix, Inc.",198,8,False
+73,vizceral-example,"Netflix, Inc.",363,7,False
+74,dyno-queues,"Netflix, Inc.",264,14,True
+75,ndbench,"Netflix, Inc.",360,33,True
+76,chaosmonkey,"Netflix, Inc.",14246,25,True
+77,hollow,"Netflix, Inc.",1132,46,True
+78,conductor,"Netflix, Inc.",12950,233,True
+79,bettertls,"Netflix, Inc.",153,10,False
+80,hubcommander,"Netflix, Inc.",1261,23,True
+81,batch_request_api,"Netflix, Inc.",103,5,False
+82,repokid,"Netflix, Inc.",1082,17,True
+83,vectorflow,"Netflix, Inc.",1285,8,False
+84,titus,"Netflix, Inc.",1993,11,False
+85,titus-control-plane,"Netflix, Inc.",320,19,True
+86,titus-executor,"Netflix, Inc.",233,32,False
+87,concurrency-limits,"Netflix, Inc.",3096,19,True
+88,iceberg,"Netflix, Inc.",463,8,False
+89,sureal,"Netflix, Inc.",110,10,True
+90,fast_jsonapi,"Netflix, Inc.",5078,63,True
+91,flamescope,"Netflix, Inc.",2960,21,False
+92,yetch,"Netflix, Inc.",168,48,False
+93,go-expect,"Netflix, Inc.",416,8,False
+94,go-env,"Netflix, Inc.",534,13,False
+95,pollyjs,"Netflix, Inc.",10183,35,False
+96,nerror,"Netflix, Inc.",122,4,False
+97,mantis,"Netflix, Inc.",1376,25,True
+98,p2plab,"Netflix, Inc.",164,4,False
+99,metaflow,"Netflix, Inc.",7353,78,True
+100,consoleme,"Netflix, Inc.",3055,46,True
+101,metaflow-service,"Netflix, Inc.",167,20,True
+102,image_compression_comparison,"Netflix, Inc.",257,1,False
+103,dispatch,"Netflix, Inc.",4469,67,True
+104,dispatch-docker,"Netflix, Inc.",189,20,False
+105,weep,"Netflix, Inc.",307,8,True
+106,dgs-framework,"Netflix, Inc.",2891,80,True
+107,dgs-codegen,"Netflix, Inc.",165,50,True
+108,dgs-federation-example,"Netflix, Inc.",105,7,False
+109,dgs-examples-java,"Netflix, Inc.",140,10,False
+110,nf-data-explorer,"Netflix, Inc.",418,1,False
+111,metaflow-ui,"Netflix, Inc.",297,12,True
+0,arcgis-viewer-flex,Esri,136,7,True
+1,esri.github.io,Esri,524,19,True
+2,geoportal-server,Esri,242,22,True
+3,geojson-utils,Esri,124,7,False
+4,terraformer,Esri,671,32,True
+5,quickstart-map-js,Esri,221,6,False
+6,spatial-framework-for-hadoop,Esri,360,11,True
+7,geometry-api-java,Esri,687,24,True
+8,ago-assistant,Esri,148,12,True
+9,android-gps-test-tool,Esri,111,2,False
+10,arcgis-runtime-samples-ios,Esri,321,25,True
+11,arcgis-osm-editor,Esri,375,10,True
+12,gis-tools-for-hadoop,Esri,510,6,True
+13,storymap-tour,Esri,151,3,True
+14,esri-leaflet,Esri,1562,76,True
+15,ago-admin-wiki,Esri,116,3,False
+16,maps-app-android,Esri,101,11,True
+17,arcgis-maps-sdk-dotnet-toolkit,Esri,201,20,True
+18,solutions-geoprocessing-toolbox,Esri,129,24,True
+19,offline-editor-js,Esri,158,6,True
+20,bootstrap-map-js,Esri,363,9,True
+21,esri-leaflet-geocoder,Esri,234,22,True
+22,joint-military-symbology-xml,Esri,132,13,True
+23,cityengine-sdk,Esri,198,10,True
+24,wind-js,Esri,712,7,False
+25,resource-proxy,Esri,370,32,True
+26,jsapi-resources,Esri,674,28,True
+27,ArcREST,Esri,191,37,True
+28,arcgis-maps-sdk-dotnet-samples,Esri,392,29,True
+29,developer-support,Esri,259,44,False
+30,arcgis-runtime-samples-android,Esri,651,28,True
+31,generator-esri-appbuilder-js,Esri,178,11,True
+32,raster-functions,Esri,186,11,True
+33,geojson-layer-js,Esri,127,5,False
+34,calcite-web,Esri,107,22,True
+35,arcgis-maps-sdk-toolkit-qt,Esri,117,26,True
+36,angular-esri-map,Esri,213,15,True
+37,cedar,Esri,254,13,True
+38,arcgis-pro-sdk-community-samples,Esri,220,11,True
+39,arcgis-maps-sdk-samples-qt,Esri,136,25,True
+40,geodev-hackerlabs,Esri,159,12,False
+41,i3s-spec,Esri,310,11,True
+42,arcgis-pro-sdk,Esri,298,4,True
+43,OptimizeRasters,Esri,113,10,True
+44,arcgis-cookbook,Esri,280,10,True
+45,arcgis-maps-sdk-java-samples,Esri,105,19,True
+46,public-transit-tools,Esri,164,5,False
+47,arcgis-js-api,Esri,395,4,True
+48,calcite-maps,Esri,237,8,True
+49,arcgis-to-geojson-utils,Esri,186,5,True
+50,lerc,Esri,182,23,True
+51,arcobjects-sdk-community-samples,Esri,122,5,True
+52,file-geodatabase-api,Esri,137,1,False
+53,arcgis-python-api,Esri,1717,61,True
+54,esri-loader,Esri,450,29,True
+55,react-arcgis,Esri,318,13,True
+56,arcgis-rest-js,Esri,330,63,True
+57,arcade-expressions,Esri,234,25,False
+58,arcgis-powershell-dsc,Esri,104,7,True
+59,arcgis-webpack-plugin,Esri,133,8,True
+60,arcgis-js-cli,Esri,138,11,True
+61,raster-deep-learning,Esri,176,4,False
+62,calcite-design-system,Esri,252,54,True
+63,vitruvio,Esri,198,7,True
+64,deep-learning-frameworks,Esri,350,6,True
+65,awesome-arcgis-developers,Esri,189,11,False
+0,retrofit,Square,42399,155,False
+1,border_patrol,Square,112,7,False
+2,WaxSim,Square,259,2,False
+3,zapp,Square,178,2,False
+4,cube,Square,3912,8,False
+5,square.github.io,Square,1115,34,False
+6,luhnybin,Square,232,1,False
+7,cane,Square,1322,24,False
+8,jetpack,Square,249,17,True
+9,crossfilter,Square,6222,9,True
+10,cubism,Square,4929,7,False
+11,fdoc,Square,379,25,False
+12,otto,Square,5180,22,False
+13,pollexor,Square,641,11,False
+14,okhttp,Square,45008,254,False
+15,dagger,Square,7317,35,False
+16,PonyDebugger,Square,5866,28,True
+17,seismic,Square,1301,7,False
+18,tape,Square,2458,20,False
+19,connect-api-examples,Square,369,50,False
+20,assertj-android,Square,1581,36,True
+21,spoon,Square,2701,56,False
+22,ETL,Square,378,6,False
+23,android-times-square,Square,4441,48,False
+24,protoparser,Square,209,9,False
+25,javapoet,Square,10608,74,False
+26,jirafy,Square,102,7,False
+27,java-code-styles,Square,2952,25,False
+28,mimecraft,Square,195,5,False
+29,dagger-intellij-plugin,Square,799,5,False
+30,otto-intellij-plugin,Square,453,7,False
+31,picasso,Square,18634,98,True
+32,shuttle,Square,658,28,False
+33,maximum-awesome,Square,5701,43,False
+34,lgtm,Square,366,10,True
+35,apropos,Square,766,1,False
+36,kochiku,Square,603,46,False
+37,wire,Square,4146,114,False
+38,flow,Square,2791,20,False
+39,mortar,Square,2160,18,False
+40,phrase,Square,1405,12,False
+41,qunit-bdd,Square,104,12,False
+42,okio,Square,8609,76,False
+43,moshi,Square,9399,78,False
+44,burst,Square,462,8,False
+45,intro-to-d3,Square,604,15,True
+46,squalor,Square,201,29,True
+47,p2,Square,196,27,True
+48,go-jose,Square,1981,49,True
+49,js-jose,Square,422,21,True
+50,sqlbrite,Square,4576,31,True
+51,certstrap,Square,2169,28,True
+52,keywhiz,Square,2614,39,True
+53,keywhiz-fs,Square,111,11,False
+54,metrics,Square,170,10,True
+55,haha,Square,1438,6,False
+56,leakcanary,Square,29006,135,True
+57,wire-gradle-plugin,Square,153,4,False
+58,inspect,Square,266,19,False
+59,gssh,Square,104,6,False
+60,Aardvark,Square,256,25,True
+61,Valet,Square,3928,31,True
+62,spacecommander,Square,1124,14,False
+63,git-fastclone,Square,184,12,True
+64,auto-value-redacted,Square,211,5,False
+65,field-kit,Square,465,13,True
+66,cocoapods-check,Square,126,4,True
+67,quotaservice,Square,152,15,False
+68,shift,Square,738,10,False
+69,womeng_handbook,Square,129,3,False
+70,rails-auth,Square,289,14,False
+71,whorlwind,Square,819,8,False
+72,goprotowrap,Square,148,2,False
+73,connect-php-sdk,Square,114,20,True
+74,point-of-sale-android-sdk,Square,114,12,True
+75,coordinators,Square,703,5,False
+76,certigo,Square,910,26,True
+77,Cleanse,Square,1764,16,True
+78,SuperDelegate,Square,454,6,True
+79,sharkey,Square,391,16,False
+80,gifencoder,Square,656,3,False
+81,spincycle,Square,118,15,False
+82,rce-agent,Square,124,10,False
+83,kotlinpoet,Square,3743,139,True
+84,Paralayout,Square,765,10,False
+85,ruby-rrule,Square,140,16,False
+86,RxIdler,Square,512,8,False
+87,pylink,Square,318,29,True
+88,sudo_pair,Square,1229,10,False
+89,cocoapods-generate,Square,265,12,False
+90,subzero,Square,667,18,False
+91,react-native-square-reader-sdk,Square,110,17,False
+92,beancounter,Square,143,5,True
+93,workflow,Square,1097,39,True
+94,in-app-payments-flutter-plugin,Square,328,20,False
+95,in-app-payments-react-native-plugin,Square,115,19,False
+96,pysurvival,Square,322,2,False
+97,Blueprint,Square,653,29,False
+98,Listable,Square,170,25,False
+99,bionic,Square,101,15,True
+100,cycler,Square,794,8,True
+101,workflow-swift,Square,297,55,True
+102,workflow-kotlin,Square,960,64,True
+103,anvil,Square,1241,22,True
+104,radiography,Square,816,10,True
+105,curtains,Square,585,6,True
+106,papa,Square,328,5,True
+107,logcat,Square,887,4,True
+108,cocoapods-pack,Square,112,2,False
+109,laravel-hyrule,Square,341,3,True
+110,svelte-store,Square,474,11,False
+111,pjson,Square,101,4,True
+112,gradle-dependencies-sorter,Square,236,9,False
+0,hadoop-lzo,X (fka Twitter),543,27,False
+1,thrift_client,X (fka Twitter),196,17,False
+2,twurl,X (fka Twitter),1783,23,True
+3,elephant-bird,X (fka Twitter),1137,51,True
+4,scala_school,X (fka Twitter),3694,81,False
+5,finagle,X (fka Twitter),8735,235,True
+6,joauth,X (fka Twitter),211,12,True
+7,opensource-website,X (fka Twitter),2879,29,False
+8,util,X (fka Twitter),2679,144,True
+9,scrooge,X (fka Twitter),786,119,True
+10,hogan.js,X (fka Twitter),5141,38,True
+11,scalding,X (fka Twitter),3464,140,True
+12,effectivescala,X (fka Twitter),2240,52,False
+13,finatra,X (fka Twitter),2270,149,True
+14,cassovary,X (fka Twitter),1038,24,True
+15,twemproxy,X (fka Twitter),11982,54,True
+16,twitter-cldr-rb,X (fka Twitter),663,29,False
+17,innovators-patent-agreement,X (fka Twitter),919,5,False
+18,activerecord-reputation-system,X (fka Twitter),1335,5,False
+19,twemcache,X (fka Twitter),926,5,False
+20,twitter-cldr-js,X (fka Twitter),344,13,True
+21,algebird,X (fka Twitter),2274,79,True
+22,tormenta,X (fka Twitter),132,13,True
+23,summingbird,X (fka Twitter),2137,35,True
+24,chill,X (fka Twitter),603,57,True
+25,bijection,X (fka Twitter),662,39,True
+26,fatcache,X (fka Twitter),1304,8,False
+27,storehaus,X (fka Twitter),466,31,True
+28,hbc,X (fka Twitter),962,20,True
+29,typeahead.js,X (fka Twitter),16540,70,False
+30,twitter-server,X (fka Twitter),1535,69,True
+31,netty-http2,X (fka Twitter),121,5,False
+32,interactive,X (fka Twitter),213,6,False
+33,scala_school2,X (fka Twitter),341,8,False
+34,hraven,X (fka Twitter),129,10,True
+35,hpack,X (fka Twitter),194,4,False
+36,zktraffic,X (fka Twitter),164,7,True
+37,SentenTree,X (fka Twitter),224,2,False
+38,wordpress,X (fka Twitter),311,6,True
+39,BreakoutDetection,X (fka Twitter),753,6,False
+40,twitter-korean-text,X (fka Twitter),831,11,True
+41,twemoji,X (fka Twitter),16546,59,True
+42,twitter-text,X (fka Twitter),3042,98,True
+43,AnomalyDetection,X (fka Twitter),3529,8,True
+44,d3kit,X (fka Twitter),428,5,True
+45,whiskey,X (fka Twitter),132,5,False
+46,labella.js,X (fka Twitter),3862,8,False
+47,pelikan,X (fka Twitter),1917,23,True
+48,rpc-perf,X (fka Twitter),459,16,True
+49,scoot,X (fka Twitter),348,20,True
+50,GraphJet,X (fka Twitter),695,10,False
+51,vireo,X (fka Twitter),917,6,False
+52,ios-twitter-logging-service,X (fka Twitter),300,7,True
+53,nodes,X (fka Twitter),246,11,False
+54,ios-twitter-image-pipeline,X (fka Twitter),1850,9,True
+55,Serial,X (fka Twitter),985,11,False
+56,rsc,X (fka Twitter),1243,9,False
+57,ios-twitter-network-layer,X (fka Twitter),573,3,True
+58,twemoji-parser,X (fka Twitter),160,2,True
+59,rezolus,X (fka Twitter),1539,12,True
+60,rustcommon,X (fka Twitter),341,4,False
+61,sbf,X (fka Twitter),157,0,False
+62,cache-trace,X (fka Twitter),160,1,False
+63,TwitterTextEditor,X (fka Twitter),2945,7,False
+64,communitynotes,X (fka Twitter),1180,23,False
+65,compose-rules,X (fka Twitter),1306,14,True
+66,the-algorithm,X (fka Twitter),60776,3,False
+67,the-algorithm-ml,X (fka Twitter),9828,0,False
+0,guardian.github.com,The Guardian,326,35,False
+1,riff-raff,The Guardian,264,62,False
+2,frontend,The Guardian,5743,206,False
+3,riemann-config,The Guardian,141,5,False
+4,grid,The Guardian,1426,71,False
+5,scribe,The Guardian,3511,48,False
+6,guss,The Guardian,106,2,True
+7,gu-who,The Guardian,225,17,False
+8,swarmize,The Guardian,154,4,False
+9,elk-stack,The Guardian,146,14,False
+10,prout,The Guardian,145,15,False
+11,coding-exercises,The Guardian,413,20,False
+12,toolargetool,The Guardian,1041,12,True
+13,dotcom-rendering,The Guardian,231,131,False
+14,typerighter,The Guardian,271,19,False
+15,prosemirror-typerighter,The Guardian,119,13,True
+0,yelp-api,Yelp.com,581,20,False
+1,Testify,Yelp.com,304,34,True
+2,Tron,Yelp.com,338,47,False
+3,python-gearman,Yelp.com,242,13,False
+4,mrjob,Yelp.com,2609,84,False
+5,dataset-examples,Yelp.com,1201,2,False
+6,firefly,Yelp.com,171,10,True
+7,MOE,Yelp.com,1306,6,True
+8,yelp-ruby,Yelp.com,104,11,False
+9,yelp.github.io,Yelp.com,727,8,False
+10,bravado,Yelp.com,599,38,True
+11,dockersh,Yelp.com,1278,9,False
+12,osxcollector,Yelp.com,1862,14,True
+13,venv-update,Yelp.com,177,12,True
+14,pyleus,Yelp.com,405,14,False
+15,elastalert,Yelp.com,7954,181,True
+16,swagger_spec_validator,Yelp.com,102,23,False
+17,threat_intel,Yelp.com,269,9,True
+18,service-principles,Yelp.com,424,3,False
+19,bravado-core,Yelp.com,108,45,False
+20,YLTableView,Yelp.com,146,10,False
+21,docker-custodian,Yelp.com,354,17,False
+22,dumb-init,Yelp.com,6593,20,True
+23,yelp-python,Yelp.com,182,6,False
+24,paasta,Yelp.com,1651,165,True
+25,love,Yelp.com,141,15,False
+26,kafka-utils,Yelp.com,311,40,True
+27,aactivator,Yelp.com,136,5,True
+28,android-school,Yelp.com,349,5,False
+29,amira,Yelp.com,151,6,False
+30,yelp-fusion,Yelp.com,395,20,False
+31,undebt,Yelp.com,1632,8,True
+32,py_zipkin,Yelp.com,224,25,True
+33,mysql_streamer,Yelp.com,405,12,False
+34,data_pipeline,Yelp.com,108,15,False
+35,detect-secrets,Yelp.com,3355,60,True
+36,lemon-reset,Yelp.com,131,8,True
+37,detect-secrets-server,Yelp.com,109,6,False
+38,kotlin-android-workshop,Yelp.com,289,2,False
+39,swagger-gradle-codegen,Yelp.com,407,10,True
+40,bento,Yelp.com,305,17,False
+41,fuzz-lightyear,Yelp.com,189,9,False
+42,nrtsearch,Yelp.com,237,23,True
+43,dataloader-codegen,Yelp.com,107,7,True
+44,clusterman,Yelp.com,295,31,False
+0,sarama,International Business Machines,10768,241,True
+1,ibm.github.io,International Business Machines,1123,50,False
+2,api-samples,International Business Machines,196,8,True
+3,BluePic,International Business Machines,325,20,True
+4,mobx-react-router,International Business Machines,437,10,True
+5,deploy-react-kubernetes,International Business Machines,140,9,True
+6,watson-online-store,International Business Machines,157,14,False
+7,Scalable-WordPress-deployment-on-Kubernetes,International Business Machines,217,19,False
+8,Scalable-Cassandra-deployment-on-Kubernetes,International Business Machines,196,16,False
+9,Kubernetes-container-service-GitLab-sample,International Business Machines,244,20,False
+10,elasticsearch-spark-recommender,International Business Machines,830,10,False
+11,janusgraph-utils,International Business Machines,203,11,False
+12,spring-boot-microservices-on-kubernetes,International Business Machines,559,16,False
+13,todo-list-fabricV1,International Business Machines,106,4,False
+14,watson-banking-chatbot,International Business Machines,260,20,False
+15,microservices-traffic-management-using-istio,International Business Machines,274,14,False
+16,charts,International Business Machines,292,37,False
+17,pytorch-seq2seq,International Business Machines,1473,7,True
+18,watson-assistant-slots-intro,International Business Machines,145,18,False
+19,IBM-Z-zOS,International Business Machines,345,40,True
+20,BlockchainNetwork-CompositeJourney,International Business Machines,233,16,False
+21,Decentralized-Energy-Composer,International Business Machines,128,7,False
+22,tensorflow-hangul-recognition,International Business Machines,240,16,False
+23,spark-tpc-ds-performance-test,International Business Machines,171,11,False
+24,deploy-ibm-cloud-private,International Business Machines,264,13,False
+25,vue-a11y-calendar,International Business Machines,254,4,False
+26,plex,International Business Machines,9160,17,True
+27,FoodTrackerBackend,International Business Machines,107,11,False
+28,build-blockchain-insurance-app,International Business Machines,738,14,False
+29,nlc-icd10-classifier,International Business Machines,106,12,False
+30,deep-learning-language-model,International Business Machines,123,12,False
+31,css-gridish,International Business Machines,2255,8,True
+32,nodejs-in-notebooks,International Business Machines,111,9,False
+33,blockchain-network-on-kubernetes,International Business Machines,313,13,False
+34,FfDL,International Business Machines,687,15,True
+35,etcd-java,International Business Machines,151,6,True
+36,innovate-digital-bank,International Business Machines,143,8,False
+37,MAX-Object-Detector,International Business Machines,287,19,True
+38,kube101,International Business Machines,184,16,False
+39,istio101,International Business Machines,155,22,True
+40,build-knowledge-base-with-domain-specific-documents,International Business Machines,130,5,False
+41,ansible-kubernetes-ha-cluster,International Business Machines,134,2,False
+42,blockchain-application-using-fabric-java-sdk,International Business Machines,292,8,False
+43,powerai-counting-cars,International Business Machines,326,10,False
+44,portieris,International Business Machines,326,43,True
+45,android-kubernetes-blockchain,International Business Machines,122,6,False
+46,image-classification-using-cnn-and-keras,International Business Machines,101,7,False
+47,watson-voice-bot,International Business Machines,120,15,False
+48,taxinomitis,International Business Machines,125,25,False
+49,MAX-Object-Detector-Web-App,International Business Machines,111,7,True
+50,MAX-Audio-Classifier,International Business Machines,140,12,True
+51,rl-testbed-for-energyplus,International Business Machines,167,8,False
+52,Graph2Seq,International Business Machines,232,1,False
+53,BAGAN,International Business Machines,106,5,False
+54,openapi-to-graphql,International Business Machines,1585,25,True
+55,ipfs-social-proof,International Business Machines,132,7,False
+56,openapi-validator,International Business Machines,429,32,True
+57,cloud-pak,International Business Machines,123,25,True
+58,mac-ibm-enrollment-app,International Business Machines,452,7,False
+59,tensorflow-large-model-support,International Business Machines,198,7,False
+60,audit-ci,International Business Machines,252,22,True
+61,AMLSim,International Business Machines,222,5,False
+62,nicedoc.io,International Business Machines,473,12,True
+63,blockchainbean2,International Business Machines,120,2,False
+64,socket-io,International Business Machines,169,1,False
+65,design-kit,International Business Machines,272,5,True
+66,TSML.jl,International Business Machines,109,6,True
+67,watson-stock-market-predictor,International Business Machines,111,11,False
+68,fabcar-blockchain-sample,International Business Machines,107,7,False
+69,Medical-Blockchain,International Business Machines,177,2,False
+70,cloud-native-starter,International Business Machines,515,16,False
+71,MAX-Image-Resolution-Enhancer,International Business Machines,963,9,True
+72,pytorchpipe,International Business Machines,224,6,True
+73,probabilistic-federated-neural-matching,International Business Machines,131,2,False
+74,kubernetes-cobol,International Business Machines,117,3,False
+75,evote,International Business Machines,316,4,False
+76,gantt-chart,International Business Machines,191,8,True
+77,tfjs-web-app,International Business Machines,173,3,False
+78,differential-privacy-library,International Business Machines,756,10,True
+79,jupyterlab-s3-browser,International Business Machines,115,13,True
+80,lale,International Business Machines,313,26,True
+81,AccDNN,International Business Machines,342,4,False
+82,EvolveGCN,International Business Machines,467,2,False
+83,transition-amr-parser,International Business Machines,224,15,False
+84,browser-functions,International Business Machines,181,5,False
+85,clai,International Business Machines,465,17,False
+86,node-red-tensorflowjs,International Business Machines,106,7,False
+87,action-recognition-pytorch,International Business Machines,232,2,True
+88,cdfsl-benchmark,International Business Machines,211,4,False
+89,FedMA,International Business Machines,318,1,False
+90,AutoMLPipeline.jl,International Business Machines,343,4,True
+91,pytorch-large-model-support,International Business Machines,128,4,False
+92,core-dump-handler,International Business Machines,111,15,True
+93,adaptive-federated-learning,International Business Machines,203,2,False
+94,MicroscoPy,International Business Machines,1141,3,False
+95,fhe-toolkit-linux,International Business Machines,1410,15,True
+96,fhe-toolkit-macos,International Business Machines,355,11,True
+97,fhe-toolkit-ios,International Business Machines,133,7,True
+98,graphql-query-generator,International Business Machines,330,7,True
+99,pwa-lit-template,International Business Machines,176,10,False
+100,prisma-schema-transformer,International Business Machines,113,8,True
+101,KubeflowDojo,International Business Machines,131,14,False
+102,federated-learning-lib,International Business Machines,465,11,True
+103,aihwkit,International Business Machines,295,21,True
+104,quantum-careers,International Business Machines,125,6,False
+105,TabFormer,International Business Machines,284,5,False
+106,application-modernization-javaee-quarkus,International Business Machines,110,5,False
+107,mac-ibm-notifications,International Business Machines,287,7,True
+108,japan-technology,International Business Machines,129,11,False
+109,kgi-slot-filling,International Business Machines,119,3,False
+110,UQ360,International Business Machines,246,10,False
+111,Project_CodeNet,International Business Machines,1465,16,True
+112,CrossViT,International Business Machines,284,2,True
+113,LNN,International Business Machines,211,10,False
+114,import-tracker,International Business Machines,457,6,True
+115,regression-transformer,International Business Machines,115,3,True
+116,zshot,International Business Machines,298,3,True
+117,SynthTabNet,International Business Machines,103,4,False
+118,cloud-pak-deployer,International Business Machines,117,27,True
+119,molformer,International Business Machines,161,3,False
+120,Grapher,International Business Machines,104,2,False
+121,Dromedary,International Business Machines,1052,4,False
+122,ibm-generative-ai,International Business Machines,202,16,True
+123,fp-go,International Business Machines,1414,7,True
+124,ModuleFormer,International Business Machines,203,4,False
+125,SALMON,International Business Machines,105,3,False
