@@ -23,10 +23,10 @@ orgs = pd.read_csv("./project/org_list.csv")
 
 # print(orgs['link'][:])
 def add_to_csv(df: pd.DataFrame):
-    if os.path.isfile("./project/db/popular_repos.csv"):
-        df.to_csv("./project/db/popular_repos.csv", mode="a", header=False)
+    if os.path.isfile("./project/db/selected_repos.csv"):
+        df.to_csv("./project/db/selected_repos.csv", mode="a", header=False)
     else:
-        df.to_csv("./project/db/popular_repos.csv")
+        df.to_csv("./project/db/selected_repos.csv")
 
 
 def selector(repo: Repository.Repository) -> bool | list:
@@ -37,6 +37,7 @@ def selector(repo: Repository.Repository) -> bool | list:
     Active: most recent commits within last 3 months
     """
     repo_name = repo.name
+    repo_url = repo.url
     print(repo_name)
     last_observed_date = date(2024, 2, 1)
     # TODO : number of stars is greater than 100
@@ -64,7 +65,8 @@ def selector(repo: Repository.Repository) -> bool | list:
                         n_contributors,
                         is_released,
                         created_on,
-                        last_repo_update
+                        last_repo_update,
+                        repo_url
                     )
                 else:
                     return False
@@ -95,6 +97,6 @@ for idx, link in enumerate(orgs["link"][1:2]):
             popularRepos.append(list(result))
     if len(popularRepos) > 0:
         df = pd.DataFrame(popularRepos,
-            columns=["repo", "org", "stars", "contributors", "released", "created_at", "updated_at"],
+            columns=["repo", "org", "stars", "contributors", "released", "created_at", "updated_at", "url"],
         )
         ic(add_to_csv(df=df))
