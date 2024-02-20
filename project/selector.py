@@ -20,8 +20,10 @@ auth = Auth.Token(os.getenv("GITHUB_PAT"))
 g = Github(auth=auth)
 
 # Load list of all organizations
-orgs = pd.read_csv("./project/org_list.csv")
+orgs = pd.read_csv("./project/db/org_list.csv")
 
+OBS_START_DATE = datetime.combine(date(2022, 1, 1), datetime.min.time())
+OBS_END_DATE = datetime.combine(date(2023, 12, 31), datetime.max.time())
 
 # print(orgs['link'][:])
 # def add_to_csv(df: pd.DataFrame):
@@ -45,10 +47,23 @@ def selector(repo: Repository.Repository) -> bool | list:
     # TODO : number of stars is greater than 100
     n_stars = ic(repo.stargazers_count)
     if n_stars > 100:
-        # TODO: it has been released
-        releases = repo.get_releases()
-        n_releases = releases.totalCount
-        is_released = ic(True if n_releases > 0 else False)
+        # TODO: it has been released before OBS_START_DATE 
+        releases = repo.get_releases().reversed
+        count=0
+        first_release_date=None
+        is_released=None
+        for release in releases:
+            if (count>0):
+                break
+            first_release_date  = release.created_at.date()
+            count += 1
+        if first_release_date != None:
+            if (OBS_START_DATE.date() - first_release_date).days > 0 :
+                is_released = True
+            else:
+                is_released = False
+        else:
+            is_released = False
 
         if is_released:
             last_repo_update = repo.updated_at.date()
