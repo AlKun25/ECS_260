@@ -7,6 +7,8 @@ from icecream import ic
 from dotenv import load_dotenv
 import warnings
 
+from utils import add_to_csv
+
 # System setup
 warnings.filterwarnings("ignore")
 load_dotenv()
@@ -22,11 +24,11 @@ orgs = pd.read_csv("./project/org_list.csv")
 
 
 # print(orgs['link'][:])
-def add_to_csv(df: pd.DataFrame):
-    if os.path.isfile("./project/db/selected_repos.csv"):
-        df.to_csv("./project/db/selected_repos.csv", mode="a", header=False)
-    else:
-        df.to_csv("./project/db/selected_repos.csv")
+# def add_to_csv(df: pd.DataFrame):
+#     if os.path.isfile("./project/db/selected_repos.csv"):
+#         df.to_csv("./project/db/selected_repos.csv", mode="a", header=False)
+#     else:
+#         df.to_csv("./project/db/selected_repos.csv")
 
 
 def selector(repo: Repository.Repository) -> bool | list:
@@ -99,4 +101,4 @@ for idx, link in enumerate(orgs["link"][1:2]):
         df = pd.DataFrame(popularRepos,
             columns=["repo", "org", "stars", "contributors", "released", "created_at", "updated_at", "url"],
         )
-        ic(add_to_csv(df=df))
+        ic(add_to_csv(df=df, csv_pth="./project/db/selected_repos.csv"))
