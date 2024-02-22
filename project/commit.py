@@ -20,7 +20,7 @@ load_dotenv()
 
 # Configure logging
 logging.basicConfig(
-    filename=f"{LOGS_PTH}/shared_developer_{datetime.now()}.log",
+    filename=f"{LOGS_PTH}/commit.py_{datetime.now()}.log",
     level=logging.WARNING,
     format="%(asctime)s - %(levelname)s - %(message)s",
 )
@@ -34,8 +34,8 @@ g = Github(auth=auth)
 # TODO: List of all selected repos
 repos = pd.read_csv(SELECT_REPOS_CSV)
 
-for repo in repos['url']:
-    org_name, repo_name = (repo.split(sep="repos/")[-1]).split(sep='/')
+for repo in repos["url"]:
+    org_name, repo_name = (repo.split(sep="repos/")[-1]).split(sep="/")
     repo_url = f"https://github.com/{org_name}/{repo_name}.git"
     repo_pth = f"{REPO_CLONE_DIR}/{repo_name}"
     git_clone_repo(repo_url=repo_url, target_directory=repo_pth)
@@ -46,7 +46,7 @@ for repo in repos['url']:
     for month in tqdm(range(24)):
         finish_date = (start_date + relativedelta(months=1)).date()
         start_date = start_date.date()
-        if((start_date - OBS_END_DATE.date()).days >= 0):
+        if (start_date - OBS_END_DATE.date()).days >= 0:
             break
         logging.warning(f"Observing month:  {(start_date.year, start_date.month)}")
         start_date = datetime.combine(start_date, datetime.min.time())
@@ -57,7 +57,7 @@ for repo in repos['url']:
         code_complexity = []
         commit_size = []
         monthly_contributors = []
-        loc = []
+        loa = []  # lines of anything
         modified_files = []
         count = 0
         for commit in tqdm(load_repo.traverse_commits()):
@@ -65,15 +65,60 @@ for repo in repos['url']:
             commit_size.append(commit.dmm_unit_size)
             monthly_contributors.append(commit.author.name)
             modified_files.append(len(commit.modified_files))
-            loc.append(commit.lines)
+            loa.append(commit.lines)
             count += 1
         # TODO : loop through PRs and issues.
-        start_date = datetime.combine(finish_date, datetime.min.time())
+
         print("Total commits: ", count)
         logging.warning(f"Total commits in this month: {count}")
+        monthly_row = []
         if count > 0:
             active_months += 1
-        overall_repo_contributors = overall_repo_contributors.union(set(monthly_contributors))
+            monthly_row = [
+                repo_name,
+                org_name,
+                (start_date, finish_date),
+                get_metric_stats(pd.DataFrame(code_complexity)),
+                get_metric_stats(pd.DataFrame(commit_size)),
+                get_metric_stats(pd.DataFrame(loa)),
+                get_metric_stats(pd.DataFrame(modified_files)),
+                len(set(monthly_contributors)),
+            ]
+        else:
+            monthly_row = [
+                repo_name,
+                org_name,
+                (start_date, finish_date),
+                0,
+                0,
+                0,
+                0,
+                0,
+            ]
+        month_df = pd.DataFrame(
+            [monthly_row],
+            columns=[
+                "repo",
+                "org",
+                "obs_period",
+                "unit_complexity",
+                "unit_size",
+                "lines",
+                "n_modified_files",
+                "n_contributors",
+            ],
+        )
+        logging.warning("Month added to commit activity CSV.")
+        add_to_csv(df=month_df, csv_pth=COMMIT_ACTIVITY_CSV)
+
+        # Update start date and convert to datetime
+        start_date = datetime.combine(
+            finish_date, datetime.min.time()
+        )
+
+        overall_repo_contributors = overall_repo_contributors.union(
+            set(monthly_contributors)
+        )
     logging.warning(f"Contributor count: {len(overall_repo_contributors)}")
     logging.warning(f"Actve months: {active_months}")
     delete_repo(repo_directory=repo_pth)
