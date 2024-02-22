@@ -23,13 +23,6 @@ g = Github(auth=auth)
 # Load list of all organizations
 orgs = pd.read_csv(ORG_LIST_CSV)
 
-# print(orgs['link'][:])
-# def add_to_csv(df: pd.DataFrame):
-#     if os.path.isfile("./project/db/selected_repos.csv"):
-#         df.to_csv("./project/db/selected_repos.csv", mode="a", header=False)
-#     else:
-#         df.to_csv("./project/db/selected_repos.csv")
-
 
 def selector(repo: Repository.Repository) -> bool | list:
     """
@@ -45,18 +38,18 @@ def selector(repo: Repository.Repository) -> bool | list:
     # TODO : number of stars is greater than 100
     n_stars = ic(repo.stargazers_count)
     if n_stars > 100:
-        # TODO: it has been released before OBS_START_DATE 
+        # TODO: it has been released before OBS_START_DATE
         releases = repo.get_releases().reversed
-        count=0
-        first_release_date=None
-        is_released=None
+        count = 0
+        first_release_date = None
+        is_released = None
         for release in releases:
-            if (count>0):
+            if count > 0:
                 break
-            first_release_date  = release.created_at.date()
+            first_release_date = release.created_at.date()
             count += 1
         if first_release_date != None:
-            if (OBS_START_DATE.date() - first_release_date).days > 0 :
+            if (OBS_START_DATE.date() - first_release_date).days > 0:
                 is_released = True
             else:
                 is_released = False
@@ -64,9 +57,9 @@ def selector(repo: Repository.Repository) -> bool | list:
             is_released = False
 
         if is_released:
-            last_repo_update = repo.updated_at.date()
+            is_active_lately = True if repo.get_commits(since=datetime(2023,11,1)).totalCount > 0 else False
             # TODO : last commit within 3 months (90 days)
-            if ic(abs((last_observed_date - last_repo_update).days)) <= 90:
+            if ic(is_active_lately):
                 created_on = repo.created_at.date()
                 # TODO : created for more than 1 year(365 days)
                 # ? : SHOULD THIS BE date for first release?
@@ -80,8 +73,8 @@ def selector(repo: Repository.Repository) -> bool | list:
                         n_contributors,
                         is_released,
                         created_on,
-                        last_repo_update,
-                        repo_url
+                        is_active_lately,
+                        repo_url,
                     )
                 else:
                     return False
@@ -106,12 +99,22 @@ for idx, link in enumerate(orgs["link"][1:2]):
 
     # TODO: Find all the repos above 100 stars
     popularRepos = []
-    for repo in tqdm(repos):
+    for repo in tqdm(repos, total=repos.totalCount):
         result = selector(repo)
         if result != False:
             popularRepos.append(list(result))
     if len(popularRepos) > 0:
-        df = pd.DataFrame(popularRepos,
-            columns=["repo", "org", "stars", "contributors", "released", "created_at", "updated_at", "url"],
+        df = pd.DataFrame(
+            popularRepos,
+            columns=[
+                "repo",
+                "org",
+                "stars",
+                "contributors",
+                "released",
+                "created_at",
+                "updated_recently",
+                "url",
+            ],
         )
         ic(add_to_csv(df=df, csv_pth=SELECT_REPOS_CSV))
