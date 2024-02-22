@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 import warnings
 
 from utils import add_to_csv
+from constants import *
 
 # System setup
 warnings.filterwarnings("ignore")
@@ -20,10 +21,7 @@ auth = Auth.Token(os.getenv("GITHUB_PAT"))
 g = Github(auth=auth)
 
 # Load list of all organizations
-orgs = pd.read_csv("./project/db/org_list.csv")
-
-OBS_START_DATE = datetime.combine(date(2022, 1, 1), datetime.min.time())
-OBS_END_DATE = datetime.combine(date(2023, 12, 31), datetime.max.time())
+orgs = pd.read_csv(ORG_LIST_CSV)
 
 # print(orgs['link'][:])
 # def add_to_csv(df: pd.DataFrame):
@@ -116,4 +114,4 @@ for idx, link in enumerate(orgs["link"][1:2]):
         df = pd.DataFrame(popularRepos,
             columns=["repo", "org", "stars", "contributors", "released", "created_at", "updated_at", "url"],
         )
-        ic(add_to_csv(df=df, csv_pth="./project/db/selected_repos.csv"))
+        ic(add_to_csv(df=df, csv_pth=SELECT_REPOS_CSV))

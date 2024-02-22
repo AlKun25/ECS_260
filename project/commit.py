@@ -11,10 +11,8 @@ from icecream import ic
 from dotenv import load_dotenv
 import warnings
 
-OBS_START_DATE = datetime.combine(date(2022, 1, 1), datetime.min.time())
-OBS_END_DATE = datetime.combine(date(2023, 12, 31), datetime.max.time())
-
 from utils import *
+from constants import *
 
 # System setup
 warnings.filterwarnings("ignore")
@@ -22,7 +20,7 @@ load_dotenv()
 
 # Configure logging
 logging.basicConfig(
-    filename=f"./project/logs/shared_developer_{datetime.now()}.log",
+    filename=f"{LOGS_PTH}/shared_developer_{datetime.now()}.log",
     level=logging.WARNING,
     format="%(asctime)s - %(levelname)s - %(message)s",
 )
@@ -34,12 +32,12 @@ auth = Auth.Token(os.getenv("GITHUB_PAT"))
 g = Github(auth=auth)
 
 # TODO: List of all selected repos
-repos = pd.read_csv("./project/db/selected_repos.csv")
+repos = pd.read_csv(SELECT_REPOS_CSV)
 
 for repo in repos['url']:
     org_name, repo_name = (repo.split(sep="repos/")[-1]).split(sep='/')
     repo_url = f"https://github.com/{org_name}/{repo_name}.git"
-    repo_pth = f"./project/repo_holder/{repo_name}"
+    repo_pth = f"{REPO_CLONE_DIR}/{repo_name}"
     git_clone_repo(repo_url=repo_url, target_directory=repo_pth)
     start_date = OBS_START_DATE
     overall_repo_contributors = set()
@@ -54,7 +52,7 @@ for repo in repos['url']:
         start_date = datetime.combine(start_date, datetime.min.time())
         finish_date = datetime.combine(finish_date, datetime.min.time())
         load_repo = Repository(
-            path_to_repo=repo_pth, since=start_date, to=finish_date
+            path_to_repo=repo_pth, since=start_date, to=finish_date, num_workers=4
         )
         code_complexity = []
         commit_size = []
