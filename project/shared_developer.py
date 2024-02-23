@@ -20,7 +20,7 @@ load_dotenv()
 
 # Configure logging
 logging.basicConfig(
-    filename=f"{LOGS_PTH}/shared_developer_{datetime.now()}.log",
+    filename=f"{LOGS_PTH}/{__file__.split(sep='/')[-1]}_{datetime.now()}.log",
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
 )

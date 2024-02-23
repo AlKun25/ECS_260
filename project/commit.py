@@ -20,7 +20,7 @@ load_dotenv()
 
 # Configure logging
 logging.basicConfig(
-    filename=f"{LOGS_PTH}/commit.py_{datetime.now()}.log",
+    filename=f"{LOGS_PTH}/{__file__.split(sep='/')[-1]}_{datetime.now()}.log",
     level=logging.WARNING,
     format="%(asctime)s - %(levelname)s - %(message)s",
 )
@@ -56,14 +56,14 @@ for repo in repos["url"]:
         )
         code_complexity = []
         commit_size = []
-        monthly_contributors = []
+        monthly_contributors = set()
         loa = []  # lines of anything
         modified_files = []
         count = 0
         for commit in tqdm(load_repo.traverse_commits()):
             code_complexity.append(commit.dmm_unit_complexity)
             commit_size.append(commit.dmm_unit_size)
-            monthly_contributors.append(commit.author.name)
+            monthly_contributors.add(commit.author.name)
             modified_files.append(len(commit.modified_files))
             loa.append(commit.lines)
             count += 1
@@ -82,7 +82,7 @@ for repo in repos["url"]:
                 get_metric_stats(pd.DataFrame(commit_size)),
                 get_metric_stats(pd.DataFrame(loa)),
                 get_metric_stats(pd.DataFrame(modified_files)),
-                len(set(monthly_contributors)),
+                len(monthly_contributors),
             ]
         else:
             monthly_row = [
@@ -112,12 +112,10 @@ for repo in repos["url"]:
         add_to_csv(df=month_df, csv_pth=COMMIT_ACTIVITY_CSV)
 
         # Update start date and convert to datetime
-        start_date = datetime.combine(
-            finish_date, datetime.min.time()
-        )
+        start_date = datetime.combine(finish_date, datetime.min.time())
 
         overall_repo_contributors = overall_repo_contributors.union(
-            set(monthly_contributors)
+            monthly_contributors
         )
     logging.warning(f"Contributor count: {len(overall_repo_contributors)}")
     logging.warning(f"Actve months: {active_months}")
