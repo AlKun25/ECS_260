@@ -31,12 +31,14 @@ auth = Auth.Token(os.getenv("GITHUB_PAT"))
 # GitHub object
 g = Github(auth=auth)
 
+
 def get_contributor_id(fullname: str, emails: set):
     related_users = g.search_users(query=f"fullname:{fullname}")
     for user in related_users:
         if(user.email in emails):
             return user.id
 
+# Defining constants for this repo
 org_name = "eclipse"
 repo_name = "che"
 repo_url = f"https://github.com/{org_name}/{repo_name}.git"
@@ -45,6 +47,7 @@ start_date = OBS_START_DATE
 
 # overall_repo_contributors = set()
 contributor_to_email = dict()
+# Looping through months
 for month in tqdm(range(24)):
     finish_date = (start_date + relativedelta(months=1)).date()
     start_date = start_date.date()
@@ -52,10 +55,11 @@ for month in tqdm(range(24)):
         break
     logging.warning(f"Observing month:  {(start_date.year, start_date.month)}")
     
-    # Convert to datetime
+    # Convert date to datetime
     start_date = datetime.combine(start_date, datetime.min.time())
     finish_date = datetime.combine(finish_date, datetime.min.time())
     
+    # Load the Repo class of pydriller for commit traversal
     repo = Repository(
         path_to_repo=repo_pth, since=start_date, to=finish_date, num_workers=4
     )
@@ -71,25 +75,30 @@ for month in tqdm(range(24)):
         else:
             contributor_to_email[author_name] = {commit.author.email}
     logging.warning(monthly_contributors)
+    
     # Update start date and convert to datetime
     start_date = datetime.combine(finish_date, datetime.min.time())
 logging.warning(contributor_to_email)
 
 print("Searching related commits ...")
+# Looping through all emails
 for email in contributor_to_email.values():
-    # print(contributor_to_email)
-    commits = g.search_commits(query=f"author-email:{email} committer-date:<2024-01-01", sort="committer-date", order="desc")
+    # Find commits made by that email, before Jan 1 2024
+    commits = g.search_commits(query=f'author-email:{email} committer-date:<2024-01-01', sort='committer-date', order='desc')
     count = 0
     for commit in commits:
-        user_url = commit.author.url.split(sep="/")[-1]
+        user_name = commit.author.url.split(sep="/")[-1] # to avoid individuals repo commits
         commit_org_name = (commit.commit.html_url).split(sep="/commit")[0].split(sep="github.com/")[-1]
-        # if(commit.commit.committer.date.date() < OBS_START_DATE.date()):
+        # if(commit.commit.committer.date.date() < OBS_START_DATE.date()): # terminate when outside OBS period
         #     break
         # else:
-        if(commit_org_name != user_url):
+        # To print commit made for organizations
+        if(commit_org_name != user_name):
             print(commit_org_name)
             print(commit.commit.committer.date)
             print(commit.commit.author.name)
+
+
 # contributor_to_id = dict()
 # logging.warning(overall_repo_contributors)
 # for user in contributor_to_email.keys():
