@@ -13,6 +13,7 @@ import warnings
 
 from utils import *
 from constants import *
+from developer import developer_history
 
 # System setup
 warnings.filterwarnings("ignore")
@@ -33,16 +34,16 @@ g = Github(auth=auth)
 
 # TODO: List of all selected repos
 repos = pd.read_csv(SELECT_REPOS_CSV)
-
 for repo in repos["url"]:
     org_name, repo_name = (repo.split(sep="repos/")[-1]).split(sep="/")
     repo_url = f"https://github.com/{org_name}/{repo_name}.git"
     repo_pth = f"{REPO_CLONE_DIR}/{repo_name}"
     git_clone_repo(repo_url=repo_url, target_directory=repo_pth)
     start_date = OBS_START_DATE
-    overall_repo_contributors = set()
+    # overall_repo_contributors = set()
     active_months = 0
     logging.warning(f"PROJECT: {repo_name}")
+
     for month in tqdm(range(24)):
         finish_date = (start_date + relativedelta(months=1)).date()
         start_date = start_date.date()
@@ -56,18 +57,28 @@ for repo in repos["url"]:
         )
         code_complexity = []
         commit_size = []
-        monthly_contributors = set()
+
+        contributor_to_email = dict()
         loa = []  # lines of anything
         modified_files = []
         count = 0
         for commit in tqdm(load_repo.traverse_commits()):
             code_complexity.append(commit.dmm_unit_complexity)
             commit_size.append(commit.dmm_unit_size)
-            monthly_contributors.add(commit.author.name)
+            # monthly_contributors.add(commit.author.name)
+            author = commit.author
+            # Mapping name to multiple emails
+            if contributor_to_email.get(author.name) != None:
+                contributor_to_email[author.name].add(author.email)
+            else:
+                contributor_to_email[author.name] = {author.email}
             modified_files.append(len(commit.modified_files))
             loa.append(commit.lines)
             count += 1
         # TODO : loop through PRs and issues.
+        
+        # for name in contributor_to_email.keys():
+        #     shared = developer_history(name=name, emails=contributor_to_email[name], ref_org=org_name, obs_start=start_date, obs_end=finish_date)
 
         print("Total commits: ", count)
         logging.warning(f"Total commits in this month: {count}")
@@ -82,7 +93,7 @@ for repo in repos["url"]:
                 get_metric_stats(pd.DataFrame(commit_size)),
                 get_metric_stats(pd.DataFrame(loa)),
                 get_metric_stats(pd.DataFrame(modified_files)),
-                len(monthly_contributors),
+                len(contributor_to_email),
             ]
         else:
             monthly_row = [
@@ -114,9 +125,6 @@ for repo in repos["url"]:
         # Update start date and convert to datetime
         start_date = datetime.combine(finish_date, datetime.min.time())
 
-        overall_repo_contributors = overall_repo_contributors.union(
-            monthly_contributors
-        )
-    logging.warning(f"Contributor count: {len(overall_repo_contributors)}")
+    # logging.warning(f"Contributor count: {len(overall_repo_contributors)}")
     logging.warning(f"Actve months: {active_months}")
     delete_repo(repo_directory=repo_pth)
