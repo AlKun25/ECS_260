@@ -59,6 +59,7 @@ for repo in repos["url"]:
         commit_size = []
 
         contributor_to_email = dict()
+        contributor_to_commits = dict()
         loa = []  # lines of anything
         modified_files = []
         count = 0
@@ -72,13 +73,19 @@ for repo in repos["url"]:
                 contributor_to_email[author.name].add(author.email)
             else:
                 contributor_to_email[author.name] = {author.email}
+
+            if contributor_to_commits.get(author.name) != None:
+                contributor_to_commits[author.name] += 1
+            else:
+                contributor_to_commits[author.name] = 1
+
             modified_files.append(len(commit.modified_files))
             loa.append(commit.lines)
             count += 1
         # TODO : loop through PRs and issues.
-        
-        # for name in contributor_to_email.keys():
-        #     shared = developer_history(name=name, emails=contributor_to_email[name], ref_org=org_name, obs_start=start_date, obs_end=finish_date)
+        print(contributor_to_commits)
+        for name in contributor_to_email.keys():
+            developer_history(name=name, emails=list(contributor_to_email[name]), ref_org_repo=f"{org_name}/{repo_name}", obs_start=start_date, obs_end=finish_date)
 
         print("Total commits: ", count)
         logging.warning(f"Total commits in this month: {count}")
