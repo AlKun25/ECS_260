@@ -82,10 +82,9 @@ for repo in repos["url"]:
             modified_files.append(len(commit.modified_files))
             loa.append(commit.lines)
             count += 1
-        # TODO : loop through PRs and issues.
         print(contributor_to_commits)
-        for name in contributor_to_email.keys():
-            developer_history(name=name, emails=list(contributor_to_email[name]), ref_org_repo=f"{org_name}/{repo_name}", obs_start=start_date, obs_end=finish_date)
+        # for name in contributor_to_email.keys():
+            # developer_history(name=name, emails=list(contributor_to_email[name]), ref_org_repo=f"{org_name}/{repo_name}", obs_start=start_date, obs_end=finish_date)
 
         print("Total commits: ", count)
         logging.warning(f"Total commits in this month: {count}")
@@ -101,6 +100,7 @@ for repo in repos["url"]:
                 get_metric_stats(pd.DataFrame(loa)),
                 get_metric_stats(pd.DataFrame(modified_files)),
                 len(contributor_to_email),
+                count
             ]
         else:
             monthly_row = [
@@ -112,6 +112,7 @@ for repo in repos["url"]:
                 0,
                 0,
                 0,
+                0
             ]
         month_df = pd.DataFrame(
             [monthly_row],
@@ -124,6 +125,7 @@ for repo in repos["url"]:
                 "lines",
                 "n_modified_files",
                 "n_contributors",
+                "n_commits"
             ],
         )
         logging.warning("Month added to commit activity CSV.")
