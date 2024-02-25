@@ -75,7 +75,7 @@ for repo in repos['url']:
         idx = idx_for_email(email=commit.author.email, dev_list=developers)
         if idx != None:
             # print("Checking for email...")
-            developers[idx][2].add(
+            developers[idx][2].append(
                 (
                     org_name+"/"+repo_name,
                     (commit.committer_date.date().year, commit.committer_date.date().month),
@@ -102,7 +102,7 @@ for repo in repos['url']:
                 [
                     commit.author.name,
                     commit.author.email,
-                    {
+                    [
                         (
                             org_name+"/"+repo_name,
                             (
@@ -110,7 +110,7 @@ for repo in repos['url']:
                                 commit.committer_date.date().month,
                             ),
                         )
-                    },
+                    ],
                     False,
                     None,
                 ]
