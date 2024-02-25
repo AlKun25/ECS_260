@@ -53,7 +53,7 @@ for repo in repos["url"]:
         start_date = datetime.combine(start_date, datetime.min.time())
         finish_date = datetime.combine(finish_date, datetime.min.time())
         load_repo = Repository(
-            path_to_repo=repo_pth, since=start_date, to=finish_date, num_workers=4
+            path_to_repo=repo_pth, since=start_date, to=finish_date, num_workers=8
         )
         code_complexity = []
         commit_size = []
@@ -100,7 +100,8 @@ for repo in repos["url"]:
                 get_metric_stats(pd.DataFrame(loa)),
                 get_metric_stats(pd.DataFrame(modified_files)),
                 len(contributor_to_email),
-                count
+                count,
+                contributor_to_commits
             ]
         else:
             monthly_row = [
@@ -112,7 +113,8 @@ for repo in repos["url"]:
                 0,
                 0,
                 0,
-                0
+                0,
+                ''
             ]
         month_df = pd.DataFrame(
             [monthly_row],
@@ -125,7 +127,8 @@ for repo in repos["url"]:
                 "lines",
                 "n_modified_files",
                 "n_contributors",
-                "n_commits"
+                "n_commits",
+                "contributor_to_commits"
             ],
         )
         logging.warning("Month added to commit activity CSV.")
