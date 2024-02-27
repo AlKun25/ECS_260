@@ -1,7 +1,8 @@
 import os
-import pandas as pd
-from tqdm import tqdm
+import logging
 from datetime import date, datetime
+from tqdm import tqdm
+import pandas as pd
 from icecream import ic
 import warnings
 
@@ -10,7 +11,6 @@ from constants import *
 
 # System setup
 warnings.filterwarnings("ignore")
-
 logger = get_logger(filename=__file__)
 
 class RepositorySelector:
@@ -29,7 +29,6 @@ class RepositorySelector:
         """
         repo_name = repo.name
         repo_url = repo.url
-        print(repo_name)
         n_stars = repo.stargazers_count
         if n_stars > 100:
             releases = repo.get_releases().reversed
@@ -53,7 +52,7 @@ class RepositorySelector:
                 created_on = repo.created_at.date()
                 if abs((self.last_obs_date - created_on).days) >= 365:
                     n_contributors = repo.get_contributors().totalCount
-                    print("Repo satisfies all criteria")
+                    logging.info(f"Repo {repo_name} satisfies all criteria")
                     return (
                         repo_name,
                         n_stars,
@@ -68,9 +67,9 @@ class RepositorySelector:
     def process_orgs(self):
         for idx, link in enumerate(self.orgs["link"][1:2]):
             org = self.g.get_organization(link.split(sep="/")[-1])
-            print(f"{idx}. {self.orgs['name'][idx]} organization loaded")
-            repos = org.get_repos()
             org_name = org.name
+            logging.info(f"{idx}. {org_name} organization loaded")
+            repos = org.get_repos()
             popular_repos = []
             for repo in tqdm(repos, total=repos.totalCount):
                 result = self.select(repo)
