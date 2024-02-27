@@ -1,22 +1,25 @@
 import os
-from datetime import date, datetime
-from dateutil.relativedelta import relativedelta
-import logging
-from tqdm import tqdm
-import numpy as np
-import pandas as pd
+import sys
+from github import Auth, Github
 from pydriller import Repository
-from github import Auth, Github, NamedUser, GitCommit
+import pandas as pd
+import numpy as np
+from tqdm import tqdm
+from datetime import date, datetime
 from icecream import ic
+import logging
 from dotenv import load_dotenv
 import warnings
 
-from constants import *
 from utils import *
+from constants import *
 
 # System setup
 warnings.filterwarnings("ignore")
 load_dotenv()
+
+# Configure logging
+logger = get_logger(filename=__file__)
 
 # GitHub Auth
 auth = Auth.Token(os.getenv("GITHUB_PAT"))
@@ -24,56 +27,92 @@ auth = Auth.Token(os.getenv("GITHUB_PAT"))
 # GitHub object
 g = Github(auth=auth)
 
-def get_repo_org_commit(url):
-    if (url):
-        commit_repo_org_part = url.split(sep="repos/")[-1] 
-        print(commit_repo_org_part)
-        org_repo_commit_list = commit_repo_org_part.split(sep="/")
-        org = org_repo_commit_list[0]
-        repo = org_repo_commit_list[1]
-        commit = org_repo_commit_list[-1]
-        print(org, repo, commit)
-        return org, repo, commit
-    else:
-        return None, None, None
 
-def get_username(url):
-    if (url):
-        username = url.split(sep="users/")[-1]
-        return username
+def idx_for_email(email: str, dev_list: list):
+    if len(dev_list) > 0:
+        df = pd.DataFrame(
+            dev_list,
+            columns=[
+                "name",
+                "email",
+                "commit_activity",
+                "shared",
+                "created_at",
+            ],
+        )
+        if email in df["email"].values:
+            # print("OOOOOOOOOO")
+            result = df["email"].values.tolist().index(email)
+            return result
+        else:
+            # print("Why tho")
+            return None
     else:
+        # print("Please no")
         return None
 
-def developer_history(name: str, emails: list, ref_org_repo: str, obs_start: datetime, obs_end: datetime):
-    print(name, obs_start, obs_end, ref_org_repo, emails)
-    email_commits = []
-    shared = False
-    for email in emails:
-        # Find commits made by that email, before Jan 1 2024
-        outside_repo_commits = 0
-        obs_end = obs_end + relativedelta(days=1)
-        commits = g.search_commits(query=f'author-email:{email} committer-date:<{obs_end.strftime("%Y-%m-%d")}', sort='committer-date', order='desc', page=100)
-        if commits.totalCount>0:
-            for commit in commits:
-                if(commit.author.url):
-                    print("Author doesn't exist")
-                    break
-                # print(commit.author.html_url)
-                user_name = get_username(commit.author.url) # to avoid individuals repo commits
-                print(user_name)
-                commit_org, commit_repo, commit_etag = get_repo_org_commit(url=commit.commit.url)
-                if(commit.commit.committer.date.date() < obs_start.date()): # terminate when outside OBS period
-                    break
-                else:
-                # To print commit made for organizations
-                    if(commit_org != user_name):
-                        if(f"{commit_org}/{commit_repo}" != ref_org_repo): # ! : to check for shared developer
-                            shared = True
-                            outside_repo_commits += 1
-                        commit_date = commit.commit.committer.date
-                        email_commits.append([name, user_name, commit_repo, commit_org, commit_date.day, commit_date.month, commit_date.year, email, commit_etag])
 
-    print(email_commits)
-    commits_df = pd.DataFrame(commits, columns=["name", "username", "repo", "org", "day", "month", "year", "email", "etag"])
-    add_to_csv(df=commits_df, csv_pth=DEVELOPER_ACTIVITY_CSV)
-    print(shared, outside_repo_commits)
+# TODO: List of all selected repos
+repos = pd.read_csv(SELECT_REPOS_CSV)
+
+for repo in repos['url']:
+    org_name, repo_name = (repo.split(sep="repos/")[-1]).split(sep='/')
+    repo_url = f"https://github.com/{org_name}/{repo_name}.git"
+    repo_pth = f"{REPO_CLONE_DIR}/{repo_name}"
+    git_clone_repo(repo_url=repo_url, target_directory=repo_pth)
+    specific_repo = Repository(
+        path_to_repo=repo_pth, since_as_filter=OBS_START_DATE, to=OBS_END_DATE
+    )
+    print("----------------")
+    developers = []
+    for commit in specific_repo.traverse_commits():
+        idx = idx_for_email(email=commit.author.email, dev_list=developers)
+        if idx != None:
+            # print("Checking for email...")
+            developers[idx][2].append(
+                (
+                    org_name+"/"+repo_name,
+                    (commit.committer_date.date().year, commit.committer_date.date().month),
+                )
+            )
+        elif check_in_csv(
+            item=commit.author.email,
+            col_name="email",
+            csv_pth=DEVELOPERS_CSV,
+        ):
+            print("Found in CSV")
+            df = pd.read_csv("./projects/db/developers.csv")
+            csv_index = df["email"].values.tolist().index(commit.author.email)
+            df["commit_activity"][csv_index].add(
+                (
+                    repo_name,
+                    (commit.committer_date.date().year, commit.committer_date.date().month),
+                )
+            )
+            df.to_csv('./project/db/developers.csv')
+        else:
+            # ? : Maybe define commit_months as set of tuples of two values. Values : repo_name, commit_month
+            developers.append(
+                [
+                    commit.author.name,
+                    commit.author.email,
+                    [
+                        (
+                            org_name+"/"+repo_name,
+                            (
+                                commit.committer_date.date().year,
+                                commit.committer_date.date().month,
+                            ),
+                        )
+                    ],
+                    False,
+                    None,
+                ]
+            )
+    if len(developers) > 0:
+        df = pd.DataFrame(
+            developers,
+            columns=["name", "email", "commit_activity", "shared", "created_at"],
+        )
+        add_to_csv(df=df, csv_pth=DEVELOPERS_CSV)
+    delete_repo(repo_directory=repo_pth)
