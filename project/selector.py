@@ -13,23 +13,32 @@ warnings.filterwarnings("ignore")
 logger = get_logger(filename=__file__)
 
 class RepositorySelector:
-    def __init__(self, orgs, file_pth):
+    def __init__(self, orgs: pd.DataFrame, file_pth: str):
+        """This class helps in selecting the relevant repositories based on our criteria
+
+        Args:
+            orgs (pd.DataFrame): Contains the list of all organizations under observation
+            file_pth (str): Path of the file to save details of all relevant repos 
+        """        
         self.orgs = orgs
         self.g = GITHUB_OBJ
         self.file_pth = file_pth
         self.last_obs_date = date(2024, 2, 1)
 
-    def select(self, repo: Repository.Repository, org: str):
-        """
-        Only consider projects with release
-        At least 100 stars
-        Repos created for at least 1 years
-        Active: most recent commits within last 3 months
-        """
+    def select(self, repo: Repository.Repository, org: str)-> bool | tuple | None:
+        """Checks whether a repo satifies all our criteria for selection
+
+        Args:
+            repo (Repository.Repository): Repository object of the repo under question
+            org (str): Name of the organization
+
+        Returns:
+            tuple: contains all the required details of the selected repo.
+        """        
         repo_name = repo.name
         repo_url = repo.url
         n_stars = repo.stargazers_count
-        if n_stars > 100:
+        if n_stars > 100: # *:At least 100 stars
             releases = repo.get_releases().reversed
             count = 0
             first_release_date = None
@@ -46,10 +55,11 @@ class RepositorySelector:
                     is_released = False
             else:
                 is_released = False
-
+            # *:Only consider projects with release
+            # *:Active: most recent commits within last 3 months
             if is_released and repo.get_commits(since=datetime(2023, 11, 1)).totalCount > 0:
                 created_on = repo.created_at
-                if abs((self.last_obs_date - created_on.date()).days) >= 365:
+                if abs((self.last_obs_date - created_on.date()).days) >= 365: # *:Repos created for at least 1 year
                     n_contributors = repo.get_contributors().totalCount
                     n_commits = repo.get_commits(since=OBS_START_DATE, until=OBS_END_DATE).totalCount
                     logging.info(f"Repo {repo_name} satisfies all criteria")
@@ -75,7 +85,7 @@ class RepositorySelector:
             popular_repos = []
             for repo in tqdm(repos, total=repos.totalCount):
                 result = self.select(repo, org_name)
-                if result:
+                if result and type(result)==tuple:
                     popular_repos.append(list(result))
             if len(popular_repos) > 0:
                 df = pd.DataFrame(
