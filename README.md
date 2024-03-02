@@ -1,6 +1,6 @@
 ---
 ## Project direction
-Influence of communication and shared developers on productivity within and outside project ecosystem. 
+Influe of shared developers on project effectiveness. 
 
 
 ## Research questions
@@ -10,7 +10,6 @@ Influence of communication and shared developers on productivity within and outs
 ## Methodology  
 How it measure and defines stuff to study the [research questions](https://github.com/AlKun25/ECS_260/blob/master/README.md#research-questions) .  
 
-<!--
 ## How to run   
 First, install dependencies   
 ```bash
@@ -23,7 +22,7 @@ cd ECS_260
 pip install -e .   
 pip install -r requirements.txt
 ```   
-#Next, run main.py in the same directory.   
+Next, run main.py in the same directory.   
  ```bash
 # run module (example: mnist as your main contribution)   
 python main.py    
