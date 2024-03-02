@@ -3,18 +3,29 @@ import shutil
 import subprocess
 import logging
 from datetime import datetime
+from numpy import append
 import pandas as pd
-from constants import LOGS_PTH
+from project.constants import LOGS_PTH
 
-def add_to_csv(df: pd.DataFrame, csv_pth: str):
-    if os.path.isfile(csv_pth):
-        df.to_csv(csv_pth, mode="a", header=False)
+def add_to_parquet(df: pd.DataFrame, file_pth: str):
+    if os.path.isfile(file_pth):
+        df.to_parquet(file_pth, engine="fastparquet", append=True)
     else:
-        df.to_csv(csv_pth)
+        df.to_parquet(file_pth, engine="fastparquet")
 
-def check_in_csv(item: any, csv_pth: str, col_name: str):
+def check_in_csv(item: any, csv_pth: str, col_name: str): # type: ignore
     if os.path.isfile(csv_pth):
-        df = pd.read_csv(csv_pth)
+        df = pd.read_csv(csv_pth, engine="pyarrow")
+        if item in df[col_name]:
+            return True
+        else:
+            return False
+    else:
+        return False
+
+def check_in_parquet(item: any, paq_pth: str, col_name: str): # type: ignore
+    if os.path.isfile(paq_pth):
+        df = pd.read_parquet(paq_pth, engine="fastparquet")
         if item in df[col_name]:
             return True
         else:
@@ -34,7 +45,7 @@ def delete_repo(repo_directory):
     shutil.rmtree(repo_directory)
 
 def get_metric_stats(metric: pd.DataFrame):
-    stats = {"avg": None, "max": None, "Q1": None, "Q3": None}
+    stats = dict()
     stats["max"] = metric.max().tolist()
     stats["Q1"], stats["avg"], stats["Q3"] = list(metric.quantile([0.25,0.5,0.75]).values)
     stats["Q1"], stats["avg"], stats["Q3"] = float(stats["Q1"]), float(stats["avg"]), float(stats["Q3"])
