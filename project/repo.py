@@ -20,6 +20,8 @@ load_dotenv()
 
 class RepoAnalyzer:
     def __init__(self):
+        """This is the main class that handle both the commit downloads for selected repos as well as metric retrieval
+        """        
         # Configure logging
         self.logger = logging.getLogger(__name__)
         self.logger.setLevel(logging.WARNING)
@@ -35,6 +37,11 @@ class RepoAnalyzer:
         self.g = GITHUB_OBJ
 
     def get_all_releases(self, org_repo: str):
+        """Extract all the release for a specific repo in our predefined time period
+
+        Args:
+            org_repo (str): compunded string of structure 'org/repo'
+        """        
         releases = self.g.get_repo(org_repo).get_releases()
         relevant_releases = []
         org_name, repo_name = org_repo.split(sep="/")
@@ -50,6 +57,9 @@ class RepoAnalyzer:
         add_to_parquet(releases_df, ORG_COMMITS_DIR+f"/{org_name}/releases.parquet")
     
     def get_all_commits(self):
+        """It downloads all the commits for all the repos.
+        Scheduling: Orgs and repos with lower number of commits are priortized for processing
+        """        
         repos = pd.read_parquet(SELECT_REPOS_FILE, engine="fastparquet")
 
         # Group the DataFrame by 'org' and sum the 'commits' for each organization
@@ -136,53 +146,50 @@ class RepoAnalyzer:
                 print(f"Saved all commits from Repo: {org_name}/{repo_name}")
             print(f"Saved all commits from Org: {org}")
 
-    def load_all_commits(self):
-        pass
-
     def analyze_repos(self, org_name: str):
+        """Loop through all commits from all selected repos within a specific org
+
+        Args:
+            org_name (str): Name of the organization, as in a URL
+        """        
         for org_commit_csv in glob(
             f"{ORG_COMMITS_DIR}/{org_name}/{org_name}_commits*.parquet"
         ):
-            self.org = org_name
+            self.org = org_name # !:use this only in analysis part
             org_df = pd.read_parquet(org_commit_csv, engine="fastparquet")
             repos = org_df["repo"].unique()
             for repo in repos:
                 repo_df = org_df[org_df["repo"] == repo]
-                self.repo = repo
+                self.repo = repo # !:use this only in analysis part
                 self.analyze_repo(repo_df=repo_df)
 
     def analyze_repo(self, repo_df: pd.DataFrame):
+        """Loop through various weeks of commit history in a specific year for a repo
+
+        Args:
+            repo_df (pd.DataFrame): Contains all commits for a specific repo 
+        """        
         for year in [2022, 2023]:
             year_df = repo_df[repo_df["year"] == year]
             if year_df.shape[0] > 0:
-                self.year = year
-                self.analyze_yearly(year_df, year)
+                self.year = year # !:use this only in analysis part
+                self.analyze_yearly(year_df)
 
-    def analyze_yearly(self, year_df: pd.DataFrame, year: int):
-        """Saves yearly summary of each repo in db/yearly_analysis.parquet.
+    def analyze_yearly(self, year_df: pd.DataFrame):
+        """Loop through various weeks of commit history in a specific year for a repo
 
         Args:
-            year_df (pd.DataFrame): Contains weekly commits for a specific repo
-            year (int): Year of the commit
+            year_df (pd.DataFrame): Contains yearly commits for a specific repo
         """        
         active_weeks = year_df["week"].unique()
         for week in active_weeks:
             week_df = year_df[year_df["week"] == week]
             if week_df.shape[0] > 0:
-                self.week = week
+                self.week = week # !:use this only in analysis part
                 t_year, t_week = map(int, week.strip("()").split(","))
                 week_start_dt = datetime.strptime(f"{t_year}-W{t_week}-1", "%Y-W%U-%w")
                 week_end_dt = datetime.strptime(f"{t_year}-W{t_week}-6", "%Y-W%U-%w")
                 self.analyze_weekly(week_df, week_start_dt, week_end_dt)
-        # yearly_metrics = dict()
-        # yearly_metrics["unit_complexity"] = get_metric_stats(
-        #     year_df["unit_complexity"].to_frame()
-        # )
-        # yearly_metrics["unit_size"] = get_metric_stats(year_df["unit_size"].to_frame())
-        # yearly_metrics["lines"] = get_metric_stats(year_df["lines"].to_frame())
-        # yearly_metrics["n_modified_files"] = get_metric_stats(
-        #     year_df["n_modified_files"].to_frame()
-        # )
 
     def analyze_monthly(self, month: int, year: int):
         pass
