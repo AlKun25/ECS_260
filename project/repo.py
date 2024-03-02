@@ -20,7 +20,7 @@ load_dotenv()
 
 class RepoAnalyzer:
     def __init__(self):
-        """This is the main class that handle both the commit downloads for selected repos as well as metric retrieval
+        """This is the main class that handles both the commit downloads for selected repos as well as metric retrieval
         """        
         # Configure logging
         self.logger = logging.getLogger(__name__)
