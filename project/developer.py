@@ -1,18 +1,15 @@
-import os
-import sys
-from github import Auth, Github
+from matplotlib.dates import WEEKLY
 from pydriller import Repository
 import pandas as pd
-import numpy as np
 from tqdm import tqdm
-from datetime import date, datetime
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 from icecream import ic
-import logging
-from dotenv import load_dotenv
+from glob import glob
 import warnings
 
-from utils import *
-from constants import *
+from project.utils import *
+from project.constants import *
 
 # System setup
 warnings.filterwarnings("ignore")
@@ -21,11 +18,8 @@ load_dotenv()
 # Configure logging
 logger = get_logger(filename=__file__)
 
-# GitHub Auth
-auth = Auth.Token(os.getenv("GITHUB_PAT"))
-
 # GitHub object
-g = Github(auth=auth)
+g = GITHUB_OBJ
 
 
 def idx_for_email(email: str, dev_list: list):
@@ -52,67 +46,164 @@ def idx_for_email(email: str, dev_list: list):
         return None
 
 
-# TODO: List of all selected repos
-repos = pd.read_csv(SELECT_REPOS_CSV)
+class DeveloperTracker:
+    def __init__(
+        self,
+        contributors_email: list,
+        obs_start: datetime,
+        obs_end: datetime,
+        org: str,
+        repo: str,
+    ) -> None:
+        self.name_email_pairs = contributors_email
+        self.obs_start = obs_start
+        self.obs_end = obs_end
+        self.week = obs_start.isocalendar()[0:2]
+        self.ref_org_repo = f"{org}/{repo}"
+        self.n_shared = 0
+        
+        self.org_name = ic(org)
+        self.repo_name = ic(repo)
 
-for repo in repos['url']:
-    org_name, repo_name = (repo.split(sep="repos/")[-1]).split(sep='/')
-    repo_url = f"https://github.com/{org_name}/{repo_name}.git"
-    repo_pth = f"{REPO_CLONE_DIR}/{repo_name}"
-    git_clone_repo(repo_url=repo_url, target_directory=repo_pth)
-    specific_repo = Repository(
-        path_to_repo=repo_pth, since_as_filter=OBS_START_DATE, to=OBS_END_DATE
-    )
-    print("----------------")
-    developers = []
-    for commit in specific_repo.traverse_commits():
-        idx = idx_for_email(email=commit.author.email, dev_list=developers)
-        if idx != None:
-            # print("Checking for email...")
-            developers[idx][2].append(
-                (
-                    org_name+"/"+repo_name,
-                    (commit.committer_date.date().year, commit.committer_date.date().month),
-                )
+        dev_files = glob(
+            f"{DEVELOPER_ACTIVITY_DIR}/developer_activity_*.parquet"
+        )
+        if(len(dev_files)>0):
+            latest_file_name = dev_files[-1] 
+            latest_file_num = int((latest_file_name.split(sep="_")[-1]).split(sep=".")[0])
+            self.all_developer_commits = (
+                latest_file_num * 10000 + pd.read_parquet(latest_file_name).shape[0]
             )
-        elif check_in_csv(
-            item=commit.author.email,
-            col_name="email",
-            csv_pth=DEVELOPERS_CSV,
-        ):
-            print("Found in CSV")
-            df = pd.read_csv("./projects/db/developers.csv")
-            csv_index = df["email"].values.tolist().index(commit.author.email)
-            df["commit_activity"][csv_index].add(
-                (
-                    repo_name,
-                    (commit.committer_date.date().year, commit.committer_date.date().month),
-                )
-            )
-            df.to_csv('./project/db/developers.csv')
         else:
-            # ? : Maybe define commit_months as set of tuples of two values. Values : repo_name, commit_month
-            developers.append(
-                [
-                    commit.author.name,
-                    commit.author.email,
-                    [
-                        (
-                            org_name+"/"+repo_name,
-                            (
-                                commit.committer_date.date().year,
-                                commit.committer_date.date().month,
-                            ),
+            self.all_developer_commits = 0
+
+    def get_repo_org_commit(self, url):
+        if url:
+            commit_repo_org_part = url.split(sep="repos/")[-1]
+            org_repo_commit_list = commit_repo_org_part.split(sep="/")
+            org = org_repo_commit_list[0]
+            repo = org_repo_commit_list[1]
+            commit = org_repo_commit_list[-1]
+            return org, repo, commit
+        else:
+            return None, None, None
+
+    def get_username(self, url):
+        username = url.split(sep="users/")[-1]
+        return username
+
+    def get_developer_activity(self, name: str, email: str):
+        email_commits = []
+        # TODO : Save all commits to a single series of developers.parquet
+        shared = False
+        outside_repo_commits = 0
+        self.obs_end = self.obs_end + relativedelta(days=1)
+        # Find all the commits in the time frame
+        commits = g.search_commits(
+            query=f'author-email:{email} committer-date:<{self.obs_end.strftime("%Y-%m-%d")}'
+        )
+        if commits.totalCount > 0:
+            for commit in commits:
+                if not commit.author.url:
+                    print("Author doesn't exist!")
+                    break
+                user_name = self.get_username(commit.author.url)
+                print(user_name)
+                commit_org, commit_repo, commit_etag = self.get_repo_org_commit(
+                    url=commit.commit.url
+                )
+                if (
+                    commit.commit.committer.date.date() < self.obs_start.date()
+                ):  # terminate when outside OBS period
+                    break
+                else:
+                    if commit_org != user_name:
+                        if (
+                            f"{commit_org}/{commit_repo}" != self.ref_org_repo
+                        ):  # ! : to check for shared developer
+                            shared = True
+                            outside_repo_commits += 1
+                        commit_date = commit.commit.committer.date
+                        email_commits.append(
+                            [
+                                name,  # name
+                                user_name,
+                                commit_repo,
+                                commit_org,
+                                commit_date,
+                                commit_date.isocalendar()[1],
+                                email,  # email
+                                commit_etag,
+                            ]
                         )
-                    ],
-                    False,
-                    None,
+        # loop through the weeks for that specific monthly only.
+        # TODO : save all the commits in db/devs with S-focus in a separate organization file.
+        # save all commits in a common file name.
+        ic(email_commits)
+        commits_df = pd.DataFrame(
+            email_commits,
+            columns=[
+                "name",
+                "username",
+                "repo",
+                "org",
+                "date",
+                "week",
+                "email",
+                "etag",
+            ],
+        )
+        self.all_developer_commits += commits_df.shape[0]
+        file_num = self.all_developer_commits // 10000
+        add_to_parquet(
+            df=commits_df,
+            file_pth=f"{DEVELOPER_ACTIVITY_DIR}/developer_activity_{file_num}.parquet",
+        )
+        return [outside_repo_commits, shared]
+
+    def weekly_activity(self):
+        activity = []
+        for name_email_pair in self.name_email_pairs:
+            final_res = [0, False]
+            if len(name_email_pair[1]) > 1:
+                for email in name_email_pair[1]:
+                    res = self.get_developer_activity(
+                        name_email_pair[0], email
+                    )
+                    final_res = [final_res[0] + res[0], final_res[1] or res[0]]
+            else:
+                final_res = self.get_developer_activity(
+                    name_email_pair[0], name_email_pair[1]
+                )
+            if final_res[1]:
+                self.n_shared += 1
+            s_focus = name_email_pair[2] / (name_email_pair[2] + final_res[0])
+            repo = self.ref_org_repo.split(sep="/")[-1]
+            activity.append(
+                [
+                    str(name_email_pair[0]),
+                    str(name_email_pair[1]),
+                    s_focus,
+                    self.repo_name,
+                    int(final_res[0]),
+                    bool(final_res[1]),
+                    str(self.week),
                 ]
             )
-    if len(developers) > 0:
-        df = pd.DataFrame(
-            developers,
-            columns=["name", "email", "commit_activity", "shared", "created_at"],
+        # save the specific repo-related developers in a common
+        # name, username, emails(list/set), s-focus, repo, outside_repo_commits, shared, week
+        weekly_activity_df = pd.DataFrame(
+            activity,
+            columns=[
+                "name",
+                "emails",
+                "s_focus",
+                "repo",
+                "outside_repo_commits",
+                "shared",
+                "week",
+            ],
         )
-        add_to_csv(df=df, csv_pth=DEVELOPERS_CSV)
-    delete_repo(repo_directory=repo_pth)
+
+        pth = f"{ORG_COMMITS_DIR}/{self.org_name}/weekly_dev_activity.parquet"
+        add_to_parquet(weekly_activity_df, pth)
