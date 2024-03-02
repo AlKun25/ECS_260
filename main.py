@@ -4,12 +4,15 @@ from project.selector import RepositorySelector
 from project.repo import RepoAnalyzer
 
 select_orgs = pd.read_csv(ORG_LIST_CSV, engine="pyarrow")
+# Repo selection phase
 repo_selector = RepositorySelector(orgs=select_orgs, file_pth=SELECT_REPOS_FILE)
 repo_selector.process_orgs()
 
 repo_analysis = RepoAnalyzer()
+# Commit download phase
 repo_analysis.get_all_commits()
 
+# Metric retrieval phase
 for org_url in select_orgs["link"]:
     org_name = org_url.split(sep="/")[-1]
     repo_analysis.analyze_repos(org_name)
