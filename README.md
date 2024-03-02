@@ -24,7 +24,7 @@ pip install -r requirements.txt
 ```   
 Next, run main.py in the same directory.   
  ```bash
-# run module (example: mnist as your main contribution)   
+# run module  
 python main.py    
 ```
 
