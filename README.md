@@ -1,6 +1,6 @@
 ---
 ## Project direction
-Influe of shared developers on project effectiveness. 
+Influence of shared developers on project effectiveness. 
 
 
 ## Research questions
