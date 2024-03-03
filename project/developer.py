@@ -18,9 +18,6 @@ load_dotenv()
 # Configure logging
 logger = get_logger(filename=__file__)
 
-# GitHub object
-g = GITHUB_OBJ
-
 class DeveloperTracker:
     def __init__(
         self,
@@ -38,7 +35,8 @@ class DeveloperTracker:
             obs_end (datetime): end of the observation date & time. End of the week
             org (str): name of the GitHub organization
             repo (str): name of the GitHub repository
-        """        
+        """
+        self.g = check_rate_limit()        
         self.name_email_pairs = contributors_email
         self.obs_start = obs_start
         self.obs_end = obs_end
@@ -109,9 +107,10 @@ class DeveloperTracker:
         outside_repo_commits = 0
         self.obs_end = self.obs_end + relativedelta(days=1)
         # Find all the commits in the time frame
-        commits = g.search_commits(
+        commits = self.g.search_commits(
             query=f'author-email:{email} committer-date:<{self.obs_end.strftime("%Y-%m-%d")}'
         )
+        self.g = check_rate_limit()
         if commits.totalCount > 0:
             for commit in commits:
                 if not commit.author.url:
@@ -146,6 +145,7 @@ class DeveloperTracker:
                                 commit_etag,
                             ]
                         )
+                self.g = check_rate_limit()
         # loop through the weeks for that specific monthly only.
         # TODO : save all the commits in db/devs with S-focus in a separate organization file.
         # save all commits in a common file name.
@@ -185,7 +185,7 @@ class DeveloperTracker:
                     final_res = [final_res[0] + res[0], final_res[1] or res[0]]
             else:
                 final_res = self.get_developer_activity(
-                    name_email_pair[0], name_email_pair[1]
+                    name_email_pair[0], name_email_pair[1] # !: possible incorrect referencing? need to check with someone running this.
                 )
             if final_res[1]:
                 self.n_shared += 1

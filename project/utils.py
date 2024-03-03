@@ -3,9 +3,12 @@ import shutil
 import subprocess
 import logging
 from datetime import datetime
-from numpy import append
 import pandas as pd
-from project.constants import LOGS_PTH
+from github import Auth, Github
+from dotenv import load_dotenv
+from project.constants import GITHUB_OBJ, LOGS_PTH
+
+load_dotenv()
 
 def add_to_parquet(df: pd.DataFrame, file_pth: str):
     if os.path.isfile(file_pth):
@@ -58,3 +61,19 @@ def get_logger(filename: str, log_level = logging.INFO):
         format="%(asctime)s - %(levelname)s - %(message)s",
     )
     return logger
+
+def check_rate_limit():
+    current_token = "GITHUB_PAT_1"
+    if "CURRENT_TOKEN" not in os.environ:
+        os.environ["CURRENT_TOKEN"] = "GITHUB_PAT_1"
+    else:
+        current_token = os.getenv("CURRENT_TOKEN")
+    # !: Change this map based on the number of tokens available
+    g = Github(auth=Auth.Token(os.getenv(current_token)), per_page=100) # type: ignore
+    next_token_map = {"GITHUB_PAT_1": "GITHUB_PAT_2", "GITHUB_PAT_2":"GITHUB_PAT_3", "GITHUB_PAT_3":"GITHUB_PAT_1"}
+    rate_limit_status = g.get_rate_limit()
+    if not (rate_limit_status.core.remaining > 100 and rate_limit_status.search.remaining > 5):
+        current_token = next_token_map[current_token] # type: ignore
+        os.environ["CURRENT_TOKEN"] = current_token
+    g = Github(auth=Auth.Token(os.getenv(current_token)), per_page=100) # type: ignore
+    return g

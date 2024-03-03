@@ -34,7 +34,7 @@ class RepoAnalyzer:
         self.logger.addHandler(handler)
 
         # GitHub object
-        self.g = GITHUB_OBJ
+        self.g = check_rate_limit()
 
     def get_all_releases(self, org_repo: str):
         """Extract all the release for a specific repo in our predefined time period
@@ -43,11 +43,13 @@ class RepoAnalyzer:
             org_repo (str): compunded string of structure 'org/repo'
         """        
         releases = self.g.get_repo(org_repo).get_releases()
+        self.g = check_rate_limit()
         relevant_releases = []
         org_name, repo_name = org_repo.split(sep="/")
         for release in releases:
             if release.published_at.date()>=OBS_START_DATE.date() and release.published_at.date()<=OBS_END_DATE.date():
                 relevant_releases.append([release.id, release.published_at.strftime("%d/%m/%Y"), release.tag_name, repo_name])
+            self.g = check_rate_limit()
         releases_df = pd.DataFrame(relevant_releases, columns=[
             "id",
             "date",

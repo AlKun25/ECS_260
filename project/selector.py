@@ -5,7 +5,7 @@ import pandas as pd
 from github import Repository
 import warnings
 
-from project.utils import add_to_parquet, get_logger
+from project.utils import add_to_parquet, check_rate_limit, get_logger
 from project.constants import *
 
 # System setup
@@ -21,7 +21,7 @@ class RepositorySelector:
             file_pth (str): Path of the file to save details of all relevant repos 
         """        
         self.orgs = orgs
-        self.g = GITHUB_OBJ
+        self.g = check_rate_limit()
         self.file_pth = file_pth
         self.last_obs_date = date(2024, 2, 1)
 
@@ -79,6 +79,7 @@ class RepositorySelector:
     def process_orgs(self):
         for idx, link in enumerate(self.orgs["link"][6:7]):
             org = self.g.get_organization(link.split(sep="/")[-1])
+            self.g = check_rate_limit()
             org_name = org.name or "NA"
             logging.info(f"{idx}. {org_name} organization loaded")
             repos = org.get_repos()
@@ -87,6 +88,7 @@ class RepositorySelector:
                 result = self.select(repo, org_name)
                 if result and type(result)==tuple:
                     popular_repos.append(list(result))
+                self.g = check_rate_limit()
             if len(popular_repos) > 0:
                 df = pd.DataFrame(
                     popular_repos,
@@ -102,7 +104,6 @@ class RepositorySelector:
                         "url",
                     ],
                 )
-                # df['created_at'] = df['created_at'].astype(datetime)
                 add_to_parquet(df=df, file_pth=self.file_pth)
 
 if __name__=="__main__":

@@ -16,5 +16,3 @@ ORG_COMMITS_DIR = "/Users/kunalmundada/Documents/code/ECS_260/project/db/orgs"
 
 LOGS_PTH = "/Users/kunalmundada/Documents/code/ECS_260/project/logs"
 REPO_CLONE_DIR = "/Users/kunalmundada/Documents/code/ECS_260/project/repo_holder"
-
-GITHUB_OBJ = Github(auth=Auth.Token(os.getenv("GITHUB_PAT"))) # type: ignore
