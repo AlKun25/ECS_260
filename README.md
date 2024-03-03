@@ -27,10 +27,9 @@ Next, run main.py in the same directory.
 # run module  
 python main.py    
 ```
+
+## Project Structure
 <details>
-
-## Project structure
-
 <summary>This section provides details into specific important files in the project</summary>
 
 ```bash
