@@ -27,6 +27,48 @@ Next, run main.py in the same directory.
 # run module  
 python main.py    
 ```
+<details>
+
+## Project structure
+
+<summary>This section provides details into specific important files in the project</summary>
+
+```bash
+.
+├── project/
+│   ├── db/
+│   │   ├── devs/
+│   │   │   ├── developer_activity_0.parquet 
+│   │   │   ├── developer_activity_1.parquet
+│   │   │   └── ...
+│   │   ├── orgs/
+│   │   │   ├── RedHatOfficial/
+│   │   │   │   ├── RedHatOfficial_commits_0.parquet
+│   │   │   │   ├── RedHatOfficial_commits_1.parquet
+│   │   │   │   ├── ...
+│   │   │   │   ├── RedHatOfficial_weekly.parquet
+│   │   │   │   ├── releases.parquet
+│   │   │   │   └── weekly_dev_activity.parquet
+│   │   │   └── nodejs/
+│   │   │       ├── nodejs_commits_0.parquet
+│   │   │       ├── ...
+│   │   │       ├── nodejs_weekly.parquet
+│   │   │       ├── releases.parquet
+│   │   │       └── weekly_dev_activity.parquet
+│   │   ├── org_list.csv
+│   │   └── selected_repos.parquet
+│   ├── logs
+│   ├── repo_holder
+│   ├── constants.py
+│   ├── utils.py
+│   ├── selector.py
+│   ├── repo.py
+│   ├── developer.py
+│   └── ...
+└── main.py
+```
+
+</details>
 
 ## Team details
 We are team 16, also known as  "PublishOrPerish"
