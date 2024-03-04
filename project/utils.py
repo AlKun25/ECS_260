@@ -6,7 +6,7 @@ from datetime import datetime
 import pandas as pd
 from github import Auth, Github
 from dotenv import load_dotenv
-from project.constants import GITHUB_OBJ, LOGS_PTH
+from project.constants import LOGS_PTH
 
 load_dotenv()
 

@@ -2,7 +2,7 @@ import logging
 from datetime import date, datetime
 from tqdm import tqdm
 import pandas as pd
-from github import Repository
+from github import Repository, GithubException
 import warnings
 
 from project.utils import add_to_parquet, check_rate_limit, get_logger
@@ -45,9 +45,7 @@ class RepositorySelector:
             count = 0
             first_release_date = None
             is_released = None
-            if releases.totalCount == 0:
-                is_released = False
-            elif releases.totalCount < 10000:
+            try:
                 releases = releases.reversed
                 for release in releases:
                     if count > 0:
@@ -59,15 +57,25 @@ class RepositorySelector:
                         is_released = True
                     else:
                         is_released = False
-            else:
+            except GithubException as e:
                 is_released = True
+                self.review_repos.append([org, repo_name, e.status, e.data["message"]])
             # *:Only consider projects with release
             # *:Active: most recent commits within last 3 months
             if is_released and repo.get_commits(since=datetime(2023, 11, 1)).totalCount > 0:
                 created_on = repo.created_at
                 if abs((self.last_obs_date - created_on.date()).days) >= 365: # *:Repos created for at least 1 year
-                    n_contributors = repo.get_contributors().totalCount
-                    n_commits = repo.get_commits(since=OBS_START_DATE, until=OBS_END_DATE).totalCount
+                    n_contributors, n_commits = [0,0]
+                    try:
+                        n_contributors = repo.get_contributors().totalCount
+                    except GithubException as e:
+                            n_contributors = -1
+                            self.review_repos.append([org, repo_name, e.status, e.data["message"]])
+                    try:
+                        n_commits = repo.get_commits(since=OBS_START_DATE, until=OBS_END_DATE).totalCount
+                    except GithubException as e:
+                        n_commits = -1
+                        self.review_repos.append([org, repo_name, e.status, e.data["message"]])
                     logging.info(f"Repo {repo_name} satisfies all criteria")
                     return (
                         repo_name,
