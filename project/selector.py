@@ -39,22 +39,27 @@ class RepositorySelector:
         repo_url = repo.url
         n_stars = repo.stargazers_count
         if n_stars > 100: # *:At least 100 stars
-            releases = repo.get_releases().reversed
+            releases = repo.get_releases()
+            
             count = 0
             first_release_date = None
             is_released = None
-            for release in releases:
-                if count > 0:
-                    break
-                first_release_date = release.created_at.date()
-                count += 1
-            if first_release_date != None:
-                if (OBS_START_DATE.date() - first_release_date).days > 0:
-                    is_released = True
-                else:
-                    is_released = False
-            else:
+            if releases.totalCount == 0:
                 is_released = False
+            elif releases.totalCount < 10000:
+                releases = releases.reversed
+                for release in releases:
+                    if count > 0:
+                        break
+                    first_release_date = release.created_at.date()
+                    count += 1
+                if first_release_date != None:
+                    if (OBS_START_DATE.date() - first_release_date).days > 0:
+                        is_released = True
+                    else:
+                        is_released = False
+            else:
+                is_released = True
             # *:Only consider projects with release
             # *:Active: most recent commits within last 3 months
             if is_released and repo.get_commits(since=datetime(2023, 11, 1)).totalCount > 0:
