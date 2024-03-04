@@ -24,6 +24,7 @@ class RepositorySelector:
         self.g = check_rate_limit()
         self.file_pth = file_pth
         self.last_obs_date = date(2024, 2, 1)
+        self.review_repos = []
 
     def select(self, repo: Repository.Repository, org: str)-> bool | tuple | None:
         """Checks whether a repo satifies all our criteria for selection
@@ -110,6 +111,9 @@ class RepositorySelector:
                     ],
                 )
                 add_to_parquet(df=df, file_pth=self.file_pth)
+        review_file = open(REVIEW_REPOS_FILE, "w")
+        review_file.writelines(self.review_repos)
+        review_file.close()
 
 if __name__=="__main__":
     # Load list of all organizations
