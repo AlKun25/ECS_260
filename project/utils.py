@@ -69,11 +69,11 @@ def check_rate_limit():
     else:
         current_token = os.getenv("CURRENT_TOKEN")
     # !: Change this map based on the number of tokens available
-    g = Github(auth=Auth.Token(os.getenv(current_token)), per_page=100) # type: ignore
+    g = Github(auth=Auth.Token(os.getenv(current_token)), per_page=100, seconds_between_requests=1, retry=10) # type: ignore
     next_token_map = {"GITHUB_PAT_1": "GITHUB_PAT_2", "GITHUB_PAT_2":"GITHUB_PAT_3", "GITHUB_PAT_3":"GITHUB_PAT_1"}
     rate_limit_status = g.get_rate_limit()
     if not (rate_limit_status.core.remaining > 100 and rate_limit_status.search.remaining > 5):
         current_token = next_token_map[current_token] # type: ignore
         os.environ["CURRENT_TOKEN"] = current_token
-    g = Github(auth=Auth.Token(os.getenv(current_token)), per_page=100) # type: ignore
+    g = Github(auth=Auth.Token(os.getenv(current_token)), per_page=100, seconds_between_requests=1, retry=10) # type: ignore
     return g
