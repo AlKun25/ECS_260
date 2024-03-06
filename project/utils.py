@@ -3,6 +3,7 @@ import shutil
 import subprocess
 import logging
 from datetime import datetime
+from isort import file
 import pandas as pd
 from github import Auth, Github
 from dotenv import load_dotenv
@@ -10,31 +11,40 @@ from project.constants import LOGS_PTH
 
 load_dotenv()
 
-def add_to_parquet(df: pd.DataFrame, file_pth: str):
-    if os.path.isfile(file_pth):
-        df.to_parquet(file_pth, engine="fastparquet", append=True)
-    else:
-        df.to_parquet(file_pth, engine="fastparquet")
+def add_to_file(df: pd.DataFrame, file_pth: str):
+    _, file_extension = os.path.splitext(file_pth) 
+    if file_extension == ".csv":
+        if os.path.isfile(file_pth):
+            df.to_csv(file_pth, mode='a', index=False, header=False)
+        else:
+            df.to_csv(file_pth, mode='w')
+    elif file_extension == ".parquet":
+        if os.path.isfile(file_pth):
+            df.to_parquet(file_pth, engine="fastparquet", append=True)
+        else:
+            df.to_parquet(file_pth, engine="fastparquet")
 
-def check_in_csv(item: any, csv_pth: str, col_name: str): # type: ignore
-    if os.path.isfile(csv_pth):
-        df = pd.read_csv(csv_pth, engine="pyarrow")
-        if item in df[col_name]:
-            return True
+def check_in_file(item: any, file_pth: str, col_name: str): # type: ignore
+    _, file_extension = os.path.splitext(file_pth)
+    if file_extension == ".parquet":
+        if os.path.isfile(file_pth):
+            df = pd.read_parquet(file_pth, engine="fastparquet")
+            if item in df[col_name]:
+                return True
+            else:
+                return False
         else:
             return False
-    else:
-        return False
-
-def check_in_parquet(item: any, paq_pth: str, col_name: str): # type: ignore
-    if os.path.isfile(paq_pth):
-        df = pd.read_parquet(paq_pth, engine="fastparquet")
-        if item in df[col_name]:
-            return True
+    elif file_extension == ".csv":
+        if os.path.isfile(file_pth):
+            df = pd.read_csv(file_pth, engine="pyarrow")
+            if item in df[col_name]:
+                return True
+            else:
+                return False
         else:
             return False
-    else:
-        return False
+        
 
 def git_clone_repo(repo_url, target_directory):
     # Clone the repository
@@ -72,6 +82,7 @@ def check_rate_limit():
     g = Github(auth=Auth.Token(os.getenv(current_token)), per_page=100, seconds_between_requests=1, retry=10) # type: ignore
     next_token_map = {"GITHUB_PAT_1": "GITHUB_PAT_2", "GITHUB_PAT_2":"GITHUB_PAT_3", "GITHUB_PAT_3":"GITHUB_PAT_1"}
     rate_limit_status = g.get_rate_limit()
+    print(current_token, g.rate_limiting)
     if not (rate_limit_status.core.remaining > 100 and rate_limit_status.search.remaining > 5):
         current_token = next_token_map[current_token] # type: ignore
         os.environ["CURRENT_TOKEN"] = current_token

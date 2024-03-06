@@ -56,7 +56,7 @@ class RepoAnalyzer:
             "version",
             "repo_name"
         ])
-        add_to_parquet(releases_df, ORG_COMMITS_DIR+f"/{org_name}/releases.parquet")
+        add_to_file(releases_df, ORG_COMMITS_DIR+f"/{org_name}/releases.parquet")
     
     def get_all_commits(self):
         """It downloads all the commits for all the repos.
@@ -73,6 +73,8 @@ class RepoAnalyzer:
         )
 
         for org in org_commits_sum_sorted["org"]:
+            if org != "The Guardian":
+                continue
             org_repos = repos[repos["org"] == org]
             # Sort the filtered DataFrame by commits in ascending order
             org_repos_df_sorted = org_repos.sort_values(by="commits", ascending=True)
@@ -139,7 +141,7 @@ class RepoAnalyzer:
                         ],
                     ).fillna(0.0)
                     file_num = org_commit_counter // 10000
-                    add_to_parquet(
+                    add_to_file(
                         df=commit_df,
                         file_pth=f"{org_dir_path}/{org_name}_commits_{file_num}.parquet",
                     )
@@ -257,7 +259,7 @@ class RepoAnalyzer:
                 "n_commits",
             ],
         )
-        add_to_parquet(week_repo_df, weekly_org_pth)
+        add_to_file(week_repo_df, weekly_org_pth)
 
 
 if __name__ == "__main__":

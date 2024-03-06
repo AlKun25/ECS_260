@@ -195,7 +195,7 @@ for repo in repos["url"]:
             ],
         )
         logging.warning("Month added to commit activity CSV.")
-        add_to_parquet(df=month_df, file_pth=COMMIT_ACTIVITY_CSV)
+        add_to_file(df=month_df, file_pth=COMMIT_ACTIVITY_CSV)
 
         # Update start date and convert to datetime
         start_date = datetime.combine(finish_date, datetime.min.time())

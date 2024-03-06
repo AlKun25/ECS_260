@@ -218,4 +218,4 @@ class DeveloperTracker:
         )
 
         pth = f"{ORG_COMMITS_DIR}/{self.org_name}/weekly_dev_activity.parquet"
-        add_to_parquet(weekly_activity_df, pth)
+        add_to_file(weekly_activity_df, pth)
