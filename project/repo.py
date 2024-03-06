@@ -56,7 +56,7 @@ class RepoAnalyzer:
             "version",
             "repo_name"
         ])
-        add_to_file(releases_df, ORG_COMMITS_DIR+f"/{org_name}/releases.parquet")
+        add_to_file(releases_df, ORG_COMMITS_DIR+f"/{org_name}/releases.csv")
     
     def get_all_commits(self):
         """It downloads all the commits for all the repos.
@@ -143,7 +143,7 @@ class RepoAnalyzer:
                     file_num = org_commit_counter // 10000
                     add_to_file(
                         df=commit_df,
-                        file_pth=f"{org_dir_path}/{org_name}_commits_{file_num}.parquet",
+                        file_pth=f"{org_dir_path}/{org_name}_commits_{file_num}.csv",
                     )
                     org_commit_counter += 1
                 delete_repo(repo_directory=repo_pth)
@@ -157,10 +157,10 @@ class RepoAnalyzer:
             org_name (str): Name of the organization, as in a URL
         """        
         for org_commit_csv in glob(
-            f"{ORG_COMMITS_DIR}/{org_name}/{org_name}_commits*.parquet"
+            f"{ORG_COMMITS_DIR}/{org_name}/{org_name}_commits*.csv"
         ):
             self.org = org_name # !:use this only in analysis part
-            org_df = pd.read_parquet(org_commit_csv, engine="fastparquet")
+            org_df = pd.read_csv(org_commit_csv, engine="pyarrow")
             repos = org_df["repo"].unique()
             for repo in repos:
                 repo_df = org_df[org_df["repo"] == repo]
@@ -199,14 +199,14 @@ class RepoAnalyzer:
         pass
 
     def analyze_weekly(self, week_df: pd.DataFrame, sow: datetime, eow: datetime):
-        """Saves weekly summary overview of each repo in db/weekly_analysis.parquet.
+        """Saves weekly summary overview of each repo in db/weekly_analysis.csv.
 
         Args:
             week_df (pd.DataFrame): Contains weekly commits for a specific repo
             sow (datetime): Start of the week
             eow (datetime): End of the week
         """        
-        weekly_org_pth = f"{ORG_COMMITS_DIR}/{str(week_df['org'].unique()[0])}/{str(week_df['org'].unique()[0])}_weekly.parquet"
+        weekly_org_pth = f"{ORG_COMMITS_DIR}/{str(week_df['org'].unique()[0])}/{str(week_df['org'].unique()[0])}_weekly.csv"
 
         weekly_metrics = dict()
         weekly_metrics["unit_complexity"] = get_metric_stats(

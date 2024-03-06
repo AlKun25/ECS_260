@@ -48,13 +48,13 @@ class DeveloperTracker:
         self.repo_name = ic(repo)
 
         dev_files = glob(
-            f"{DEVELOPER_ACTIVITY_DIR}/developer_activity_*.parquet"
+            f"{DEVELOPER_ACTIVITY_DIR}/developer_activity_*.csv"
         )
         if(len(dev_files)>0):
             latest_file_name = dev_files[-1] 
             latest_file_num = int((latest_file_name.split(sep="_")[-1]).split(sep=".")[0])
             self.all_developer_commits = (
-                latest_file_num * 10000 + pd.read_parquet(latest_file_name).shape[0]
+                latest_file_num * 10000 + pd.read_csv(latest_file_name, engine="pyarrow").shape[0]
             )
         else:
             self.all_developer_commits = 0
@@ -102,7 +102,7 @@ class DeveloperTracker:
             list: it contains number of commits made outside the repo and whether developer is shared or not.
         """        
         email_commits = []
-        # TODO : Save all commits to a single series of developers.parquet
+        # TODO : Save all commits to a single series of developers.csv
         shared = False
         outside_repo_commits = 0
         self.obs_end = self.obs_end + relativedelta(days=1)
@@ -165,9 +165,9 @@ class DeveloperTracker:
         )
         self.all_developer_commits += commits_df.shape[0]
         file_num = self.all_developer_commits // 10000
-        add_to_parquet(
+        add_to_file(
             df=commits_df,
-            file_pth=f"{DEVELOPER_ACTIVITY_DIR}/developer_activity_{file_num}.parquet",
+            file_pth=f"{DEVELOPER_ACTIVITY_DIR}/developer_activity_{file_num}.csv",
         )
         return [outside_repo_commits, shared]
 
@@ -217,5 +217,5 @@ class DeveloperTracker:
             ],
         )
 
-        pth = f"{ORG_COMMITS_DIR}/{self.org_name}/weekly_dev_activity.parquet"
+        pth = f"{ORG_COMMITS_DIR}/{self.org_name}/weekly_dev_activity.csv"
         add_to_file(weekly_activity_df, pth)
