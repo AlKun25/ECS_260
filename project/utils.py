@@ -3,7 +3,6 @@ import shutil
 import subprocess
 import logging
 from datetime import datetime
-from isort import file
 import pandas as pd
 from github import Auth, Github
 from dotenv import load_dotenv
