@@ -7,6 +7,7 @@ import pandas as pd
 from glob import glob
 from pydriller import Repository
 from dotenv import load_dotenv
+from typing import Optional
 import warnings
 from project.developer import DeveloperTracker
 
@@ -39,7 +40,6 @@ class RepoAnalyzer:
         for release in releases:
             if release.published_at.date()>=OBS_START_DATE.date() and release.published_at.date()<=OBS_END_DATE.date():
                 relevant_releases.append([release.id, release.published_at.strftime("%d/%m/%Y"), release.tag_name, repo_name])
-            self.g = check_rate_limit()
         releases_df = pd.DataFrame(relevant_releases, columns=[
             "id",
             "date",
@@ -47,9 +47,10 @@ class RepoAnalyzer:
             "repo_name"
         ])
         add_to_file(releases_df, ORG_COMMITS_DIR+f"/{org_name}/releases.csv")
+        self.g = check_rate_limit()
         logging.info(f"Saved all releases for {org_repo}")
     
-    def get_all_commits(self):
+    def get_all_commits(self, ref_org: Optional[str]):
         """It downloads all the commits for all the repos.
         Scheduling: Orgs and repos with lower number of commits are priortized for processing
         """        
@@ -64,15 +65,22 @@ class RepoAnalyzer:
         )
 
         for org in org_commits_sum_sorted["org"]:
-            # if org != "The Guardian":
-            #     continue
+            if len(ref_org)>0:
+                if org != ref_org:
+                    continue
             org_repos = repos[repos["org"] == org]
             # Sort the filtered DataFrame by commits in ascending order
             org_repos_df_sorted = org_repos.sort_values(by="commits", ascending=True)
 
             org_commit_counter = 0
+            visited=False
+            ref_repo = "bosh-bootloader"
             for repo in org_repos_df_sorted["url"]:
                 org_name, repo_name = (repo.split(sep="repos/")[-1]).split(sep="/")
+                if not visited and repo_name != ref_repo:
+                    continue
+                elif not visited and repo_name == ref_repo:
+                    visited=True
                 org_dir_path = f"{ORG_COMMITS_DIR}/{org_name}"
                 if not os.path.exists(org_dir_path):
                     # If the directory doesn't exist, create it
@@ -264,5 +272,5 @@ class RepoAnalyzer:
 if __name__ == "__main__":
     # Usage
     analyzer = RepoAnalyzer()
-    # analyzer.get_all_commits()
-    analyzer.analyze_repos("RedHatOfficial")
+    org_name = input("Which org to download? ")
+    analyzer.get_all_commits(ref_org=org_name)
