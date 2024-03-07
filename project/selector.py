@@ -10,7 +10,7 @@ from project.constants import *
 
 # System setup
 warnings.filterwarnings("ignore")
-logger = get_logger(filename=__file__)
+logger = get_logger()
 
 class RepositorySelector:
     def __init__(self, orgs: pd.DataFrame, file_pth: str):

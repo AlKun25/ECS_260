@@ -14,25 +14,15 @@ from project.utils import *
 from project.constants import *
 
 # System setup
-warnings.filterwarnings("ignore")
 load_dotenv()
+warnings.filterwarnings("ignore")
+logger = get_logger()
 
 
 class RepoAnalyzer:
     def __init__(self):
         """This is the main class that handles both the commit downloads for selected repos as well as metric retrieval
         """        
-        # Configure logging
-        self.logger = logging.getLogger(__name__)
-        self.logger.setLevel(logging.WARNING)
-        handler = logging.FileHandler(
-            f"{LOGS_PTH}/{__file__.split(sep='/')[-1]}_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.log"
-        )
-        handler.setLevel(logging.WARNING)
-        formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
-        handler.setFormatter(formatter)
-        self.logger.addHandler(handler)
-
         # GitHub object
         self.g = check_rate_limit()
 
@@ -57,6 +47,7 @@ class RepoAnalyzer:
             "repo_name"
         ])
         add_to_file(releases_df, ORG_COMMITS_DIR+f"/{org_name}/releases.csv")
+        logging.info(f"Saved all releases for {org_repo}")
     
     def get_all_commits(self):
         """It downloads all the commits for all the repos.
@@ -73,8 +64,8 @@ class RepoAnalyzer:
         )
 
         for org in org_commits_sum_sorted["org"]:
-            if org != "The Guardian":
-                continue
+            # if org != "The Guardian":
+            #     continue
             org_repos = repos[repos["org"] == org]
             # Sort the filtered DataFrame by commits in ascending order
             org_repos_df_sorted = org_repos.sort_values(by="commits", ascending=True)
@@ -91,6 +82,7 @@ class RepoAnalyzer:
                 repo_pth = f"{REPO_CLONE_DIR}/{repo_name}"
                 self.get_all_releases(f"{org_name}/{repo_name}")
                 git_clone_repo(repo_url=repo_url, target_directory=repo_pth)
+                
 
                 load_repo = Repository(
                     path_to_repo=repo_pth,
@@ -148,7 +140,9 @@ class RepoAnalyzer:
                     org_commit_counter += 1
                 delete_repo(repo_directory=repo_pth)
                 print(f"Saved all commits from Repo: {org_name}/{repo_name}")
+                logging.info(f"Saved all commits from Repo: {org_name}/{repo_name}")
             print(f"Saved all commits from Org: {org}")
+            logging.info(f"Saved all commits from Org: {org}")
 
     def analyze_repos(self, org_name: str):
         """Loop through all commits from all selected repos within a specific org
@@ -160,11 +154,13 @@ class RepoAnalyzer:
             f"{ORG_COMMITS_DIR}/{org_name}/{org_name}_commits*.csv"
         ):
             self.org = org_name # !:use this only in analysis part
+            logging.info(f"Analyzing {org_name}")
             org_df = pd.read_csv(org_commit_csv, engine="pyarrow")
             repos = org_df["repo"].unique()
             for repo in repos:
                 repo_df = org_df[org_df["repo"] == repo]
                 self.repo = repo # !:use this only in analysis part
+                logging.info(f"Analyzing {repo}")
                 self.analyze_repo(repo_df=repo_df)
 
     def analyze_repo(self, repo_df: pd.DataFrame):
@@ -174,6 +170,7 @@ class RepoAnalyzer:
             repo_df (pd.DataFrame): Contains all commits for a specific repo 
         """        
         for year in [2022, 2023]:
+            logging.info(f"Analyzing for {year}")
             year_df = repo_df[repo_df["year"] == year]
             if year_df.shape[0] > 0:
                 self.year = year # !:use this only in analysis part
@@ -187,6 +184,7 @@ class RepoAnalyzer:
         """        
         active_weeks = year_df["week"].unique()
         for week in active_weeks:
+            logging.info("Analyzing for {week}")
             week_df = year_df[year_df["week"] == week]
             if week_df.shape[0] > 0:
                 self.week = week # !:use this only in analysis part
@@ -260,6 +258,7 @@ class RepoAnalyzer:
             ],
         )
         add_to_file(week_repo_df, weekly_org_pth)
+        logging.info(f"Analysis for period {sow}-{eow} done.")
 
 
 if __name__ == "__main__":
