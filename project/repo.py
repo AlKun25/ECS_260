@@ -65,7 +65,7 @@ class RepoAnalyzer:
         )
 
         for org in org_commits_sum_sorted["org"]:
-            if len(ref_org)>0:
+            if len(ref_org)>0: # type: ignore
                 if org != ref_org:
                     continue
             org_repos = repos[repos["org"] == org]
@@ -73,14 +73,14 @@ class RepoAnalyzer:
             org_repos_df_sorted = org_repos.sort_values(by="commits", ascending=True)
 
             org_commit_counter = 0
-            visited=False
-            ref_repo = "bosh-bootloader"
+            # visited=False
+            # ref_repo = "bosh-bootloader"
             for repo in org_repos_df_sorted["url"]:
                 org_name, repo_name = (repo.split(sep="repos/")[-1]).split(sep="/")
-                if not visited and repo_name != ref_repo:
-                    continue
-                elif not visited and repo_name == ref_repo:
-                    visited=True
+                # if not visited and repo_name != ref_repo:
+                #     continue
+                # elif not visited and repo_name == ref_repo:
+                #     visited=True
                 org_dir_path = f"{ORG_COMMITS_DIR}/{org_name}"
                 if not os.path.exists(org_dir_path):
                     # If the directory doesn't exist, create it
@@ -192,7 +192,7 @@ class RepoAnalyzer:
         """        
         active_weeks = year_df["week"].unique()
         for week in active_weeks:
-            logging.info("Analyzing for {week}")
+            logging.info(f"Analyzing for {week}")
             week_df = year_df[year_df["week"] == week]
             if week_df.shape[0] > 0:
                 self.week = week # !:use this only in analysis part
@@ -233,6 +233,15 @@ class RepoAnalyzer:
             commit_count = group.shape[0]
             contributor_emails_pair.append([name, emails, commit_count])
         
+        # with open("/Users/kunalmundada/Documents/code/ECS_260/project/db/temp/developer_tracker_redhat.txt", "a") as file:
+        #     file.write(str(contributor_emails_pair))
+        #     file.write(str([sow, eow]))
+        #     file.write(str([week_df["org"].unique()[0], type(week_df["org"].unique()[0])]))
+        #     file.write(str([week_df["repo"].unique()[0], type(week_df["repo"].unique()[0])]))
+        #     file.write("\n")
+        
+        # file.close()
+        
         dev_activity_obj = DeveloperTracker(contributors_email=contributor_emails_pair, obs_start=sow, obs_end=eow, org=week_df["org"].unique()[0], repo=week_df["repo"].unique()[0])
         dev_activity_obj.weekly_activity()
         n_shared = dev_activity_obj.n_shared
@@ -272,5 +281,6 @@ class RepoAnalyzer:
 if __name__ == "__main__":
     # Usage
     analyzer = RepoAnalyzer()
-    org_name = input("Which org to download? ")
-    analyzer.get_all_commits(ref_org=org_name)
+    # org_name = input("Which org to download? ")
+    # analyzer.get_all_commits(ref_org=org_name)
+    analyzer.analyze_repos(org_name="RedHatOfficial")
