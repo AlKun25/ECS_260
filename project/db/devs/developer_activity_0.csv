@@ -1,0 +1,50 @@
+name,username,repo,org,date,week,email,etag
+Dan Clark,RedHatDan,ansible-role-rhel9-hipaa,RedHatOfficial,2023-11-30 00:40:18+00:00,48,danclark@redhat.com,e281fdd8985254f8c461e0f78d2d4245d0990932
+Dan Clark,RedHatDan,ansible-role-rhel9-ospp,RedHatOfficial,2023-11-30 00:40:19+00:00,48,danclark@redhat.com,20cd775c23df725af155542789282474ee37342c
+Dan Clark,RedHatDan,ansible-role-rhel9-anssi_bp28_minimal,RedHatOfficial,2023-11-30 00:40:15+00:00,48,danclark@redhat.com,ffce0de28d0311fcc73c0d43e0b8bae4ca907de6
+Dan Clark,RedHatDan,ansible-role-rhel7-c2s,RedHatOfficial,2023-11-30 00:39:58+00:00,48,danclark@redhat.com,4cfa8465612bc17e19552f32fe1f87d976b41dfb
+Dan Clark,RedHatDan,ansible-role-rhel8-hipaa,RedHatOfficial,2023-11-30 00:40:09+00:00,48,danclark@redhat.com,b6b474f63a34d0ccb63ddac83673b33f7d0e9dd3
+Dan Clark,RedHatDan,ansible-role-rhel8-rht-ccp,RedHatOfficial,2023-11-30 00:40:11+00:00,48,danclark@redhat.com,a2c59989e4ca245f57c490a114a279c1f5e9920e
+Dan Clark,RedHatDan,ansible-role-rhel7-cis,RedHatOfficial,2023-11-30 00:39:58+00:00,48,danclark@redhat.com,12cdd0b8a55dd29c70ee5359631a228b19901761
+Dan Clark,RedHatDan,ansible-role-rhel7-anssi_nt28_enhanced,RedHatOfficial,2023-11-30 00:38:55+00:00,48,danclark@redhat.com,9cd0b802f79de4c0c0fe460fecb9a635813e24fc
+Dan Clark,RedHatDan,ansible-role-rhel8-pci-dss,RedHatOfficial,2023-11-30 00:40:11+00:00,48,danclark@redhat.com,8df55d029a3442736fa7aaadc9e9b7d3ea60365f
+Dan Clark,RedHatDan,ansible-role-rhel7-ospp,RedHatOfficial,2023-11-30 00:40:01+00:00,48,danclark@redhat.com,ed2690a8e57d01db127979115f6603707f2cab92
+Dan Clark,RedHatDan,ansible-role-rhel7-hipaa,RedHatOfficial,2023-11-30 00:40:01+00:00,48,danclark@redhat.com,81a5889043aa09d6e7ce2892714adeb3c6b3d6d7
+Dan Clark,RedHatDan,ansible-role-rhv4-rhvh-stig,RedHatOfficial,2023-11-30 00:40:21+00:00,48,danclark@redhat.com,2950bcfabdb90b4f362f24c563326f12830c8501
+Dan Clark,RedHatDan,ansible-role-rhel7-anssi_nt28_high,RedHatOfficial,2023-11-30 00:39:56+00:00,48,danclark@redhat.com,326e8924afb8811d5db3b46cac5da3ceeab19cc2
+Dan Clark,RedHatDan,ansible-role-rhel7-anssi_nt28_intermediary,RedHatOfficial,2023-11-30 00:39:56+00:00,48,danclark@redhat.com,e18feec230e7cf665105a39924bd9376f37c2aec
+Dan Clark,RedHatDan,ansible-role-rhel8-anssi_bp28_high,RedHatOfficial,2023-11-30 00:40:05+00:00,48,danclark@redhat.com,003e758fb20b45d347ec000754baa1ab585cba85
+Dan Clark,RedHatDan,ansible-role-rhv4-rhvh-vpp,RedHatOfficial,2023-11-30 00:40:22+00:00,48,danclark@redhat.com,a33f0c238330190d74355a1f8b2b153aa65db7bd
+Dan Clark,RedHatDan,ansible-role-rhel8-anssi_bp28_minimal,RedHatOfficial,2023-11-30 00:40:07+00:00,48,danclark@redhat.com,53032369547597a68d6689b9429a1f753392d4e6
+Dan Clark,RedHatDan,ansible-role-rhel9-cui,RedHatOfficial,2023-11-30 00:40:16+00:00,48,danclark@redhat.com,9141551e9fa32bb4e89dae1c4aae710fb1cc4e52
+Dan Clark,RedHatDan,ansible-role-rhel8-anssi_bp28_intermediary,RedHatOfficial,2023-11-30 00:40:06+00:00,48,danclark@redhat.com,6bfbd357cbe8a55969e86f5a357dfca7e3bdd2e8
+Dan Clark,RedHatDan,ansible-role-rhel8-ospp,RedHatOfficial,2023-11-30 00:40:10+00:00,48,danclark@redhat.com,9b9939fd1c0caa00fba8fee93b238e865202746e
+Dan Clark,RedHatDan,ansible-role-rhel7-cui,RedHatOfficial,2023-11-30 00:40:00+00:00,48,danclark@redhat.com,010fcc3b4e04004014b60d12c30db54d0b12df40
+Dan Clark,RedHatDan,ansible-role-rhel7-anssi_nt28_minimal,RedHatOfficial,2023-11-30 00:39:57+00:00,48,danclark@redhat.com,9ab6c3c96c26531777cf666de5d1fa39a95b11de
+Dan Clark,RedHatDan,ansible-role-rhel8-cjis,RedHatOfficial,2023-11-30 00:40:08+00:00,48,danclark@redhat.com,d5ba3463463c5d2ba1e467881882e213911a4a9f
+Dan Clark,RedHatDan,ansible-role-rhel7-cjis,RedHatOfficial,2023-11-30 00:39:59+00:00,48,danclark@redhat.com,1f6836107622361f67a0f7469120fdbbb66c80cb
+Dan Clark,RedHatDan,ansible-role-rhel9-anssi_bp28_intermediary,RedHatOfficial,2023-11-30 00:40:14+00:00,48,danclark@redhat.com,fda8ce67383ad7639e7254638b9c5eb3ec3f39f7
+Dan Clark,RedHatDan,ansible-role-rhel9-anssi_bp28_enhanced,RedHatOfficial,2023-11-30 00:40:13+00:00,48,danclark@redhat.com,bc90f076d98821e163c6d74cd80cc221f4fc9b61
+Dan Clark,RedHatDan,ansible-role-rhel7-pci-dss,RedHatOfficial,2023-11-30 00:40:02+00:00,48,danclark@redhat.com,37e8bc11705e5fa2945a5b62ac5fbb83ca5e6740
+Dan Clark,RedHatDan,ansible-role-rhel9-stig,RedHatOfficial,2023-11-30 00:40:20+00:00,48,danclark@redhat.com,e98ce992e0f3940c44c8733dbf8b9a64c907c08d
+Dan Clark,RedHatDan,ansible-role-rhel8-stig,RedHatOfficial,2023-11-30 00:40:12+00:00,48,danclark@redhat.com,b76fc377b67c5980101852face9aaf88a45f91ad
+Dan Clark,RedHatDan,ansible-role-rhel8-cis,RedHatOfficial,2023-11-30 00:40:07+00:00,48,danclark@redhat.com,23adba7690f4cf5d78769e5d887bbb744e46e607
+Dan Clark,RedHatDan,ansible-role-rhel9-pci-dss,RedHatOfficial,2023-11-30 00:40:20+00:00,48,danclark@redhat.com,7ac90a751d81263df53323473753ac96d8d75691
+Dan Clark,RedHatDan,ansible-role-rhel8-cui,RedHatOfficial,2023-11-30 00:40:09+00:00,48,danclark@redhat.com,9332dd471c358960a0aec919fc59ec32134db69e
+Dan Clark,RedHatDan,ansible-role-ami-export,dmc5179,2023-12-01 10:31:28-05:00,48,danclark@redhat.com,3003f2b047de93b07bbf7a810966a19ba4b824e5
+Dan Clark,RedHatDan,ansible-role-rhel7-rht-ccp,RedHatOfficial,2023-11-30 00:40:03+00:00,48,danclark@redhat.com,9a5e305967d034b0abd126dc3ea1726cd5bd7e6e
+Dan Clark,RedHatDan,ansible-role-rhel9-cis,RedHatOfficial,2023-11-30 00:40:16+00:00,48,danclark@redhat.com,4753dc81b5d774301272159b52df3bba5f4a7d86
+Dan Clark,RedHatDan,ansible-role-rhel9-ism,RedHatOfficial,2023-11-30 00:40:18+00:00,48,danclark@redhat.com,fa22ccbf831bf0d6d384b1be584315767d51c16c
+mallmen,mallmen,ocp4-vsphere-upi-automation,romerobu,2022-03-02 16:45:13-07:00,9,mallmen00@gmail.com,bfb2947a750e020ef5c06dd6f8f427a43ab49f8e
+mallmen,mallmen,ocp4-vsphere-upi-automation,romerobu,2022-03-01 13:04:16-07:00,9,mallmen00@gmail.com,1b5340b3fa0851a342b412a949acfc527ca198d7
+mallmen,mallmen,ocp4-vsphere-upi-automation,skzhussain001,2022-03-02 16:45:13-07:00,9,mallmen00@gmail.com,bfb2947a750e020ef5c06dd6f8f427a43ab49f8e
+mallmen,mallmen,ocp4-vsphere-upi-automation,skzhussain001,2022-03-01 13:04:16-07:00,9,mallmen00@gmail.com,1b5340b3fa0851a342b412a949acfc527ca198d7
+mallmen,mallmen,ocp4-vsphere-upi-automation-gauth,gauthiersiri,2022-03-02 16:45:13-07:00,9,mallmen00@gmail.com,bfb2947a750e020ef5c06dd6f8f427a43ab49f8e
+mallmen,mallmen,ocp4-vsphere-upi-automation-gauth,gauthiersiri,2022-03-01 13:04:16-07:00,9,mallmen00@gmail.com,1b5340b3fa0851a342b412a949acfc527ca198d7
+mallmen,mallmen,ocp4-vsphere-upi-automation,skzhussain001,2022-03-24 10:32:06-07:00,12,mallmen00@gmail.com,d72df8377b789060f9787192f80ab6638cd394be
+mallmen,mallmen,ocp4-vsphere-upi-automation-gauth,gauthiersiri,2022-03-24 10:32:06-07:00,12,mallmen00@gmail.com,d72df8377b789060f9787192f80ab6638cd394be
+mallmen,mallmen,ocp4-vsphere-upi-automation-gauth,gauthiersiri,2022-08-31 09:49:37-07:00,35,mallmen00@gmail.com,bd7a2e189e0eb704f339a41f05a89aaa1a9ce2c1
+David Dreggors,ddreggors,ocp4-vsphere-upi-automation-gauth,gauthiersiri,2022-10-21 15:17:43-07:00,42,59747566+ddreggors@users.noreply.github.com,2549424b1b1a2e1e1f4e834d87a6282abc393843
+David Dreggors,ddreggors,ocp4-vsphere-upi-automation-gauth,gauthiersiri,2022-11-16 12:50:47-07:00,46,59747566+ddreggors@users.noreply.github.com,0059e422ca7891029d22694757ee0f87282d2733
+mallmen,mallmen,ocp4-vsphere-upi-automation-gauth,gauthiersiri,2022-11-16 13:05:28-07:00,46,mallmen00@gmail.com,949ee968848145ec500b71c3b70a5bff7fb49b26
+mallmen,mallmen,ocp4-vsphere-upi-automation-gauth,gauthiersiri,2022-11-16 13:03:36-07:00,46,mallmen00@gmail.com,c19a571f2adff0c610d9d193306b48d0ac73b7c1

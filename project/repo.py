@@ -233,15 +233,6 @@ class RepoAnalyzer:
             commit_count = group.shape[0]
             contributor_emails_pair.append([name, emails, commit_count])
         
-        # with open("/Users/kunalmundada/Documents/code/ECS_260/project/db/temp/developer_tracker_redhat.txt", "a") as file:
-        #     file.write(str(contributor_emails_pair))
-        #     file.write(str([sow, eow]))
-        #     file.write(str([week_df["org"].unique()[0], type(week_df["org"].unique()[0])]))
-        #     file.write(str([week_df["repo"].unique()[0], type(week_df["repo"].unique()[0])]))
-        #     file.write("\n")
-        
-        # file.close()
-        
         dev_activity_obj = DeveloperTracker(contributors_email=contributor_emails_pair, obs_start=sow, obs_end=eow, org=week_df["org"].unique()[0], repo=week_df["repo"].unique()[0])
         dev_activity_obj.weekly_activity()
         n_shared = dev_activity_obj.n_shared
@@ -281,6 +272,6 @@ class RepoAnalyzer:
 if __name__ == "__main__":
     # Usage
     analyzer = RepoAnalyzer()
-    # org_name = input("Which org to download? ")
+    org_name = input("Which org to download? ")
     # analyzer.get_all_commits(ref_org=org_name)
-    analyzer.analyze_repos(org_name="RedHatOfficial")
+    analyzer.analyze_repos(org_name="RedHatOfficial") # name of the folder in the orgs folder
