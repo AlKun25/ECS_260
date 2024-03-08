@@ -272,6 +272,7 @@ class RepoAnalyzer:
 if __name__ == "__main__":
     # Usage
     analyzer = RepoAnalyzer()
-    org_name = input("Which org to download? ")
+    # org_name = input("Which org to download? ")
     # analyzer.get_all_commits(ref_org=org_name)
-    analyzer.analyze_repos(org_name="RedHatOfficial") # name of the folder in the orgs folder
+    org_folder = input("Which org folder to analyse?")
+    analyzer.analyze_repos(org_name=org_folder) # name of the folder in the orgs folder

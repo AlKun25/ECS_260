@@ -116,7 +116,7 @@ class DeveloperTracker:
         logging.info(f"Looking for commits from {name} by email : {email}")
         self.g = check_rate_limit()
         commits = self.g.search_commits(
-            query=f'author-email:{email} committer-date:<{self.obs_end.strftime("%Y-%m-%d")}'
+            query=f'author-email:{email} committer-date:>{self.obs_start.strftime("%Y-%m-%d")}'
         )
         if commits.totalCount > 0:
             logging.info("Looping through the commits")
@@ -128,7 +128,7 @@ class DeveloperTracker:
                 commit_org, commit_repo, commit_etag = self.get_repo_org_commit(
                     url=commit.commit.url
                 )
-                if (commit.commit.committer.date.date() > self.obs_start.date()):
+                if (commit.commit.committer.date.date() < self.obs_end.date()):
                     if (commit_org != user_name and not (commit_repo == self.repo_name and commit_org == self.org_name)): # ! : to check for shared developer
                         shared = True
                         outside_repo_commits += 1
