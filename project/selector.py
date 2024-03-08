@@ -5,12 +5,12 @@ import pandas as pd
 from github import Repository, GithubException
 import warnings
 
-from project.utils import add_to_parquet, check_rate_limit, get_logger
+from project.utils import add_to_file, check_rate_limit, get_logger
 from project.constants import *
 
 # System setup
 warnings.filterwarnings("ignore")
-logger = get_logger(filename=__file__)
+logger = get_logger()
 
 class RepositorySelector:
     def __init__(self, orgs: pd.DataFrame, file_pth: str):
@@ -118,7 +118,7 @@ class RepositorySelector:
                         "url",
                     ],
                 )
-                add_to_parquet(df=df, file_pth=self.file_pth)
+                add_to_file(df=df, file_pth=self.file_pth)
         review_file = open(REVIEW_REPOS_FILE, "w")
         review_file.writelines(self.review_repos)
         review_file.close()

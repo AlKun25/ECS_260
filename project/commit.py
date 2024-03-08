@@ -81,7 +81,7 @@ def developer_history(name: str, email: str, ref_org_repo: str, obs_start: datet
     return outside_repo_commits
 
 # TODO: List of all selected repos
-repos = pd.read_parquet(SELECT_REPOS_CSV, engine="fastparquet")
+repos = pd.read_csv(SELECT_REPOS_FILE, engine="pyarrow")
 for repo in repos["url"]:
     org_name, repo_name = (repo.split(sep="repos/")[-1]).split(sep="/")
     repo_url = f"https://github.com/{org_name}/{repo_name}.git"
@@ -195,7 +195,7 @@ for repo in repos["url"]:
             ],
         )
         logging.warning("Month added to commit activity CSV.")
-        add_to_parquet(df=month_df, file_pth=COMMIT_ACTIVITY_CSV)
+        add_to_file(df=month_df, file_pth=COMMIT_ACTIVITY_CSV)
 
         # Update start date and convert to datetime
         start_date = datetime.combine(finish_date, datetime.min.time())
