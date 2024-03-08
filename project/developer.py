@@ -119,8 +119,10 @@ class DeveloperTracker:
             query=f'author-email:{email} committer-date:>{self.obs_start.strftime("%Y-%m-%d")}'
         )
         if commits.totalCount > 0:
+            self.g = check_rate_limit()
             logging.info("Looping through the commits")
             for commit in commits:
+                self.g = check_rate_limit()
                 if commit.author is None or not hasattr(commit.author, 'url') or not commit.author.url:
                     logging.critical("Author doesn't exist!Breaking the loop")
                     break
@@ -129,6 +131,7 @@ class DeveloperTracker:
                     url=commit.commit.url
                 )
                 if (commit.commit.committer.date.date() < self.obs_end.date()):
+                    logging.info(f"Checking for commit: {commit_etag}")
                     if (commit_org != user_name and not (commit_repo == self.repo_name and commit_org == self.org_name)): # ! : to check for shared developer
                         shared = True
                         outside_repo_commits += 1
@@ -171,7 +174,7 @@ class DeveloperTracker:
         file_num = self.all_developer_commits // 10000
         add_to_file(
             df=commits_df,
-            file_pth=f"{DEVELOPER_ACTIVITY_DIR}/developer_activity_{file_num}.csv",
+            file_pth=f"{DEVELOPER_ACTIVITY_DIR}/kunal_developer_activity_{file_num}.csv",
         )
         return [outside_repo_commits, within_org_commits, shared]
 
@@ -182,7 +185,10 @@ class DeveloperTracker:
         for name_email_pair in self.name_email_pairs:
             final_res = [0, 0, False]
             name = name_email_pair[0][0]
+            if "[bot]" in name:
+                continue
             for email in name_email_pair[1]:
+                self.g = check_rate_limit()
                 res = self.get_developer_activity(
                     name, email
                 )

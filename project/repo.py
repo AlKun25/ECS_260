@@ -233,6 +233,7 @@ class RepoAnalyzer:
             commit_count = group.shape[0]
             contributor_emails_pair.append([name, emails, commit_count])
         
+        self.g = check_rate_limit()
         dev_activity_obj = DeveloperTracker(contributors_email=contributor_emails_pair, obs_start=sow, obs_end=eow, org=week_df["org"].unique()[0], repo=week_df["repo"].unique()[0])
         dev_activity_obj.weekly_activity()
         n_shared = dev_activity_obj.n_shared
