@@ -33,7 +33,7 @@ python main.py
 How it measure and defines stuff to study the [research questions](https://github.com/AlKun25/ECS_260/blob/master/README.md#research-questions) .  
 
 ## Project Structure
-<details>
+<details open>
 <summary>This section provides details into specific important files in the project</summary>
 
 ```bash
