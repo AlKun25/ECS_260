@@ -30,6 +30,9 @@ Next, run main.py in the same directory.
 python main.py    
 ```
 
+Please download the mining data for the organizations from : [Link to Drive](https://drive.google.com/drive/folders/1AH4hb1xKbMWxM76SaWQomqGC1tAPczmI?usp=sharing).<br>
+Place these organization folders in `/project/db/orgs`
+
 ## Project Structure
 <details>
 <summary>This section provides details into specific important files in the project</summary>
