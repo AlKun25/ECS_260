@@ -82,15 +82,15 @@ How it measure and defines stuff to study the [research questions](https://githu
 - `project/db/selected_repos.csv`: This stores the relevant repos from each organization that can be used based on our criteria.
 
 #### Mining code
-`/project/repo.py`: It contains the code for downloading commits of a specific repo(using pyDriller) and for metric retrieval using the downloaded commits(using pyGitHub and pyDriller)
-`/project/selector.py`: It selects the relevant repos from each organization, and save that list in `selected_repos.csv`
-`/project/developer.py`: It handles the logic for calculating the metric involving developer's outside repo activity like S_FOCUS.
-`/project/utils.py`: It stores functions that are repeatedly used, across the codebase. This includes checking rate limit for the GitHub API token, adding/appending to the specific CSVs, and more ...
-`/project/constants.py`: It stores the constant values that are used across the codebase frequently. 
+- `/project/repo.py`: It contains the code for downloading commits of a specific repo(using pyDriller) and for metric retrieval using the downloaded commits(using pyGitHub and pyDriller)
+- `/project/selector.py`: It selects the relevant repos from each organization, and save that list in `selected_repos.csv`
+- `/project/developer.py`: It handles the logic for calculating the metric involving developer's outside repo activity like S_FOCUS.
+- `/project/utils.py`: It stores functions that are repeatedly used, across the codebase. This includes checking rate limit for the GitHub API token, adding/appending to the specific CSVs, and more ...
+- `/project/constants.py`: It stores the constant values that are used across the codebase frequently. 
 
 #### Misc.
-`/project/logs`: This stores the logs of the given run of mining data
-`/project/repo_holder`: This directory stores the cloned repository during the commit downloading phase of mining
+- `/project/logs`: This stores the logs of the given run of mining data
+- `/project/repo_holder`: This directory stores the cloned repository during the commit downloading phase of mining
 
 </details>
 
