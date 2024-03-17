@@ -38,16 +38,16 @@ Repositories obtained from various GitHub organizations that fit the following r
 2. At least 100 stars
 3. Has a commit in the last 2 years
 4. Most recent commit made within the last 3 months
-Repository Metrics - repo, org, stars, contributors, commits, released, created_at, updated_recently, url
+- Repository Metrics - repo, org, stars, contributors, commits, released, created_at, updated_recently, url
 
 All metrics on commits made to the repository during the observational period 01/01/2022 to 12/31/2023 are gathered, and are analyied weekly. Repository release information is also obtained.
-Commit Metrics - id, repo, org, name, email, year, month, day, week, unit_complexity, unit_size, lines, n_modified_files
-Release Metrics -id, date, version, repo_name
+- Commit Metrics - id, repo, org, name, email, year, month, day, week, unit_complexity, unit_size, lines, n_modified_files
+- Release Metrics -id, date, version, repo_name
 
 The commits are then analyzed on a weekly level. All GitHub users who created one of the gathered commits is considered as a developer. They are categorized into multitasking or non-multitasking developers, and additional metrics are gathered on multitasking developers.
-Weekly Commit Metrics - repo, org, week, unit_complexity, unit_size, lines, n_modified_files, total_contributors, n_shared, n_commits
-All Developer Metrics - name, username, repo, org, date, week, email, etag
-Shared Developer Metrics - name, emails, p_i, repo, outside_repo_commits, within_org_commits, shared, week
+- Weekly Commit Metrics - repo, org, week, unit_complexity, unit_size, lines, n_modified_files, total_contributors, n_shared, n_commits
+- All Developer Metrics - name, username, repo, org, date, week, email, etag
+- Shared Developer Metrics - name, emails, p_i, repo, outside_repo_commits, within_org_commits, shared, week
 
 ### Research Question 1
 Independent Variable: proportion of shared developers (n_shared/total_contributors)
