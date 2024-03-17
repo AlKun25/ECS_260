@@ -1,0 +1,231 @@
+import pandas as pd
+from datetime import datetime
+import numpy as np
+import ast
+import csv
+from tqdm import tqdm
+import os
+
+def convert_and_access_key(row, key):
+    try:
+        # Attempt to convert the string to a dictionary if it's not already one
+        dict_val = row if isinstance(row, dict) else ast.literal_eval(row)
+        # Access the specified key
+        return dict_val.get(key)  # Using .get() is safer as it won't raise a KeyError if the key doesn't exist
+    except (ValueError, SyntaxError, TypeError):
+        # In case of any error, return a placeholder (None, or you could choose an appropriate default value)
+        return None
+
+def convert_to_week(date_str):
+    date_obj = datetime.strptime(date_str, "%d/%m/%Y")
+    year_week = date_obj.isocalendar()[:2]
+
+    return str(year_week)
+
+import re
+
+def extract_version_parts(version):
+    # Remove all non-numeric characters except for dots
+    cleaned_version = re.sub(r'[^0-9.]', '', version)
+    parts = cleaned_version.split('.')
+    
+    # Assign parts to major, minor, and bug, handling cases with missing parts
+    major = parts[0] if len(parts) > 0 else 0
+    minor = parts[1] if len(parts) > 1 else 0
+    bug = parts[2:] if len(parts) > 2 else 0
+    new_bug = []
+    if type(bug) != type([]):
+        bug = [bug]
+    for b in bug:
+        if b == '':
+            pass
+        else:
+            new_bug.append(b)
+    new_bug = [int(s) for s in new_bug]
+    major = sum([int(s) for s in major])
+    try:
+        minor = sum([int(s) for s in minor])
+    except:
+        minor = sum([int(s) for s in [minor]])
+    sum_bug = sum(new_bug)
+
+    major_count = 0
+    minor_count = 0
+    bug_count = 0
+
+    if sum_bug == 0:
+        if minor == 0:
+            major_count = 1
+        else:
+            minor_count = 1
+    else:
+        bug_count = 1
+    
+    return major, minor, sum_bug, major_count, minor_count, bug_count
+
+
+def main(org):
+    df_devs = pd.read_csv('devs/combined_developer_activity.csv')
+    df_devs_nodup = pd.read_csv('devs/combined_developer_nodup_activity.csv')
+
+    # org = input("Org name: ")
+
+    df_commits = pd.read_csv(f'orgs/{org}/{org}_commits_0_bots_removed_nodup.csv')
+    df_weekly = pd.read_csv(f'orgs/{org}/{org}_weekly_nodup.csv')
+    df_weekly_devs = pd.read_csv(f'orgs/{org}/weekly_dev_activity_bots_removed_nodup.csv')
+    df_releases = pd.read_csv(f'orgs/{org}/releases_nodup.csv')
+
+    df_devs_nodup['date'] = pd.to_datetime(df_devs_nodup['date'], utc=True)
+
+    df_devs_nodup['new_week'] = df_devs_nodup.apply(lambda row: (row['date'].year, row['week']), axis=1)
+    df_devs_nodup['new_week'] = df_devs_nodup['new_week'].apply(str)
+
+    df_releases_sorted = df_releases.sort_values(by=['repo_name', 'version'], ascending=[True, True])
+
+
+    df_releases_sorted['date'] = df_releases_sorted['date'].apply(convert_to_week)
+    df_releases_sorted['week'] = df_releases_sorted['date']
+
+
+    df_releases_filtered = df_releases_sorted[['repo_name', 'week', 'version']]
+    df_releases_filtered['repo'] = df_releases_filtered['repo_name']
+
+    df_releases_filtered['major_v'], df_releases_filtered['minor_v'], df_releases_filtered['bug_v'], df_releases_filtered['major_c'], df_releases_filtered['minor_c'], df_releases_filtered['bug_c'] = zip(*df_releases_filtered['version'].apply(extract_version_parts))
+    df_release = df_releases_filtered[['repo', 'week', 'version', 'major_c', 'minor_c', 'bug_c']]
+
+    unique_repos = df_weekly['repo'].unique()
+
+
+    headers = ['org', 'repo', 'year', 'week', 'total_devs', 'multitask_devs', 'singletask_devs', 'total_commits', 'multitask_commits', 'singletask_commits', 'avg_total_unit_complexity', 'avg_multitask_unit_complexity', 'avg_singletask_unit_complexity', 'avg_total_unit_size', 'avg_multitask_unit_size', 'avg_singletask_unit_size', 'total_lines_added', 'multitask_lines_added', 'singletask_lines_added', 'multitask_ratio', 'total_commit_per_total_dev']
+
+
+    data = []
+
+    for unique_repo in unique_repos:
+        for year in ['2022', '2023']:
+            lines = 0
+            modified_files = 0
+            for week in range(1, 53):
+                filtered_df_weekly_devs = df_weekly_devs[(df_weekly_devs['repo'] == unique_repo) & (df_weekly_devs['week'] ==  f"({year}, {week})")]
+                filtered_df_weekly = df_weekly[(df_weekly['repo'] == unique_repo) & (df_weekly['week'] ==  f"({year}, {week})")]
+                filtered_df_commits = df_commits[(df_commits['repo'] == unique_repo) & (df_commits['week'] ==  f"({year}, {week})")]
+                filtered_df_release = df_release[(df_release['repo'] == unique_repo) & (df_release['week'] ==  f"({year}, {week})")]
+    #             if len(filtered_df_weekly) > 0:
+                unique_names = filtered_df_weekly_devs['name'].unique()
+                total_devs = len(unique_names)
+                total_commits = len(filtered_df_weekly_devs)
+                shared_commits_df = filtered_df_weekly_devs[filtered_df_weekly_devs['shared']]
+                shared_commits = len(shared_commits_df)
+                unique_shared_emails = shared_commits_df['name'].unique()
+                shared_devs = len(unique_shared_emails)
+
+                # if len(filtered_df_weekly) > 0:
+                #     avg_unit_complexity = ast.literal_eval(filtered_df_weekly['unit_complexity'].iloc[0])['avg']
+                #     avg_unit_size =  ast.literal_eval(filtered_df_weekly['unit_size'].iloc[0])['avg']
+                # else:
+                #     avg_unit_complexity = 'NA'
+                #     avg_unit_size = 'NA'
+
+                filtered_df_shared_commits = filtered_df_commits[filtered_df_commits['name'].isin(unique_shared_emails)]
+                filtered_df_not_shared_commits = filtered_df_commits[~filtered_df_commits['name'].isin(unique_shared_emails)]
+                filtered_df_weekly_shared_devs = filtered_df_weekly_devs[filtered_df_weekly_devs['name'].isin(unique_shared_emails)]
+                
+
+
+                if len(filtered_df_release) > 0:
+                    release_major = filtered_df_release['major_c'].values[0]
+                    release_minor = filtered_df_release['minor_c'].values[0]
+                    release_bug = filtered_df_release['bug_c'].values[0]
+                    release_score = release_major * 10 + release_minor * 5 + release_bug * 2
+                    # release_score = 'NA'
+                else:
+                    release_score = 'NA'
+
+
+                # lines = filtered_df_commits['lines'].sum()
+                modified_files = filtered_df_commits['n_modified_files'].sum()
+
+                if shared_devs > 0:
+                    avg_shared_unit_complexity = filtered_df_shared_commits['unit_complexity'].sum() / shared_devs
+                    avg_shared_unit_size = filtered_df_shared_commits['unit_size'].sum() / shared_devs
+                    shared_lines = filtered_df_shared_commits['lines'].sum()
+                else:
+                    avg_shared_unit_complexity = 'NA'
+                    avg_shared_unit_size = 'NA'
+                    shared_lines = 'NA'
+
+                non_shared_devs = total_devs - shared_devs
+                non_shared_commits = total_commits - shared_commits
+                if non_shared_devs > 0:
+                    avg_non_shared_unit_complexity = filtered_df_not_shared_commits['unit_complexity'].sum() / non_shared_devs
+                    avg_non_shared_unit_size = filtered_df_not_shared_commits['unit_size'].sum() / non_shared_devs
+                    non_shared_lines = filtered_df_not_shared_commits['lines'].sum()
+                else:
+                    avg_non_shared_unit_complexity = 'NA'
+                    avg_non_shared_unit_size = 'NA'
+                    non_shared_lines = 'NA'
+
+                if total_devs > 0:
+                    total_commit_per_total_dev = total_commits / total_devs
+                    avg_total_unit_complexity = filtered_df_commits['unit_complexity'].sum() / total_devs
+                    avg_total_unit_size = filtered_df_commits['unit_size'].sum() / total_devs
+                    total_lines = filtered_df_commits['lines'].sum()
+                else:
+                    total_commit_per_total_dev = 'NA'
+                    avg_total_unit_complexity = 'NA'
+                    avg_total_unit_size = 'NA'
+                    total_lines = 'NA'
+
+
+                if len(filtered_df_weekly_shared_devs) > 0:
+                    filtered_df_weekly_shared_devs['log_s_focus'] = filtered_df_weekly_shared_devs['s_focus'].apply(apply_log)
+                    s_focus = filtered_df_weekly_shared_devs['s_focus'] * filtered_df_weekly_shared_devs['log_s_focus']
+                    sum_s_focus = sum(s_focus)
+
+                else:
+                    sum_s_focus = 'NA'
+
+                multitasking_repos = {}
+
+                for unique_name in unique_shared_emails:
+                    filtered_df_devs_nodup = df_devs_nodup[(df_devs_nodup['name'] == unique_name) & (df_devs_nodup['new_week'] == f"({year}, {week})")]
+                    multitasking_repos[unique_name] = len(filtered_df_devs_nodup['repo'].unique())
+
+                for k in multitasking_repos.keys():
+                    if multitasking_repos[k] == 0:
+                        multitasking_repos[k] = 1
+                
+                if shared_devs > 0:
+                    avg_multitasking_repos = sum([v for v in multitasking_repos.values()]) / shared_devs
+                    median_multitasking_repos = np.median([v for v in multitasking_repos.values()])
+                else:
+                    avg_multitasking_repos = 'NA'
+                    median_multitasking_repos = 'NA'
+
+                if total_devs == 0:
+                    multitask_ratio = 'NA'
+                else:
+                    multitask_ratio = shared_devs / total_devs
+
+
+                data.append([org, unique_repo, year, week, total_devs, shared_devs, non_shared_devs, total_commits, shared_commits, non_shared_commits, avg_total_unit_complexity, avg_shared_unit_complexity, avg_non_shared_unit_complexity, avg_total_unit_size, avg_shared_unit_size, avg_non_shared_unit_size, total_lines, shared_lines, non_shared_lines, multitask_ratio, total_commit_per_total_dev])
+
+
+    with open(f'output/_rq1/test_2/{org}_processed.csv', mode='w', newline='', encoding='utf-8') as file:
+        writer = csv.writer(file)
+        
+        # Write the header
+        writer.writerow(headers)
+        
+        # Write data rows
+        for row in data:
+            writer.writerow(row)
+        print(f'Process_complete: {org}_processed.csv')
+
+if __name__ == "__main__":
+
+    # orgs = ['artsy', 'cfpb', 'Esri', 'ExpediaGroup', 'godaddy', 'nodejs', 'proyecto26', 'RedHatOfficial', 'Yelp', 'zalando']
+    orgs = os.listdir('orgs')
+    # orgs = ['mozilla']
+    for org in tqdm(orgs):
+        main(org)
