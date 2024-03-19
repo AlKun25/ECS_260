@@ -2,9 +2,10 @@
 ## Project direction
 Open source software developers frequently choose to multitask by contributing to many repositories in a short period of time, and GitHub’s various collaborative features makes it easier than ever before. However, previous research has identified both positive and negative consequences of multitasking in software development. In this project, we look at the relationship between multitasking developers and the quality of the repositories they contribute to by measuring repository maintainability and productivity.
 
-** Research Question 1: How does the commit contribution of multitasking developers differ from that of non-multitasking developers? **
+**Research Question 1: How does the commit contribution of multitasking developers differ from that of non-multitasking developers?**
 Research regarding multitasking developers does not directly compare them to those developers who do not multitask. Our first research question comparatively studies the differences in average commits per developer to quantify repository contribution, aiming to understand the potential association between multitasking and the development quality. 
-** Research Question 2: Does the level of multitasking in the repository and commit activity associate with repository maintainability and productivity, controlling for other factors? **
+
+**Research Question 2: Does the level of multitasking in the repository and commit activity associate with repository maintainability and productivity, controlling for other factors?**
 Existing research on multitasking developers often treats all developers uniformly, overlooking personal traits. Our second research question investigates whether certain characteristics, such as developer level of multitasking and commit activity, are correlated with repository effectiveness, or specifically, maintainability and productivity
 
 ## How to run   
