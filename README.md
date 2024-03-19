@@ -8,7 +8,7 @@ Research regarding multitasking developers does not directly compare them to tho
 **Research Question 2: Does the level of multitasking in the repository and commit activity associate with repository maintainability and productivity, controlling for other factors?**
 Existing research on multitasking developers often treats all developers uniformly, overlooking personal traits. Our second research question investigates whether certain characteristics, such as developer level of multitasking and commit activity, are correlated with repository effectiveness, or specifically, maintainability and productivity
 
-## How to run   
+## Running instruction  
 1. First, clone this repo
 ```bash
 # clone project   
