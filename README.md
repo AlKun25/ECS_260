@@ -45,6 +45,9 @@ All metrics on commits made to the repository during the observational period 01
 - Release Metrics -id, date, version, repo_name
 
 The commits are then analyzed on a weekly level. All GitHub users who created one of the gathered commits is considered as a developer. They are categorized into multitasking or non-multitasking developers, and additional metrics are gathered on multitasking developers.
+
+> NOTE : n_shared corresponds to number of multitasking developers
+
 - Weekly Commit Metrics - repo, org, week, unit_complexity, unit_size, lines, n_modified_files, total_contributors, n_shared, n_commits
 - All Developer Metrics - name, username, repo, org, date, week, email, etag
 - Multitasking Developer Metrics - name, emails, p_i, repo, outside_repo_commits, within_org_commits, shared, week
